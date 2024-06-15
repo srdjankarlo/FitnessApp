@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/id_ma_starting_item"
+        android:title=""
+        android:icon="@drawable/baseline_more_vert_24">
+        <menu>
+            <item android:id="@+id/id_ma_item_exercises"
+                android:title="@string/exercises"
+                android:orderInCategory="100"
+                app:showAsAction="never"
+                android:icon="@drawable/weight"/>
+
+            <item android:id="@+id/id_ma_item_my_workouts"
+                android:title="@string/my_workouts"
+                android:orderInCategory="101"
+                app:showAsAction="never"
+                android:icon="@drawable/checklist"/>
+
+            <item android:id="@+id/id_ma_item_progrress"
+                android:title="@string/progress"
+                android:orderInCategory="102"
+                app:showAsAction="never"
+                android:icon="@drawable/log_past"/>
+
+            <item android:id="@+id/id_ma_item_diet"
+                android:title="@string/diet"
+                android:orderInCategory="103"
+                app:showAsAction="never"
+                android:icon="@drawable/fork_and_knife"/>
+        </menu>
+    </item>
+
+</menu>

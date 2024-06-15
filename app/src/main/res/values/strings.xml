@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FitApp</string>
+    <string name="donation_message">Would you like to donate to the developer so he can buy
+    protein and creatine?</string>
+    <string name="donate">Donate</string>
+    <string name="muscle_group">Enter muscle group</string>
+    <string name="exercises">Exercises</string>
+    <string name="my_workouts">My Workouts Plan</string>
+    <string name="progress">Progress</string>
+    <string name="diet">Diet</string>
+    <string name="my_toolbar_image">My Toolbar Image</string>
+    <string name="image_of_muscle_group">Image of muscle group</string>
+</resources>
