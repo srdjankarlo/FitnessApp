@@ -10,4 +10,6 @@
     <string name="diet">Diet</string>
     <string name="my_toolbar_image">My Toolbar Image</string>
     <string name="image_of_muscle_group">Image of muscle group</string>
+    <string name="image_of_exercise">Image of exercise</string>
+    <string name="enter_exercise_name">Enter exercise name</string>
 </resources>

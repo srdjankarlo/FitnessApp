@@ -1,6 +1,5 @@
 package com.example.fitapp;
 
-
 import androidx.annotation.DrawableRes;
 
 public class MuscleGroup {

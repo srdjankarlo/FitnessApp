@@ -4,39 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/id_mu_gr_it_Layout"
+    android:id="@+id/id_ch_ex_it_Layout"
     android:background="@color/gray_light">
 
     <View
         android:id="@+id/divider1"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/id_mu_gr_it_ImageView"
+        android:id="@+id/id_ch_ex_it_ImageView"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:contentDescription="@string/image_of_muscle_group"
+        android:contentDescription="@string/image_of_exercise"
         android:src="@drawable/weight"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
     <TextView
-        android:id="@+id/id_mu_gr_it_TextView"
+        android:id="@+id/id_ch_ex_it_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/muscle_group"
+        android:text="@string/enter_exercise_name"
         android:textAlignment="viewStart"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/id_mu_gr_it_ImageView"
+        app:layout_constraintStart_toEndOf="@+id/id_ch_ex_it_ImageView"
         app:layout_constraintTop_toBottomOf="@+id/divider1"
         app:layout_constraintVertical_bias="0.541" />
 
