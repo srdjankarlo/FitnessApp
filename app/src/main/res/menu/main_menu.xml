@@ -4,30 +4,30 @@
 
     <item
         app:showAsAction="ifRoom"
-        android:id="@+id/id_ma_starting_item"
+        android:id="@+id/id_ma_me_item"
         android:title=""
         android:icon="@drawable/baseline_more_vert_24">
         <menu>
-            <item android:id="@+id/id_ma_item_exercises"
-                android:title="@string/exercises"
+            <item android:id="@+id/id_ma_me_item_exercises"
+                android:title="@string/menu_item_exercises"
                 android:orderInCategory="100"
                 app:showAsAction="never"
                 android:icon="@drawable/weight"/>
 
-            <item android:id="@+id/id_ma_item_my_workouts"
-                android:title="@string/my_workouts"
+            <item android:id="@+id/id_ma_me_item_my_workouts"
+                android:title="@string/menu_item_my_workouts"
                 android:orderInCategory="101"
                 app:showAsAction="never"
                 android:icon="@drawable/checklist"/>
 
-            <item android:id="@+id/id_ma_item_progrress"
-                android:title="@string/progress"
+            <item android:id="@+id/id_ma_me_item_progress"
+                android:title="@string/menu_item_progress"
                 android:orderInCategory="102"
                 app:showAsAction="never"
                 android:icon="@drawable/log_past"/>
 
-            <item android:id="@+id/id_ma_item_diet"
-                android:title="@string/diet"
+            <item android:id="@+id/id_ma_me_item_diet"
+                android:title="@string/menu_item_diet"
                 android:orderInCategory="103"
                 app:showAsAction="never"
                 android:icon="@drawable/fork_and_knife"/>

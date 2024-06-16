@@ -6,25 +6,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
-public class MuGrRecViewAdapter extends RecyclerView.Adapter<MuGrRecViewAdapter.ViewHolder> {
+public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdapter.ViewHolder> {
 
-    private ArrayList<MuscleGroup> muscle_groups = new ArrayList<>();
+    private ArrayList<CommonRecycleViewItem> common_rec_view_items = new ArrayList<>();
 
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
-    public MuGrRecViewAdapter(Context context) {
+    public CommonRecViewAdapter(Context context) {
         this.context = context;
     }
 
@@ -34,29 +33,46 @@ public class MuGrRecViewAdapter extends RecyclerView.Adapter<MuGrRecViewAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.muscle_group_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_rec_view_item_layout, parent, false);
+        ViewHolder view_holder = new ViewHolder(view);
 
-        return holder;
+        return view_holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.id_mu_gr_it_TextView.setText(muscle_groups.get(position).getNameMuscleGroup());
-        holder.id_mu_gr_it_ImageView.setImageResource(muscle_groups.get(position).getImageMuscleGroup());
-        holder.mu_gr_item_layout.setOnClickListener(new View.OnClickListener() {
+        holder.co_re_vi_TextView.setText(common_rec_view_items.get(position).getCommonRecViewName());
+        holder.co_re_vi_ImageView.setImageResource(common_rec_view_items.get(position).getCommonRecViewImage());
+        String rec_view_type = common_rec_view_items.get(position).getCommonRecViewType();
+
+        holder.co_re_vi_Layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Toast.makeText(context, muscle_groups.get(holder.getAdapterPosition()).getNameMuscleGroup() + " selected", Toast.LENGTH_SHORT).show();
 
                 // to make switch to correct muscle group layout/activity [0: Chest, 1: Shoulders, 2: Biceps, ...]]
-                final Intent intent;
+                // final Intent intent;
 
                 // ToDo: make chest recycler view adapter and layout and try passing it as intent
                 // in order to not create more activities cuz we need to set code for menu bar again
                 // and that would be much unnecessary lines of code
                 // see if back button will work
 
+                /*// set different views in recycler view
+                if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_exercises))){
+
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_my_workouts))
+                {
+
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_diet))
+                {
+
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_progress))
+                {
+
+                }*/
+
+                /*
                 if(holder.getAdapterPosition() == 0){
                      intent = new Intent(context, ChestExercisesActivity.class);
                 } else if (holder.getAdapterPosition() == 1) {
@@ -74,18 +90,19 @@ public class MuGrRecViewAdapter extends RecyclerView.Adapter<MuGrRecViewAdapter.
                 } else if (holder.getAdapterPosition() == 7) {
                     intent = new Intent(context, LegsExercisesActivity.class);
                 } else intent = null;
-                context.startActivities(new Intent[]{intent});
+
+                context.startActivities(new Intent[]{intent});*/
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return muscle_groups.size();
+        return common_rec_view_items.size();
     }
 
-    public void setMuscle_groups(ArrayList<MuscleGroup> muscle_groups) {
-        this.muscle_groups = muscle_groups;
+    public void setCommon_rec_view_items(ArrayList<CommonRecycleViewItem> common_rec_view_items) {
+        this.common_rec_view_items = common_rec_view_items;
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle groups added later
 
         i dont need this because i wont change the existing muscle groups, but it will be usefull in
@@ -100,18 +117,17 @@ public class MuGrRecViewAdapter extends RecyclerView.Adapter<MuGrRecViewAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
-        private ImageView id_mu_gr_it_ImageView;
-        private TextView id_mu_gr_it_TextView;
-
-        private ConstraintLayout mu_gr_item_layout;  // to be able to set on click listener
+        private ConstraintLayout co_re_vi_Layout;  // to be able to set on click listener
+        private ImageView co_re_vi_ImageView;
+        private TextView co_re_vi_TextView;
 
         // to create constructor, press Alt+ins
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
-            id_mu_gr_it_ImageView = itemView.findViewById(R.id.id_mu_gr_it_ImageView);
-            id_mu_gr_it_TextView = itemView.findViewById(R.id.id_mu_gr_it_TextView);
-            mu_gr_item_layout = itemView.findViewById(R.id.id_mu_gr_it_Layout);
+            co_re_vi_Layout = itemView.findViewById(R.id.id_co_re_vi_it_la_Layout);
+            co_re_vi_ImageView = itemView.findViewById(R.id.id_co_re_vi_it_la_ImageView);
+            co_re_vi_TextView = itemView.findViewById(R.id.id_co_re_vi_it_la_TextView);
         }
     }
 

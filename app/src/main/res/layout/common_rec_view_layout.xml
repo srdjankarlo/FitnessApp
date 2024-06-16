@@ -7,7 +7,7 @@
     android:padding="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/id_mu_gr_RecView"
+        android:id="@+id/id_co_re_vi_la_RecView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,13 +3,10 @@
     <string name="donation_message">Would you like to donate to the developer so he can buy
     protein and creatine?</string>
     <string name="donate">Donate</string>
-    <string name="muscle_group">Enter muscle group</string>
-    <string name="exercises">Exercises</string>
-    <string name="my_workouts">My Workouts Plan</string>
-    <string name="progress">Progress</string>
-    <string name="diet">Diet</string>
-    <string name="my_toolbar_image">My Toolbar Image</string>
-    <string name="image_of_muscle_group">Image of muscle group</string>
-    <string name="image_of_exercise">Image of exercise</string>
-    <string name="enter_exercise_name">Enter exercise name</string>
+    <string name="menu_item_exercises">Exercises</string>
+    <string name="menu_item_my_workouts">My Workouts Plan</string>
+    <string name="menu_item_progress">Progress</string>
+    <string name="menu_item_diet">Diet</string>
+    <string name="text_of_rec_view_item">Enter text</string>
+    <string name="image_of_rec_view_item">Image of RecView item</string>
 </resources>

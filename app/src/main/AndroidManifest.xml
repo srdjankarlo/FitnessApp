@@ -12,30 +12,6 @@
         android:theme="@style/Theme.FitApp"
         tools:targetApi="31">
         <activity
-            android:name=".LegsExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AbsExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BackExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ForearmsExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TricepsExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BicepsExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ShouldersExercisesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChestExercisesActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
