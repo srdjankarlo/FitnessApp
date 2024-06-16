@@ -34,9 +34,7 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_rec_view_item_layout, parent, false);
-        ViewHolder view_holder = new ViewHolder(view);
-
-        return view_holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -51,47 +49,52 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
                 // Toast.makeText(context, muscle_groups.get(holder.getAdapterPosition()).getNameMuscleGroup() + " selected", Toast.LENGTH_SHORT).show();
 
                 // to make switch to correct muscle group layout/activity [0: Chest, 1: Shoulders, 2: Biceps, ...]]
-                // final Intent intent;
+                 Intent intent = null;
 
                 // ToDo: make chest recycler view adapter and layout and try passing it as intent
                 // in order to not create more activities cuz we need to set code for menu bar again
                 // and that would be much unnecessary lines of code
                 // see if back button will work
 
-                /*// set different views in recycler view
-                if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_exercises))){
-
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_my_workouts))
+                // set different views in recycler view
+                if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.chest_exercise))){
+                    intent = new Intent(context, ChestExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.shoulders_exercise)))
                 {
-
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_diet))
+                    System.out.println("");
+                    // intent = new Intent(context, ShouldersExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.biceps_exercise)))
                 {
-
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.menu_item_progress))
+                    System.out.println("");
+                    // intent = new Intent(context, BicepsExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.triceps_exercise)))
                 {
+                    System.out.println("");
+                    // intent = new Intent(context, TricepsExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.forearms_exercise)))
+                {
+                    System.out.println("");
+                    // intent = new Intent(context, ForearmsExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.back_exercise)))
+                {
+                    System.out.println("");
+                    // intent = new Intent(context, BackExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.abs_exercise)))
+                {
+                    System.out.println("");
+                    // intent = new Intent(context, AbsExercisesActivity.class);
+                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.legs_exercise)))
+                {
+                    System.out.println("");
+                    // intent = new Intent(context, LegsExercisesActivity.class);
+                } else intent = new Intent(context, MainActivity.class);
 
-                }*/
+                // pass data to other activities
+                assert intent != null;
+                intent.putParcelableArrayListExtra("customObjectList", common_rec_view_items);
 
-                /*
-                if(holder.getAdapterPosition() == 0){
-                     intent = new Intent(context, ChestExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 1) {
-                    intent = new Intent(context, ShouldersExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 2) {
-                    intent = new Intent(context, BicepsExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 3) {
-                    intent = new Intent(context, TricepsExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 4) {
-                    intent = new Intent(context, ForearmsExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 5) {
-                    intent = new Intent(context, BackExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 6) {
-                    intent = new Intent(context, AbsExercisesActivity.class);
-                } else if (holder.getAdapterPosition() == 7) {
-                    intent = new Intent(context, LegsExercisesActivity.class);
-                } else intent = null;
+                context.startActivities(new Intent[]{intent});
 
-                context.startActivities(new Intent[]{intent});*/
             }
         });
     }

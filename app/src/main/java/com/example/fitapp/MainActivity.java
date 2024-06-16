@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,9 +15,12 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.Objects;
 
+// Alt+shift to have multi select lines
+
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView muscle_groups_RecView;
+    ArrayList<CommonRecycleViewItem> muscle_groups = new ArrayList<>();
+    ArrayList<CommonRecycleViewItem> diet = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,25 @@ public class MainActivity extends AppCompatActivity {
         // set title in action bar - starting title is in AndroidManifest android:label
         // actionBar.setTitle(R.string.exercises);
 
+        // create array list to populate recycler view
+        muscle_groups.add(new CommonRecycleViewItem("Chest", R.drawable.chest, getString(R.string.chest_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Shoulders", R.drawable.shoulders, getString(R.string.shoulders_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Biceps", R.drawable.biceps, getString(R.string.biceps_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Triceps", R.drawable.triceps, getString(R.string.triceps_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Forearms", R.drawable.forearms, getString(R.string.forearms_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Back", R.drawable.back, getString(R.string.back_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Abs", R.drawable.abs, getString(R.string.abs_exercise)));
+        muscle_groups.add(new CommonRecycleViewItem("Legs", R.drawable.legs, getString(R.string.legs_exercise)));
+
+        diet.add(new CommonRecycleViewItem("Meal 1", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 2", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 3", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 4", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 5", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 6", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 7", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 8", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+        diet.add(new CommonRecycleViewItem("Meal 9", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
     }
 
     @Override
@@ -48,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         // this just opens new layout using item ids
         int id = item.getItemId();
+        RecyclerView common_RecView;
         if (id == R.id.id_ma_me_item_exercises){
             // change action bar title and icon
             Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_exercises);
@@ -57,24 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
             // change layout and instantiate recycler view
             setContentView(R.layout.common_rec_view_layout);
-            muscle_groups_RecView = findViewById(R.id.id_co_re_vi_la_RecView);
-
-            // create array list to populate recycler view
-            ArrayList<CommonRecycleViewItem> muscle_groups = new ArrayList<>();
-            muscle_groups.add(new CommonRecycleViewItem("Chest", R.drawable.chest, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Shoulders", R.drawable.shoulders, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Biceps", R.drawable.biceps, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Triceps", R.drawable.triceps, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Forearms", R.drawable.forearms, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Back", R.drawable.back, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Abs", R.drawable.abs, getString(R.string.menu_item_exercises)));
-            muscle_groups.add(new CommonRecycleViewItem("Legs", R.drawable.legs, getString(R.string.menu_item_exercises)));
+            common_RecView = findViewById(R.id.id_co_re_vi_la_RecView);
 
             CommonRecViewAdapter adapter = new CommonRecViewAdapter(this);
             adapter.setCommon_rec_view_items(muscle_groups);
 
-            muscle_groups_RecView.setAdapter(adapter);
-            muscle_groups_RecView.setLayoutManager(new LinearLayoutManager(this));
+            common_RecView.setAdapter(adapter);
+            common_RecView.setLayoutManager(new LinearLayoutManager(this));
 
             // ToDo: this video https://youtu.be/7GPUpvcU1FE explains how to enable to click on recycler view item
 
@@ -99,24 +112,13 @@ public class MainActivity extends AppCompatActivity {
             Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_diet);
 
             setContentView(R.layout.common_rec_view_layout);
-            muscle_groups_RecView = findViewById(R.id.id_co_re_vi_la_RecView);
-
-            // create array list to populate recycler view
-            ArrayList<CommonRecycleViewItem> diet = new ArrayList<>();
-            diet.add(new CommonRecycleViewItem("Meal 1", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 2", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 3", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 4", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 5", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 6", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 7", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
-            diet.add(new CommonRecycleViewItem("Meal 8", R.drawable.fork_and_knife, getString(R.string.menu_item_diet)));
+            common_RecView = findViewById(R.id.id_co_re_vi_la_RecView);
 
             CommonRecViewAdapter adapter = new CommonRecViewAdapter(this);
             adapter.setCommon_rec_view_items(diet);
 
-            muscle_groups_RecView.setAdapter(adapter);
-            muscle_groups_RecView.setLayoutManager(new LinearLayoutManager(this));
+            common_RecView.setAdapter(adapter);
+            common_RecView.setLayoutManager(new LinearLayoutManager(this));
 
             // make to open new page with diet or stay on the same page if that page is allready on
             return true;

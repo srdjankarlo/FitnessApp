@@ -1,9 +1,12 @@
 package com.example.fitapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
-public class CommonRecycleViewItem {
+public class CommonRecycleViewItem implements Parcelable {
     private String CommonRecViewName;
     @DrawableRes
     private int CommonRecViewImage;
@@ -13,6 +16,37 @@ public class CommonRecycleViewItem {
         this.CommonRecViewName = name;
         this.CommonRecViewImage = image;
         this.CommonRecViewType = type;
+    }
+
+    // next 4 methods are implemented because of passing custom data as intent to other activities
+    protected CommonRecycleViewItem(Parcel in){
+        CommonRecViewName = in.readString();
+        CommonRecViewImage = in.readInt();
+        CommonRecViewType = in.readString();
+    }
+
+    public static final Creator<CommonRecycleViewItem> CREATOR = new Creator<CommonRecycleViewItem>() {
+        @Override
+        public CommonRecycleViewItem createFromParcel(Parcel parcel) {
+            return new CommonRecycleViewItem(parcel);
+        }
+
+        @Override
+        public CommonRecycleViewItem[] newArray(int i) {
+            return new CommonRecycleViewItem[i];
+        }
+    };
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeString(CommonRecViewName);
+        dest.writeInt(CommonRecViewImage);
+        dest.writeString(CommonRecViewType);
     }
 
     public String getCommonRecViewName() {

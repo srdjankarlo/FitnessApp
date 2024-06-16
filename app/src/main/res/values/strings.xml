@@ -9,4 +9,12 @@
     <string name="menu_item_diet">Diet</string>
     <string name="text_of_rec_view_item">Enter text</string>
     <string name="image_of_rec_view_item">Image of RecView item</string>
+    <string name="chest_exercise">Chest exercise</string>
+    <string name="shoulders_exercise">exercise</string>
+    <string name="biceps_exercise">exercise</string>
+    <string name="triceps_exercise">exercise</string>
+    <string name="forearms_exercise">exercise</string>
+    <string name="back_exercise">exercise</string>
+    <string name="abs_exercise">exercise</string>
+    <string name="legs_exercise">exercise</string>
 </resources>
