@@ -7,22 +7,25 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 public class CommonRecycleViewItem implements Parcelable {
-    private String CommonRecViewName;
     @DrawableRes
-    private int CommonRecViewImage;
+    private int CommonRecViewImageView1;
+    private String CommonRecViewTextView1;
+    private String CommonRecViewTextView2;
     private String CommonRecViewType;
 
-    public CommonRecycleViewItem(String name, @DrawableRes int image, String type) {
-        this.CommonRecViewName = name;
-        this.CommonRecViewImage = image;
+    public CommonRecycleViewItem(@DrawableRes int image, String name, String type, String text) {
+        this.CommonRecViewImageView1 = image;
+        this.CommonRecViewTextView1 = name;
         this.CommonRecViewType = type;
+        this.CommonRecViewTextView2 = text;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected CommonRecycleViewItem(Parcel in){
-        CommonRecViewName = in.readString();
-        CommonRecViewImage = in.readInt();
+        CommonRecViewImageView1 = in.readInt();
+        CommonRecViewTextView1 = in.readString();
         CommonRecViewType = in.readString();
+        CommonRecViewTextView2 = in.readString();
     }
 
     public static final Creator<CommonRecycleViewItem> CREATOR = new Creator<CommonRecycleViewItem>() {
@@ -44,26 +47,27 @@ public class CommonRecycleViewItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
-        dest.writeString(CommonRecViewName);
-        dest.writeInt(CommonRecViewImage);
+        dest.writeInt(CommonRecViewImageView1);
+        dest.writeString(CommonRecViewTextView1);
         dest.writeString(CommonRecViewType);
+        dest.writeString(CommonRecViewTextView2);
     }
 
-    public String getCommonRecViewName() {
-        return CommonRecViewName;
+    public String getCommonRecViewTextView1() {
+        return CommonRecViewTextView1;
     }
 
-    public void setCommonRecViewName(String name) {
-        this.CommonRecViewName = name;
+    public void setCommonRecViewTextView1(String name) {
+        this.CommonRecViewTextView1 = name;
     }
 
     @DrawableRes
-    public int getCommonRecViewImage() {
-        return CommonRecViewImage;
+    public int getCommonRecViewImageView1() {
+        return CommonRecViewImageView1;
     }
 
-    public void setCommonRecViewImage(int image) {
-        this.CommonRecViewImage = image;
+    public void setCommonRecViewImageView1(int image) {
+        this.CommonRecViewImageView1 = image;
     }
 
     public String getCommonRecViewType() {
@@ -74,13 +78,22 @@ public class CommonRecycleViewItem implements Parcelable {
         CommonRecViewType = commonRecViewType;
     }
 
+    public String getCommonRecViewTextView2() {
+        return CommonRecViewTextView2;
+    }
+
+    public void setCommonRecViewTextView2(String commonRecViewTextView2) {
+        CommonRecViewTextView2 = commonRecViewTextView2;
+    }
+
     @NonNull
     @Override
     public String toString() {
         return "CommonRecycleViewItem{" +
-                "CommonRecViewName='" + CommonRecViewName + '\'' +
-                ", CommonRecViewImage=" + CommonRecViewImage + '\'' +
-                ", CommonRecViewType=" + CommonRecViewType +
+                "CommonRecViewName='" + CommonRecViewTextView1 + '\'' +
+                ", CommonRecViewImage=" + CommonRecViewImageView1 + '\'' +
+                ", CommonRecViewType=" + CommonRecViewType + '\'' +
+                ", CommonRecViewTextView2=" + CommonRecViewTextView2 + '\'' +
                 '}';
     }
 }

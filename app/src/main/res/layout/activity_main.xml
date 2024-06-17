@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/id_ac_text_view2"
+        android:id="@+id/id_ac_ma_TextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -20,15 +20,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/donate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_ac_text_view2"
-        app:layout_constraintVertical_bias="0.0" />
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/id_ac_ma_TextView1">
+
+        <Button
+            android:id="@+id/id_ac_ma_Button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Button1"
+            android:text="@string/yes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_ac_ma_TextView1"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/id_ac_ma_Button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Button2"
+            android:text="@string/no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_ac_ma_TextView1"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

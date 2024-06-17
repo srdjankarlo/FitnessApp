@@ -10,27 +10,24 @@
         <menu>
             <item android:id="@+id/id_ma_me_item_exercises"
                 android:title="@string/menu_item_exercises"
-                android:orderInCategory="100"
                 app:showAsAction="never"
                 android:icon="@drawable/weight"/>
 
+            <item android:id="@+id/id_ma_me_item_diet"
+                android:title="@string/menu_item_diet"
+                app:showAsAction="never"
+                android:icon="@drawable/fork_and_knife"/>
+
             <item android:id="@+id/id_ma_me_item_my_workouts"
                 android:title="@string/menu_item_my_workouts"
-                android:orderInCategory="101"
                 app:showAsAction="never"
                 android:icon="@drawable/checklist"/>
 
             <item android:id="@+id/id_ma_me_item_progress"
                 android:title="@string/menu_item_progress"
-                android:orderInCategory="102"
                 app:showAsAction="never"
                 android:icon="@drawable/log_past"/>
 
-            <item android:id="@+id/id_ma_me_item_diet"
-                android:title="@string/menu_item_diet"
-                android:orderInCategory="103"
-                app:showAsAction="never"
-                android:icon="@drawable/fork_and_knife"/>
         </menu>
     </item>
 

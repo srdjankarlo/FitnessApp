@@ -1,7 +1,6 @@
 package com.example.fitapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,90 +12,39 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
 public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdapter.ViewHolder> {
 
+    private final ComRecViewInterface comRecViewInterface;
     private ArrayList<CommonRecycleViewItem> common_rec_view_items = new ArrayList<>();
 
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
-    public CommonRecViewAdapter(Context context) {
+    public CommonRecViewAdapter(Context context, ComRecViewInterface comRecViewInterface) {
         this.context = context;
+        this.comRecViewInterface = comRecViewInterface;
     }
 
 
     // ctrl + i and implement all 3 mandatory methods
 
+    // inflate the layout, giving look to each row
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_rec_view_item_layout, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main_menu_item, parent, false);
+        return new ViewHolder(view, comRecViewInterface);
     }
 
+    // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.co_re_vi_TextView.setText(common_rec_view_items.get(position).getCommonRecViewName());
-        holder.co_re_vi_ImageView.setImageResource(common_rec_view_items.get(position).getCommonRecViewImage());
+        holder.co_re_vi_ImageView1.setImageResource(common_rec_view_items.get(position).getCommonRecViewImageView1());
+        holder.co_re_vi_TextView1.setText(common_rec_view_items.get(position).getCommonRecViewTextView1());
+        holder.co_re_vi_TextView2.setText(common_rec_view_items.get(position).getCommonRecViewTextView2());
         String rec_view_type = common_rec_view_items.get(position).getCommonRecViewType();
-
-        holder.co_re_vi_Layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Toast.makeText(context, muscle_groups.get(holder.getAdapterPosition()).getNameMuscleGroup() + " selected", Toast.LENGTH_SHORT).show();
-
-                // to make switch to correct muscle group layout/activity [0: Chest, 1: Shoulders, 2: Biceps, ...]]
-                 Intent intent = null;
-
-                // ToDo: make chest recycler view adapter and layout and try passing it as intent
-                // in order to not create more activities cuz we need to set code for menu bar again
-                // and that would be much unnecessary lines of code
-                // see if back button will work
-
-                // set different views in recycler view
-                if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.chest_exercise))){
-                    intent = new Intent(context, ChestExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.shoulders_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, ShouldersExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.biceps_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, BicepsExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.triceps_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, TricepsExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.forearms_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, ForearmsExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.back_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, BackExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.abs_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, AbsExercisesActivity.class);
-                } else if (Objects.equals(rec_view_type, holder.itemView.getContext().getString(R.string.legs_exercise)))
-                {
-                    System.out.println("");
-                    // intent = new Intent(context, LegsExercisesActivity.class);
-                } else intent = new Intent(context, MainActivity.class);
-
-                // pass data to other activities
-                assert intent != null;
-                intent.putParcelableArrayListExtra("customObjectList", common_rec_view_items);
-
-                context.startActivities(new Intent[]{intent});
-
-            }
-        });
     }
 
     @Override
@@ -121,16 +69,32 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
         private ConstraintLayout co_re_vi_Layout;  // to be able to set on click listener
-        private ImageView co_re_vi_ImageView;
-        private TextView co_re_vi_TextView;
+        private ImageView co_re_vi_ImageView1;
+        private TextView co_re_vi_TextView1;
+        private TextView co_re_vi_TextView2;
 
         // to create constructor, press Alt+ins
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, ComRecViewInterface comRecViewInterface) {
             super(itemView);
             context = itemView.getContext();
-            co_re_vi_Layout = itemView.findViewById(R.id.id_co_re_vi_it_la_Layout);
-            co_re_vi_ImageView = itemView.findViewById(R.id.id_co_re_vi_it_la_ImageView);
-            co_re_vi_TextView = itemView.findViewById(R.id.id_co_re_vi_it_la_TextView);
+            co_re_vi_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
+            co_re_vi_ImageView1 = itemView.findViewById(R.id.id_ac_ma_me_it_ImageView1);
+            co_re_vi_TextView1 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView1);
+            co_re_vi_TextView2 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView2);
+
+            // set on click
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (comRecViewInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION){
+                            comRecViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 
