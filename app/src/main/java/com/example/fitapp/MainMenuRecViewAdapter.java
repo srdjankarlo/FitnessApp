@@ -14,17 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
-public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdapter.ViewHolder> {
+public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecViewAdapter.ViewHolder> {
 
-    private final ComRecViewInterface comRecViewInterface;
-    private ArrayList<CommonRecycleViewItem> common_rec_view_items = new ArrayList<>();
+    private final MainMenuRecViewInterface mainMenuRecViewInterface;
+    private ArrayList<MainMenuRecViewItem> common_rec_view_items = new ArrayList<>();
 
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
-    public CommonRecViewAdapter(Context context, ComRecViewInterface comRecViewInterface) {
+    public MainMenuRecViewAdapter(Context context, MainMenuRecViewInterface mainMenuRecViewInterface) {
         this.context = context;
-        this.comRecViewInterface = comRecViewInterface;
+        this.mainMenuRecViewInterface = mainMenuRecViewInterface;
     }
 
 
@@ -35,7 +35,7 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main_menu_item, parent, false);
-        return new ViewHolder(view, comRecViewInterface);
+        return new ViewHolder(view, mainMenuRecViewInterface);
     }
 
     // assign values to each item (row) of the recycler view
@@ -52,7 +52,7 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
         return common_rec_view_items.size();
     }
 
-    public void setCommon_rec_view_items(ArrayList<CommonRecycleViewItem> common_rec_view_items) {
+    public void setCommon_rec_view_items(ArrayList<MainMenuRecViewItem> common_rec_view_items) {
         this.common_rec_view_items = common_rec_view_items;
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle groups added later
 
@@ -74,7 +74,7 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
         private TextView co_re_vi_TextView2;
 
         // to create constructor, press Alt+ins
-        public ViewHolder(@NonNull View itemView, ComRecViewInterface comRecViewInterface) {
+        public ViewHolder(@NonNull View itemView, MainMenuRecViewInterface mainMenuRecViewInterface) {
             super(itemView);
             context = itemView.getContext();
             co_re_vi_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
@@ -86,11 +86,11 @@ public class CommonRecViewAdapter extends RecyclerView.Adapter<CommonRecViewAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (comRecViewInterface != null){
+                    if (mainMenuRecViewInterface != null){
                         int pos = getAdapterPosition();
 
                         if (pos != RecyclerView.NO_POSITION){
-                            comRecViewInterface.onItemClick(pos);
+                            mainMenuRecViewInterface.onItemClick(pos);
                         }
                     }
                 }

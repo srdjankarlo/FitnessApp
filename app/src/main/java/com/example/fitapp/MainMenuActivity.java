@@ -1,12 +1,9 @@
 package com.example.fitapp;
 
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
@@ -15,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.Objects;
 
-public class MainMenuActivity extends MainActivity implements ComRecViewInterface {
+public class MainMenuActivity extends MainActivity implements MainMenuRecViewInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +24,7 @@ public class MainMenuActivity extends MainActivity implements ComRecViewInterfac
 
         common_RecView = findViewById(R.id.id_ac_ma_me_RecView);
 
-        CommonRecViewAdapter adapter = new CommonRecViewAdapter(this, this);
+        MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
         adapter.setCommon_rec_view_items(RecViewItems);
 
         common_RecView.setAdapter(adapter);
@@ -86,7 +83,7 @@ public class MainMenuActivity extends MainActivity implements ComRecViewInterfac
 
         common_RecView = findViewById(R.id.id_ac_ma_me_RecView);
 
-        CommonRecViewAdapter adapter = new CommonRecViewAdapter(this, this);
+        MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
         adapter.setCommon_rec_view_items(RecViewItems);
 
         common_RecView.setAdapter(adapter);

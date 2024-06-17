@@ -6,14 +6,14 @@ import android.os.Parcelable;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
-public class CommonRecycleViewItem implements Parcelable {
+public class MainMenuRecViewItem implements Parcelable {
     @DrawableRes
     private int CommonRecViewImageView1;
     private String CommonRecViewTextView1;
     private String CommonRecViewTextView2;
     private String CommonRecViewType;
 
-    public CommonRecycleViewItem(@DrawableRes int image, String name, String type, String text) {
+    public MainMenuRecViewItem(@DrawableRes int image, String name, String type, String text) {
         this.CommonRecViewImageView1 = image;
         this.CommonRecViewTextView1 = name;
         this.CommonRecViewType = type;
@@ -21,22 +21,22 @@ public class CommonRecycleViewItem implements Parcelable {
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
-    protected CommonRecycleViewItem(Parcel in){
+    protected MainMenuRecViewItem(Parcel in){
         CommonRecViewImageView1 = in.readInt();
         CommonRecViewTextView1 = in.readString();
         CommonRecViewType = in.readString();
         CommonRecViewTextView2 = in.readString();
     }
 
-    public static final Creator<CommonRecycleViewItem> CREATOR = new Creator<CommonRecycleViewItem>() {
+    public static final Creator<MainMenuRecViewItem> CREATOR = new Creator<MainMenuRecViewItem>() {
         @Override
-        public CommonRecycleViewItem createFromParcel(Parcel parcel) {
-            return new CommonRecycleViewItem(parcel);
+        public MainMenuRecViewItem createFromParcel(Parcel parcel) {
+            return new MainMenuRecViewItem(parcel);
         }
 
         @Override
-        public CommonRecycleViewItem[] newArray(int i) {
-            return new CommonRecycleViewItem[i];
+        public MainMenuRecViewItem[] newArray(int i) {
+            return new MainMenuRecViewItem[i];
         }
     };
 
@@ -89,7 +89,7 @@ public class CommonRecycleViewItem implements Parcelable {
     @NonNull
     @Override
     public String toString() {
-        return "CommonRecycleViewItem{" +
+        return "MainMenuRecViewItem{" +
                 "CommonRecViewName='" + CommonRecViewTextView1 + '\'' +
                 ", CommonRecViewImage=" + CommonRecViewImageView1 + '\'' +
                 ", CommonRecViewType=" + CommonRecViewType + '\'' +

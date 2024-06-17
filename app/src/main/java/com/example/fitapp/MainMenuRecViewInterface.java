@@ -1,5 +1,5 @@
 package com.example.fitapp;
 
-public interface ComRecViewInterface {
+public interface MainMenuRecViewInterface {
     void onItemClick(int position);
 }
