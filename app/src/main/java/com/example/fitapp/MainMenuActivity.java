@@ -41,11 +41,11 @@ public class MainMenuActivity extends MainActivity implements ComRecViewInterfac
             @Override
             public void handleOnBackPressed() {
                 // Your custom logic here
-                Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
 
                 // If you want to handle the back press, do not call super.onBackPressed()
                 // If you want the default behavior, you can finish the activity or call super
-                // finish(); // Optionally finish the activity
+                 finish(); // Optionally finish the activity
             }
         });
     }
