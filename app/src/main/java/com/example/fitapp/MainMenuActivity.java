@@ -1,11 +1,15 @@
 package com.example.fitapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -28,6 +32,22 @@ public class MainMenuActivity extends MainActivity implements ComRecViewInterfac
 
         common_RecView.setAdapter(adapter);
         common_RecView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Get the OnBackPressedDispatcher
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+
+        // Register the callback
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Your custom logic here
+                Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
+
+                // If you want to handle the back press, do not call super.onBackPressed()
+                // If you want the default behavior, you can finish the activity or call super
+                // finish(); // Optionally finish the activity
+            }
+        });
     }
 
     @Override
@@ -87,4 +107,16 @@ public class MainMenuActivity extends MainActivity implements ComRecViewInterfac
         //intent.putParcelableArrayListExtra("RecViewItemsList", RecViewItems);
         //startActivity(intent);
     }
+
+    // deprecated
+    /*
+    @Override
+    public void onBackPressed() {
+        // Your custom logic here
+        Toast.makeText(this, "Back button pressed!", Toast.LENGTH_SHORT).show();
+
+        // Call the super class method if you want to allow the default behavior
+        // super.onBackPressed();
+    }*/
+
 }
