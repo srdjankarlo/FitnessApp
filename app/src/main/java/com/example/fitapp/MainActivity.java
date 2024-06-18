@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Intent intent = null;
     int id;
-    RecyclerView common_RecView;
+    RecyclerView MainMenu_RecView;
     // create array list to populate recycler view
-    ArrayList<MainMenuRecViewItem> RecViewItems = new ArrayList<>(), item_list = new ArrayList<>(),
+    ArrayList<MainMenuRecViewItem> RecViewItems = new ArrayList<>(),
             exercises = new ArrayList<>(), diet = new ArrayList<>(),
             chest_exercises = new ArrayList<>(), shoulder_exercises = new ArrayList<>(),
             biceps_exercises = new ArrayList<>(), triceps_exercises = new ArrayList<>(),
@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
         forearms_exercises.add(new MainMenuRecViewItem(R.drawable.forearms, "Forearms 1", getString(R.string.forearms_exercise), ""));
 
         back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 0", getString(R.string.back_exercise), ""));
-        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 0", getString(R.string.back_exercise), ""));
-        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 0", getString(R.string.back_exercise), ""));
-        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 0", getString(R.string.back_exercise), ""));
-        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 0", getString(R.string.back_exercise), ""));
-        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 0", getString(R.string.back_exercise), ""));
+        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 1", getString(R.string.back_exercise), ""));
+        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 2", getString(R.string.back_exercise), ""));
+        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 3", getString(R.string.back_exercise), ""));
+        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 4", getString(R.string.back_exercise), ""));
+        back_exercises.add(new MainMenuRecViewItem(R.drawable.back, "Back 5", getString(R.string.back_exercise), ""));
 
         abs_exercises.add(new MainMenuRecViewItem(R.drawable.abs, "Abs 0", getString(R.string.abs_exercise), ""));
         abs_exercises.add(new MainMenuRecViewItem(R.drawable.abs, "Abs 1", getString(R.string.abs_exercise), ""));
@@ -89,17 +89,17 @@ public class MainActivity extends AppCompatActivity {
         legs_exercises.add(new MainMenuRecViewItem(R.drawable.legs, "Legs 5", getString(R.string.legs_exercise), ""));
         legs_exercises.add(new MainMenuRecViewItem(R.drawable.legs, "Legs 6", getString(R.string.legs_exercise), ""));
 
+        exercises.add(new MainMenuRecViewItem(R.drawable.chest, getString(R.string.chest_exercise), getString(R.string.chest_exercise), String.valueOf(chest_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), getString(R.string.shoulders_exercise), String.valueOf(shoulder_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.biceps, getString(R.string.biceps_exercise), getString(R.string.biceps_exercise), String.valueOf(biceps_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.triceps, getString(R.string.triceps_exercise), getString(R.string.triceps_exercise), String.valueOf(triceps_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.forearms, getString(R.string.forearms_exercise), getString(R.string.forearms_exercise), String.valueOf(forearms_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.back, getString(R.string.back_exercise), getString(R.string.back_exercise), String.valueOf(back_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.abs, getString(R.string.abs_exercise), getString(R.string.abs_exercise), String.valueOf(abs_exercises.size()) + " exercises"));
+        exercises.add(new MainMenuRecViewItem(R.drawable.legs, getString(R.string.legs_exercise), getString(R.string.legs_exercise), String.valueOf(legs_exercises.size()) + " exercises"));
+
         diet.add(new MainMenuRecViewItem(R.drawable.fork_and_knife, "Meal 1", getString(R.string.menu_item_diet), ""));
         diet.add(new MainMenuRecViewItem(R.drawable.fork_and_knife, "Meal 2", getString(R.string.menu_item_diet), ""));
-
-        exercises.add(new MainMenuRecViewItem(R.drawable.chest, getString(R.string.chest_exercise), getString(R.string.menu_item_exercises), String.valueOf(chest_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), getString(R.string.menu_item_exercises), String.valueOf(shoulder_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.biceps, getString(R.string.biceps_exercise), getString(R.string.menu_item_exercises), String.valueOf(biceps_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.triceps, getString(R.string.triceps_exercise), getString(R.string.menu_item_exercises), String.valueOf(triceps_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.forearms, getString(R.string.forearms_exercise), getString(R.string.menu_item_exercises), String.valueOf(forearms_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.back, getString(R.string.back_exercise), getString(R.string.menu_item_exercises), String.valueOf(back_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.abs, getString(R.string.abs_exercise), getString(R.string.menu_item_exercises), String.valueOf(abs_exercises.size()) + " exercises"));
-        exercises.add(new MainMenuRecViewItem(R.drawable.legs, getString(R.string.legs_exercise), getString(R.string.menu_item_exercises), String.valueOf(legs_exercises.size()) + " exercises"));
     }
 
     // yes button when pressed logic

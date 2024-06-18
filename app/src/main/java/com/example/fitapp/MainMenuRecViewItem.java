@@ -8,24 +8,24 @@ import androidx.annotation.NonNull;
 
 public class MainMenuRecViewItem implements Parcelable {
     @DrawableRes
-    private int CommonRecViewImageView1;
-    private String CommonRecViewTextView1;
-    private String CommonRecViewTextView2;
-    private String CommonRecViewType;
+    private int MainMenuViewImageView1;
+    private String MainMenuRecViewTextView1;
+    private String MainMenuRecViewTextView2;
+    private String MainMenuRecViewType;
 
     public MainMenuRecViewItem(@DrawableRes int image, String name, String type, String text) {
-        this.CommonRecViewImageView1 = image;
-        this.CommonRecViewTextView1 = name;
-        this.CommonRecViewType = type;
-        this.CommonRecViewTextView2 = text;
+        this.MainMenuViewImageView1 = image;
+        this.MainMenuRecViewTextView1 = name;
+        this.MainMenuRecViewType = type;
+        this.MainMenuRecViewTextView2 = text;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected MainMenuRecViewItem(Parcel in){
-        CommonRecViewImageView1 = in.readInt();
-        CommonRecViewTextView1 = in.readString();
-        CommonRecViewType = in.readString();
-        CommonRecViewTextView2 = in.readString();
+        MainMenuViewImageView1 = in.readInt();
+        MainMenuRecViewTextView1 = in.readString();
+        MainMenuRecViewType = in.readString();
+        MainMenuRecViewTextView2 = in.readString();
     }
 
     public static final Creator<MainMenuRecViewItem> CREATOR = new Creator<MainMenuRecViewItem>() {
@@ -47,53 +47,53 @@ public class MainMenuRecViewItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
-        dest.writeInt(CommonRecViewImageView1);
-        dest.writeString(CommonRecViewTextView1);
-        dest.writeString(CommonRecViewType);
-        dest.writeString(CommonRecViewTextView2);
+        dest.writeInt(MainMenuViewImageView1);
+        dest.writeString(MainMenuRecViewTextView1);
+        dest.writeString(MainMenuRecViewType);
+        dest.writeString(MainMenuRecViewTextView2);
     }
 
-    public String getCommonRecViewTextView1() {
-        return CommonRecViewTextView1;
+    public String getMainMenuRecViewTextView1() {
+        return MainMenuRecViewTextView1;
     }
 
-    public void setCommonRecViewTextView1(String name) {
-        this.CommonRecViewTextView1 = name;
+    public void setMainMenuRecViewTextView1(String name) {
+        this.MainMenuRecViewTextView1 = name;
     }
 
     @DrawableRes
-    public int getCommonRecViewImageView1() {
-        return CommonRecViewImageView1;
+    public int getMainMenuViewImageView1() {
+        return MainMenuViewImageView1;
     }
 
-    public void setCommonRecViewImageView1(int image) {
-        this.CommonRecViewImageView1 = image;
+    public void setMainMenuViewImageView1(int image) {
+        this.MainMenuViewImageView1 = image;
     }
 
-    public String getCommonRecViewType() {
-        return CommonRecViewType;
+    public String getMainMenuRecViewType() {
+        return MainMenuRecViewType;
     }
 
-    public void setCommonRecViewType(String commonRecViewType) {
-        CommonRecViewType = commonRecViewType;
+    public void setMainMenuRecViewType(String mainMenuRecViewType) {
+        MainMenuRecViewType = mainMenuRecViewType;
     }
 
-    public String getCommonRecViewTextView2() {
-        return CommonRecViewTextView2;
+    public String getMainMenuRecViewTextView2() {
+        return MainMenuRecViewTextView2;
     }
 
-    public void setCommonRecViewTextView2(String commonRecViewTextView2) {
-        CommonRecViewTextView2 = commonRecViewTextView2;
+    public void setMainMenuRecViewTextView2(String mainMenuRecViewTextView2) {
+        MainMenuRecViewTextView2 = mainMenuRecViewTextView2;
     }
 
     @NonNull
     @Override
     public String toString() {
         return "MainMenuRecViewItem{" +
-                "CommonRecViewName='" + CommonRecViewTextView1 + '\'' +
-                ", CommonRecViewImage=" + CommonRecViewImageView1 + '\'' +
-                ", CommonRecViewType=" + CommonRecViewType + '\'' +
-                ", CommonRecViewTextView2=" + CommonRecViewTextView2 + '\'' +
+                "CommonRecViewName='" + MainMenuRecViewTextView1 + '\'' +
+                ", CommonRecViewImage=" + MainMenuViewImageView1 + '\'' +
+                ", CommonRecViewType=" + MainMenuRecViewType + '\'' +
+                ", CommonRecViewTextView2=" + MainMenuRecViewTextView2 + '\'' +
                 '}';
     }
 }

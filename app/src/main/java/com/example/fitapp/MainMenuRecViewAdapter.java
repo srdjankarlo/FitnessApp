@@ -17,8 +17,7 @@ import java.util.ArrayList;
 public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecViewAdapter.ViewHolder> {
 
     private final MainMenuRecViewInterface mainMenuRecViewInterface;
-    private ArrayList<MainMenuRecViewItem> common_rec_view_items = new ArrayList<>();
-
+    private ArrayList<MainMenuRecViewItem> MainMenuRecView_items = new ArrayList<>();
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
@@ -41,19 +40,19 @@ public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecView
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.co_re_vi_ImageView1.setImageResource(common_rec_view_items.get(position).getCommonRecViewImageView1());
-        holder.co_re_vi_TextView1.setText(common_rec_view_items.get(position).getCommonRecViewTextView1());
-        holder.co_re_vi_TextView2.setText(common_rec_view_items.get(position).getCommonRecViewTextView2());
-        String rec_view_type = common_rec_view_items.get(position).getCommonRecViewType();
+        holder.MainMenuRecView_ImageView1.setImageResource(MainMenuRecView_items.get(position).getMainMenuViewImageView1());
+        holder.MainMenuRecView_TextView1.setText(MainMenuRecView_items.get(position).getMainMenuRecViewTextView1());
+        holder.MainMenuRecView_TextView2.setText(MainMenuRecView_items.get(position).getMainMenuRecViewTextView2());
+        String rec_view_type = MainMenuRecView_items.get(position).getMainMenuRecViewType();
     }
 
     @Override
     public int getItemCount() {
-        return common_rec_view_items.size();
+        return MainMenuRecView_items.size();
     }
 
-    public void setCommon_rec_view_items(ArrayList<MainMenuRecViewItem> common_rec_view_items) {
-        this.common_rec_view_items = common_rec_view_items;
+    public void setMainMenuRecView_items(ArrayList<MainMenuRecViewItem> mainMenuRecView_items) {
+        this.MainMenuRecView_items = mainMenuRecView_items;
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle groups added later
 
         i dont need this because i wont change the existing muscle groups, but it will be usefull in
@@ -68,19 +67,19 @@ public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecView
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
-        private ConstraintLayout co_re_vi_Layout;  // to be able to set on click listener
-        private ImageView co_re_vi_ImageView1;
-        private TextView co_re_vi_TextView1;
-        private TextView co_re_vi_TextView2;
+        private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
+        private ImageView MainMenuRecView_ImageView1;
+        private TextView MainMenuRecView_TextView1;
+        private TextView MainMenuRecView_TextView2;
 
         // to create constructor, press Alt+ins
         public ViewHolder(@NonNull View itemView, MainMenuRecViewInterface mainMenuRecViewInterface) {
             super(itemView);
             context = itemView.getContext();
-            co_re_vi_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
-            co_re_vi_ImageView1 = itemView.findViewById(R.id.id_ac_ma_me_it_ImageView1);
-            co_re_vi_TextView1 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView1);
-            co_re_vi_TextView2 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView2);
+            MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
+            MainMenuRecView_ImageView1 = itemView.findViewById(R.id.id_ac_ma_me_it_ImageView1);
+            MainMenuRecView_TextView1 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView1);
+            MainMenuRecView_TextView2 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView2);
 
             // set on click
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -97,5 +96,4 @@ public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecView
             });
         }
     }
-
 }

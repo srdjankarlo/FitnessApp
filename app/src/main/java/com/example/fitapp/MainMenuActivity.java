@@ -1,5 +1,6 @@
 package com.example.fitapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,19 +18,22 @@ public class MainMenuActivity extends MainActivity implements MainMenuRecViewInt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_exercises);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " +  getString(R.string.menu_item_exercises));
         setContentView(R.layout.activity_main_menu);
 
+        // put exercises to show first
         RecViewItems = exercises;
 
-        common_RecView = findViewById(R.id.id_ac_ma_me_RecView);
+        MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
 
         MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
-        adapter.setCommon_rec_view_items(RecViewItems);
+        adapter.setMainMenuRecView_items(RecViewItems);
 
-        common_RecView.setAdapter(adapter);
-        common_RecView.setLayoutManager(new LinearLayoutManager(this));
+        MainMenu_RecView.setAdapter(adapter);
+        MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
+        // not using this yet
+        /*
         // Get the OnBackPressedDispatcher
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
 
@@ -44,7 +48,7 @@ public class MainMenuActivity extends MainActivity implements MainMenuRecViewInt
                 // If you want the default behavior, you can finish the activity or call super
                  finish(); // Optionally finish the activity
             }
-        });
+        });*/
     }
 
     @Override
@@ -61,48 +65,60 @@ public class MainMenuActivity extends MainActivity implements MainMenuRecViewInt
         id = item.getItemId();
         if (id == R.id.id_ma_me_item_exercises){
             // change action bar title and icon
-            Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_exercises);
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_exercises));
             RecViewItems = exercises;
 
         } else if (id == R.id.id_ma_me_item_diet) {
             // change action bar title and icon
-            Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_diet);
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_diet));
             RecViewItems = diet;
 
         } else if (id == R.id.id_ma_me_item_my_workouts){
             // change action bar title and icon
-            Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_my_workouts);
-            RecViewItems = item_list;
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_my_workouts));
+            //RecViewItems = item_list;
 
         } else if (id == R.id.id_ma_me_item_progress) {
             // change action bar title and icon
-            Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.menu_item_progress);
-            RecViewItems = item_list;
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_progress));
+            //RecViewItems = item_list;
 
         } else return true;  // this will leave activity_main layout if nothing was selected in menu
 
-        common_RecView = findViewById(R.id.id_ac_ma_me_RecView);
+        MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
 
         MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
-        adapter.setCommon_rec_view_items(RecViewItems);
+        adapter.setMainMenuRecView_items(RecViewItems);
 
-        common_RecView.setAdapter(adapter);
-        common_RecView.setLayoutManager(new LinearLayoutManager(this));
+        MainMenu_RecView.setAdapter(adapter);
+        MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onItemClick(int position) {
-        if (Objects.equals(RecViewItems.get(position).getCommonRecViewTextView1(), getString(R.string.chest_exercise))){
-            // change action bar title and icon
-            Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.chest_exercise);
+        if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.chest_exercise))){
             RecViewItems = chest_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.shoulders_exercise))) {
+            RecViewItems = shoulder_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.biceps_exercise))) {
+            RecViewItems = biceps_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.triceps_exercise))) {
+            RecViewItems = triceps_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.forearms_exercise))) {
+            RecViewItems = forearms_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.back_exercise))) {
+            RecViewItems = back_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.abs_exercise))) {
+            RecViewItems = abs_exercises;
+        } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.legs_exercise))) {
+            RecViewItems = legs_exercises;
         }
 
-        //Intent intent = new Intent(this, MainMenuActivity.class);
-        //intent.putParcelableArrayListExtra("RecViewItemsList", RecViewItems);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
+        intent.putParcelableArrayListExtra("RecViewItemsList", RecViewItems);
+        startActivity(intent);
     }
 
     // deprecated

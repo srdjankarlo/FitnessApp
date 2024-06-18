@@ -7,8 +7,8 @@
     <string name="menu_item_my_workouts">My Workouts Plan</string>
     <string name="menu_item_progress">Progress</string>
     <string name="menu_item_diet">Diet</string>
-    <string name="text_of_rec_view_item">Enter text</string>
-    <string name="image_of_rec_view_item">Image of RecView item</string>
+    <string name="ac_ma_me_it_TextView_text">Enter text</string>
+    <string name="ac_ma_me_it_ImageView_contentDescription">Image of RecView item</string>
     <string name="chest_exercise">Chest</string>
     <string name="shoulders_exercise">Shoulders</string>
     <string name="biceps_exercise">Biceps</string>
