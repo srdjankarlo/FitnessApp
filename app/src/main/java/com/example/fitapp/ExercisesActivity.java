@@ -34,6 +34,7 @@ public class ExercisesActivity extends MainActivity implements MainMenuRecViewIn
         MainMenu_RecView.setAdapter(adapter);
         MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
+        // ToDo: set this up again, the fix didnt work
         //// Get the OnBackPressedDispatcher
         //OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         //
