@@ -55,6 +55,7 @@ public class ExercisesActivity extends MainActivity implements MainMenuRecViewIn
 
     @Override
     public void onItemClick(int position) {
+        // ToDo: make logic for when particular exercise is clicked and make layout for it
         //if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.chest_exercise))){
         //    RecViewItems = chest_exercises;
         //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.shoulders_exercise))) {
