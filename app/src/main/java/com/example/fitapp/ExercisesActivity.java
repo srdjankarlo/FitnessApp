@@ -1,10 +1,13 @@
 package com.example.fitapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -26,6 +29,9 @@ public class ExercisesActivity extends AppCompatActivity implements MainMenuRecV
 
         Objects.requireNonNull(getSupportActionBar()).setTitle(item_type + " exercises");
         setContentView(R.layout.activity_main_menu);
+        ActionBar bar = getSupportActionBar();
+        ColorDrawable color = new ColorDrawable(Color.parseColor("#757575"));  // gray light
+        bar.setBackgroundDrawable(color);
 
         MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
 

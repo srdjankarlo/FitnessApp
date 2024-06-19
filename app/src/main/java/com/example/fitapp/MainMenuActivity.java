@@ -1,12 +1,15 @@
 package com.example.fitapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,8 +31,13 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // change app bar title, set layout and change app bar color
         Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " +  getString(R.string.menu_item_exercises));
         setContentView(R.layout.activity_main_menu);
+        ActionBar bar = getSupportActionBar();
+        ColorDrawable color = new ColorDrawable(Color.parseColor("#757575"));  // gray light
+        bar.setBackgroundDrawable(color);
 
         // fill lists with items for exercises
         chest_exercises.add(new MainMenuRecViewItem(R.drawable.chest, "Chest 0", getString(R.string.chest_exercise), ""));
@@ -126,6 +134,9 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+
+
         return true;
     }
 
