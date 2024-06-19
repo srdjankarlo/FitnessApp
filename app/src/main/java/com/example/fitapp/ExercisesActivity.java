@@ -1,8 +1,8 @@
 package com.example.fitapp;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcher;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,10 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ExercisesActivity extends MainActivity implements MainMenuRecViewInterface {
+public class ExercisesActivity extends AppCompatActivity implements MainMenuRecViewInterface {
 
     ArrayList<MainMenuRecViewItem> item_list;
+    RecyclerView MainMenu_RecView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
