@@ -22,7 +22,7 @@ public class DonateActivity extends AppCompatActivity {
         // actionBar.setTitle(R.string.exercises);
 
         // set layout for the activity
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_donate);
     }
 
     // yes button when pressed logic
