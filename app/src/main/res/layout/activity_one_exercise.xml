@@ -4,6 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OneExerciseActivity">
+    android:padding="10dp"
+    tools:context=".OneExerciseActivity"
+    android:id="@+id/id_ac_on_ex_Layout0">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/id_ac_on_ex_Layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/id_ac_on_ex_ImageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abs"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/id_ac_on_ex_TextView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Here is the explanation of the exercise shown in the picture."/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/id_ac_on_ex_Layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_Layout1">
+
+        <Button
+            android:id="@+id/id_ac_on_ex_Button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ADD" />
+
+        <EditText
+            android:id="@+id/id_ac_on_ex_TextView2_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:layout_weight="1"
+            android:hint="Enter sets"/>
+
+        <EditText
+            android:id="@+id/id_ac_on_ex_TextView2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:layout_weight="1"
+            android:hint="Enter reps"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_ac_on_ex_RecView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_Layout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

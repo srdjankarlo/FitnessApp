@@ -81,9 +81,9 @@ public class ExercisesActivity extends AppCompatActivity implements MainMenuRecV
         //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.legs_exercise))) {
         //    RecViewItems = legs_exercises;
         //}
-        //
-        //Intent intent = new Intent(this, ExercisesActivity.class);
+
+        Intent intent = new Intent(this, OneExerciseActivity.class);
         //intent.putParcelableArrayListExtra("RecViewItemsList", RecViewItems);
-        //startActivity(intent);
+        startActivity(intent);
     }
 }
