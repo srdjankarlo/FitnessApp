@@ -63,27 +63,12 @@ public class ExercisesActivity extends AppCompatActivity implements MainMenuRecV
 
     @Override
     public void onItemClick(int position) {
+
         // ToDo: make logic for when particular exercise is clicked and make layout for it
-        //if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.chest_exercise))){
-        //    RecViewItems = chest_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.shoulders_exercise))) {
-        //    RecViewItems = shoulder_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.biceps_exercise))) {
-        //    RecViewItems = biceps_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.triceps_exercise))) {
-        //    RecViewItems = triceps_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.forearms_exercise))) {
-        //    RecViewItems = forearms_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.back_exercise))) {
-        //    RecViewItems = back_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.abs_exercise))) {
-        //    RecViewItems = abs_exercises;
-        //} else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.legs_exercise))) {
-        //    RecViewItems = legs_exercises;
-        //}
+        String exercise = item_list.get(position).getMainMenuRecViewTextView1();
 
         Intent intent = new Intent(this, OneExerciseActivity.class);
-        //intent.putParcelableArrayListExtra("RecViewItemsList", RecViewItems);
+        intent.putExtra("ExerciseName", exercise);
         startActivity(intent);
     }
 }
