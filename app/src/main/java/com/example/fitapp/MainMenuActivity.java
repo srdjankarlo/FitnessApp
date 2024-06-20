@@ -134,9 +134,6 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-
-
-
         return true;
     }
 
