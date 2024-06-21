@@ -40,6 +40,10 @@ public class MainMenuRecViewItem implements Parcelable {
         }
     };
 
+    public MainMenuRecViewItem() {
+
+    }
+
     @Override
     public int describeContents(){
         return 0;

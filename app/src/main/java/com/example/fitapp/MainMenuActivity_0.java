@@ -16,10 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MainMenuActivity extends DonateActivity implements MainMenuRecViewInterface {
+public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecViewInterface {
 
     int id;
     RecyclerView MainMenu_RecView;
+
+    MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
+
     // create array list to populate recycler view
     ArrayList<MainMenuRecViewItem> RecViewItems = new ArrayList<>(),
             exercises = new ArrayList<>(), diet = new ArrayList<>(),
@@ -32,9 +35,14 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // change app bar title, set layout and change app bar color
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " +  getString(R.string.menu_item_exercises));
+        // set the activity layout
         setContentView(R.layout.activity_main_menu);
+
+        // change app bar title
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " +  getString(R.string.menu_item_exercises));
+
+
+        // change app bar color
         ActionBar bar = getSupportActionBar();
         ColorDrawable color = new ColorDrawable(Color.parseColor("#757575"));  // gray light
         bar.setBackgroundDrawable(color);
@@ -99,17 +107,19 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
         exercises.add(new MainMenuRecViewItem(R.drawable.abs, getString(R.string.abs_exercise), getString(R.string.abs_exercise), String.valueOf(abs_exercises.size()) + " exercises"));
         exercises.add(new MainMenuRecViewItem(R.drawable.legs, getString(R.string.legs_exercise), getString(R.string.legs_exercise), String.valueOf(legs_exercises.size()) + " exercises"));
 
+        // fill lists with items for diet
         diet.add(new MainMenuRecViewItem(R.drawable.fork_and_knife, "Meal 1", getString(R.string.menu_item_diet), ""));
         diet.add(new MainMenuRecViewItem(R.drawable.fork_and_knife, "Meal 2", getString(R.string.menu_item_diet), ""));
 
         // put exercises to show first
         RecViewItems = exercises;
 
+        // get the recycler view in order to manipulate it
         MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
 
-        MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
+        // set the adapter for recycler view and show items in it
+        //MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
         adapter.setMainMenuRecView_items(RecViewItems);
-
         MainMenu_RecView.setAdapter(adapter);
         MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -140,7 +150,7 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        // this just opens new layout using item ids
+        // get the id of clicked menu item
         id = item.getItemId();
         if (id == R.id.id_ma_me_item_exercises){
             // change action bar title and icon
@@ -164,11 +174,12 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
 
         } else return true;  // this will leave activity_main layout if nothing was selected in menu
 
-        MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
-
-        MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
+        //// get the recycler view in order to manipulate it
+        //MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
+        //
+        //// set the adapter for recycler view and show items in it
+        //MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
         adapter.setMainMenuRecView_items(RecViewItems);
-
         MainMenu_RecView.setAdapter(adapter);
         MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -178,38 +189,39 @@ public class MainMenuActivity extends DonateActivity implements MainMenuRecViewI
     @Override
     public void onItemClick(int position) {
 
+        // for exercises
         if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.chest_exercise))){
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", chest_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", chest_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.shoulders_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", shoulder_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", shoulder_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.biceps_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", biceps_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", biceps_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.triceps_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", triceps_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", triceps_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.forearms_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", forearms_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", forearms_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.back_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", back_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", back_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.abs_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", abs_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", abs_exercises);
+            startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.legs_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), ExercisesActivity.class);
-        intent.putParcelableArrayListExtra("RecViewItemsList", legs_exercises);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", legs_exercises);
+            startActivity(intent);
         }
 
     }
