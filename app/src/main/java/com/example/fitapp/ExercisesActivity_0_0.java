@@ -75,10 +75,11 @@ public class ExercisesActivity_0_0 extends AppCompatActivity implements MainMenu
     public void onItemClick(int position) {
 
         // ToDo: make logic for when particular exercise is clicked and make layout for it
-        MainMenuRecViewItem exercise = item_list.get(position);
+        //MainMenuRecViewItem exercise = item_list.get(position);
+        String exercise_name = item_list.get(position).getMainMenuRecViewTextView1();
 
         Intent intent = new Intent(this, OneExerciseActivity_0_0_0.class);
-        intent.putExtra("ExerciseName", exercise);
+        intent.putExtra("ExerciseName", exercise_name);
         startActivity(intent);
     }
 }
