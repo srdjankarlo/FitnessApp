@@ -40,6 +40,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // ToDo: make slide image explanations for all exercises
+
         // get intent and set action bar title
         //Intent intent = getIntent();
         //item = intent.getParcelableExtra("ExerciseName");
@@ -79,9 +81,15 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         // ToDo: first manage to add one item
         //items.add(new OneExerciseRecViewItem("formated_date", "weight_text", "reps_text", "duration"));
         recViewAdapter.setItems(items);
-
         recView.setAdapter(recViewAdapter);
-        recView.setLayoutManager(new LinearLayoutManager(this));
+
+        // to show items in reverse
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+
+        recView.setLayoutManager(layoutManager);
+        //recView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 

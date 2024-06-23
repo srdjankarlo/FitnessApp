@@ -23,6 +23,8 @@ public class ExercisesActivity_0_0 extends AppCompatActivity implements MainMenu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // ToDo: make all exercises for each muscle group
+
         // get data from previous activity
         Intent intent = getIntent();
         item_list = intent.getParcelableArrayListExtra("RecViewItemsList");
@@ -51,7 +53,6 @@ public class ExercisesActivity_0_0 extends AppCompatActivity implements MainMenu
         MainMenu_RecView.setAdapter(adapter);
         MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
-        // ToDo: set this up again, the fix didnt work
         //// Get the OnBackPressedDispatcher
         //OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         //
@@ -74,7 +75,6 @@ public class ExercisesActivity_0_0 extends AppCompatActivity implements MainMenu
     @Override
     public void onItemClick(int position) {
 
-        // ToDo: make logic for when particular exercise is clicked and make layout for it
         //MainMenuRecViewItem exercise = item_list.get(position);
         String exercise_name = item_list.get(position).getMainMenuRecViewTextView1();
 

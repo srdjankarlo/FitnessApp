@@ -105,6 +105,6 @@ public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseR
     // Method to add an item
     public void addItem(OneExerciseRecViewItem item) {
         recViewItems.add(item);
-        notifyItemInserted(recViewItems.size() - 1);
+        notifyItemInserted(recViewItems.size() - 1);  // update to last place
     }
 }
