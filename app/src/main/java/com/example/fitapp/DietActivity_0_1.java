@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -73,11 +74,23 @@ public class DietActivity_0_1 extends AppCompatActivity {
         Editable editable_carbs = edit_carbs.getText();
         Editable editable_sugars = edit_sugars.getText();
 
-        String name_text = (editable_name.toString().equals("")) ? "-" : editable_name.toString();
-        String proteins_text = (editable_proteins.toString().equals("")) ? "-" : editable_proteins.toString();
-        String fats_text = (editable_fats.toString().equals("")) ? "-" : editable_fats.toString();
-        String carbs_text = (editable_carbs.toString().equals("")) ? "-" : editable_carbs.toString();
-        String sugars_text = (editable_sugars.toString().equals("")) ? "-" : editable_sugars.toString();
+        String name_text = (TextUtils.isEmpty(editable_name.toString())) ? "None" : editable_name.toString();
+        int proteins_text = (TextUtils.isEmpty(editable_proteins.toString())) ? 0 : Integer.parseInt(editable_proteins.toString());
+        int fats_text = (TextUtils.isEmpty(editable_fats.toString())) ? 0 : Integer.parseInt(editable_fats.toString());
+        int carbs_text = (TextUtils.isEmpty(editable_carbs.toString())) ? 0 : Integer.parseInt(editable_carbs.toString());
+        int sugars_text = (TextUtils.isEmpty(editable_sugars.toString())) ? 0 : Integer.parseInt(editable_sugars.toString());
+
+        //String name_text = editable_name.toString();
+        //int proteins_text = Integer.parseInt(editable_proteins.toString());
+        //int fats_text = Integer.parseInt(editable_fats.toString());
+        //int carbs_text = Integer.parseInt(editable_carbs.toString());
+        //int sugars_text = Integer.parseInt(editable_sugars.toString());
+
+        //String name_text = (editable_name.toString().equals("")) ? "-" : editable_name.toString();
+        //String proteins_text = (editable_proteins.toString().equals("")) ? "-" : editable_proteins.toString();
+        //String fats_text = (editable_fats.toString().equals("")) ? "-" : editable_fats.toString();
+        //String carbs_text = (editable_carbs.toString().equals("")) ? "-" : editable_carbs.toString();
+        //String sugars_text = (editable_sugars.toString().equals("")) ? "-" : editable_sugars.toString();
 
         DietRecViewItem new_item = new DietRecViewItem(name_text, proteins_text, fats_text, carbs_text, sugars_text);
 

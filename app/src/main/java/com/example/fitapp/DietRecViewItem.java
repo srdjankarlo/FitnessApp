@@ -12,12 +12,12 @@ public class DietRecViewItem implements Parcelable {
 
     //private SimpleDateFormat food_name;
     private String food_name;
-    private String proteins;
-    private String fats;
-    private String carbohydrates;
-    private String sugars;
+    private int proteins;
+    private int fats;
+    private int carbohydrates;
+    private int sugars;
 
-    public DietRecViewItem(String name, String protein, String fat, String carbs, String sugar) {
+    public DietRecViewItem(String name, int protein, int fat, int carbs, int sugar) {
         //this.food_name = new SimpleDateFormat(date, Locale.getDefaultsugar;
         food_name = name;
         proteins = protein;
@@ -31,10 +31,10 @@ public class DietRecViewItem implements Parcelable {
         //String date = in.readString();
         //this.food_name = new SimpleDateFormat(date, Locale.getDefault());
         this.food_name = in.readString();
-        this.proteins = in.readString();
-        this.fats = in.readString();
-        this.carbohydrates = in.readString();
-        this.sugars = in.readString();
+        this.proteins = in.readInt();
+        this.fats = in.readInt();
+        this.carbohydrates = in.readInt();
+        this.sugars = in.readInt();
     }
 
     public static final Creator<DietRecViewItem> CREATOR = new Creator<DietRecViewItem>() {
@@ -61,10 +61,10 @@ public class DietRecViewItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags){
         //dest.writeString(food_name.toPattern());
         dest.writeString(food_name);
-        dest.writeString(proteins);
-        dest.writeString(fats);
-        dest.writeString(carbohydrates);
-        dest.writeString(sugars);
+        dest.writeInt(proteins);
+        dest.writeInt(fats);
+        dest.writeInt(carbohydrates);
+        dest.writeInt(sugars);
     }
 
     public String getfood_name() {
@@ -75,35 +75,35 @@ public class DietRecViewItem implements Parcelable {
         this.food_name = food;
     }
 
-    public String getprotein() {
+    public int getprotein() {
         return proteins;
     }
 
-    public void setprotein(String protein) {
+    public void setprotein(int protein) {
         this.proteins = protein;
     }
 
-    public String getfat() {
+    public int getfat() {
         return fats;
     }
 
-    public void setfat(String fat) {
+    public void setfat(int fat) {
         this.fats = fat;
     }
 
-    public String getcarbohydrates() {
+    public int getcarbohydrates() {
         return carbohydrates;
     }
 
-    public void setcarbohydrates(String carbs) {
+    public void setcarbohydrates(int carbs) {
         this.carbohydrates = carbs;
     }
 
-    public String getsugar() {
+    public int getsugar() {
         return sugars;
     }
 
-    public void setsugar(String sugar) {
+    public void setsugar(int sugar) {
         this.sugars = sugar;
     }
 

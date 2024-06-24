@@ -43,13 +43,15 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.food_name.setText(recViewItems.get(position).getfood_name());
+        holder.protein.setText(String.valueOf(recViewItems.get(position).getprotein()));
+        holder.fat.setText(String.valueOf(recViewItems.get(position).getfat()));
+        holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getcarbohydrates()));
+        holder.sugar.setText(String.valueOf(recViewItems.get(position).getsugar()));
 
-
-
-        holder.protein.setText(recViewItems.get(position).getprotein());
-        holder.fat.setText(recViewItems.get(position).getfat());
-        holder.carbohydrates.setText(recViewItems.get(position).getcarbohydrates());
-        holder.sugar.setText(recViewItems.get(position).getsugar());
+        //holder.protein.setText(recViewItems.get(position).getprotein());
+        //holder.fat.setText(recViewItems.get(position).getfat());
+        //holder.carbohydrates.setText(recViewItems.get(position).getcarbohydrates());
+        //holder.sugar.setText(recViewItems.get(position).getsugar());
     }
 
     @Override

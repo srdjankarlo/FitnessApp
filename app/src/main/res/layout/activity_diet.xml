@@ -21,6 +21,7 @@
         android:id="@+id/id_ac_di_EditText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="text"
         android:hint="Food name"/>
 
     <LinearLayout
@@ -34,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Proteins"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:layout_weight="1"/>
 
         <EditText
@@ -42,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Fats"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:layout_weight="1"/>
 
         <EditText
@@ -50,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Carbs"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:layout_weight="1"/>
 
         <EditText
@@ -58,7 +59,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Sugars"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:layout_weight="1"/>
 
     </LinearLayout>
