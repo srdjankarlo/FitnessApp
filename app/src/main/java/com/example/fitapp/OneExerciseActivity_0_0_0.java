@@ -111,8 +111,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         SimpleDateFormat date_formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String formated_date = date_formater.format(current_date);
 
-        EditText edit_weight = (EditText) findViewById(R.id.id_ac_on_ex_TextView3);
-        EditText edit_reps = (EditText) findViewById(R.id.id_ac_on_ex_TextView4);
+        EditText edit_weight = findViewById(R.id.id_ac_on_ex_TextView3);
+        EditText edit_reps = findViewById(R.id.id_ac_on_ex_TextView4);
 
         Editable editable_weight = edit_weight.getText();
         Editable editable_reps = edit_reps.getText();

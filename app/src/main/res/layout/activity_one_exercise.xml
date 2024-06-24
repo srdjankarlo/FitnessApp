@@ -77,7 +77,7 @@
 
                 <Button
                     android:id="@+id/id_ac_on_ex_Button2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="ADD"
@@ -85,7 +85,7 @@
 
                 <EditText
                     android:id="@+id/id_ac_on_ex_TextView3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Weight [kg]"
@@ -94,7 +94,7 @@
 
                 <EditText
                     android:id="@+id/id_ac_on_ex_TextView4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Reps"

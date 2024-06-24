@@ -23,9 +23,10 @@ public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecVie
 
     MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
 
+
     // create array list to populate recycler view
     ArrayList<MainMenuRecViewItem> RecViewItems = new ArrayList<>(),
-            exercises = new ArrayList<>(), diet = new ArrayList<>(),
+            exercises = new ArrayList<>(),
             chest_exercises = new ArrayList<>(), shoulder_exercises = new ArrayList<>(),
             biceps_exercises = new ArrayList<>(), triceps_exercises = new ArrayList<>(),
             forearms_exercises = new ArrayList<>(), back_exercises = new ArrayList<>(),
@@ -107,10 +108,6 @@ public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecVie
         exercises.add(new MainMenuRecViewItem(R.drawable.abs, getString(R.string.abs_exercise), getString(R.string.abs_exercise), String.valueOf(abs_exercises.size()) + " exercises"));
         exercises.add(new MainMenuRecViewItem(R.drawable.legs, getString(R.string.legs_exercise), getString(R.string.legs_exercise), String.valueOf(legs_exercises.size()) + " exercises"));
 
-        // fill lists with items for diet
-        diet.add(new MainMenuRecViewItem(R.drawable.fork_and_knife, "Meal 1", getString(R.string.menu_item_diet), ""));
-        diet.add(new MainMenuRecViewItem(R.drawable.fork_and_knife, "Meal 2", getString(R.string.menu_item_diet), ""));
-
         // put exercises to show first
         RecViewItems = exercises;
 
@@ -160,7 +157,10 @@ public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecVie
         } else if (id == R.id.id_ma_me_item_diet) {
             // change action bar title and icon
             Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_diet));
-            RecViewItems = diet;
+            //RecViewItems = diet;
+            Intent intent = new Intent(getApplicationContext(), DietActivity_0_1.class);
+            //intent.putParcelableArrayListExtra("RecViewItemsList", diet);
+            startActivity(intent);
 
         } else if (id == R.id.id_ma_me_item_my_workouts){
             // change action bar title and icon
@@ -174,9 +174,6 @@ public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecVie
 
         } else return true;  // this will leave activity_main layout if nothing was selected in menu
 
-        //// get the recycler view in order to manipulate it
-        //MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
-        //
         //// set the adapter for recycler view and show items in it
         //MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
         adapter.setMainMenuRecView_items(RecViewItems);

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DietActivity_0_1">
+
+    <!--    // ToDo: add plot above recycler view-->
+
+    <Button
+        android:id="@+id/id_ac_di_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Add Meal"
+        android:onClick="AddMeal"/>
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@+id/id_ac_di_Button"
+        android:id="@+id/id_ac_di_EditText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Food name"/>
+
+    <LinearLayout
+        android:id="@+id/id_ac_di_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/id_ac_di_EditText1">
+
+        <EditText
+            android:id="@+id/id_ac_di_EditText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Proteins"
+            android:inputType="number"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/id_ac_di_EditText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Fats"
+            android:inputType="number"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/id_ac_di_EditText4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Carbs"
+            android:inputType="number"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/id_ac_di_EditText5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Sugars"
+            android:inputType="number"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_ac_di_RecView"
+        app:layout_constraintTop_toBottomOf="@+id/id_ac_di_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
