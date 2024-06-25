@@ -8,66 +8,81 @@
 
     <!--    // ToDo: add plot above recycler view-->
 
-    <Button
-        android:id="@+id/id_ac_di_Button"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Add Meal"
-        android:onClick="AddMeal"/>
+        android:layout_height="match_parent"
+        android:id="@+id/id_ac_di_ScrollView"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        app:layout_constraintTop_toBottomOf="@+id/id_ac_di_Button"
-        android:id="@+id/id_ac_di_EditText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Food name"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/id_ac_di_ConstraintLayout">
 
-    <LinearLayout
-        android:id="@+id/id_ac_di_LinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/id_ac_di_EditText1">
+            <Button
+                android:id="@+id/id_ac_di_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Add Meal"
+                android:onClick="AddMeal"/>
 
-        <EditText
-            android:id="@+id/id_ac_di_EditText2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Proteins"
-            android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            <EditText
+                app:layout_constraintTop_toBottomOf="@+id/id_ac_di_Button"
+                android:id="@+id/id_ac_di_EditText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Food name"/>
 
-        <EditText
-            android:id="@+id/id_ac_di_EditText3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Fats"
-            android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            <LinearLayout
+                android:id="@+id/id_ac_di_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/id_ac_di_EditText1">
 
-        <EditText
-            android:id="@+id/id_ac_di_EditText4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Carbs"
-            android:inputType="numberSigned"
-            android:layout_weight="1"/>
+                <EditText
+                    android:id="@+id/id_ac_di_EditText2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Proteins"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"/>
 
-        <EditText
-            android:id="@+id/id_ac_di_EditText5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Sugars"
-            android:inputType="numberSigned"
-            android:layout_weight="1"/>
+                <EditText
+                    android:id="@+id/id_ac_di_EditText3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Fats"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"/>
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/id_ac_di_EditText4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Carbs"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/id_ac_di_RecView"
-        app:layout_constraintTop_toBottomOf="@+id/id_ac_di_LinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/id_ac_di_EditText5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Sugars"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/id_ac_di_RecView"
+                app:layout_constraintTop_toBottomOf="@+id/id_ac_di_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
