@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.ViewHolder> {
 
     //private final OneExerciseRecViewInterface oneExerciseRecViewInterface;
-    private ArrayList<DietRecViewItem> recViewItems = new ArrayList<>();
+    private ArrayList<DietItem> recViewItems = new ArrayList<>();
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
@@ -42,11 +42,12 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.food_name.setText(recViewItems.get(position).getfood_name());
-        holder.protein.setText(String.valueOf(recViewItems.get(position).getprotein()));
-        holder.fat.setText(String.valueOf(recViewItems.get(position).getfat()));
-        holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getcarbohydrates()));
-        holder.sugar.setText(String.valueOf(recViewItems.get(position).getsugar()));
+        holder.date.setText(String.valueOf(recViewItems.get(position).getDate()));
+        holder.food_name.setText(recViewItems.get(position).getFood_name());
+        holder.protein.setText(String.valueOf(recViewItems.get(position).getProtein()));
+        holder.fat.setText(String.valueOf(recViewItems.get(position).getFat()));
+        holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getCarbohydrates()));
+        holder.sugar.setText(String.valueOf(recViewItems.get(position).getSugar()));
 
         //holder.protein.setText(recViewItems.get(position).getprotein());
         //holder.fat.setText(recViewItems.get(position).getfat());
@@ -59,7 +60,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
         return recViewItems.size();
     }
 
-    public void setItems(ArrayList<DietRecViewItem> items) {
+    public void setItems(ArrayList<DietItem> items) {
         this.recViewItems = items;
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle items added later*/
     }
@@ -69,6 +70,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
         //private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
+        private TextView date;
         private TextView food_name;
         private TextView protein;
         private TextView fat;
@@ -81,6 +83,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
             super(itemView);
             context = itemView.getContext();
             //MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
+            date = itemView.findViewById(R.id.id_di_it_TextView0);
             food_name = itemView.findViewById(R.id.id_di_it_TextView1);
             protein = itemView.findViewById(R.id.id_di_it_TextView2);
             fat = itemView.findViewById(R.id.id_di_it_TextView3);
@@ -104,7 +107,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     }
 
     // Method to add an item
-    public void addItem(DietRecViewItem item) {
+    public void addItem(DietItem item) {
         recViewItems.add(item);
         notifyItemInserted(recViewItems.size() - 1);  // update to last place
     }

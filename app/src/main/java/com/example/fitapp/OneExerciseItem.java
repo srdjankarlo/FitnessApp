@@ -5,11 +5,9 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
-public class OneExerciseRecViewItem implements Parcelable {
+public class OneExerciseItem implements Parcelable {
 
     //private SimpleDateFormat itemDate;
     private Date itemDate;
@@ -18,7 +16,7 @@ public class OneExerciseRecViewItem implements Parcelable {
     private int itemDuration;
     private int itemRest;
 
-    public OneExerciseRecViewItem(Date date, float weight, int reps, int duration) {
+    public OneExerciseItem(Date date, float weight, int reps, int duration) {
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
         itemDate = date;
         itemWeight = weight;
@@ -28,7 +26,7 @@ public class OneExerciseRecViewItem implements Parcelable {
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
-    protected OneExerciseRecViewItem(Parcel in){
+    protected OneExerciseItem(Parcel in){
         //String date = in.readString();
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
         long tmpDate = in.readLong();
@@ -39,19 +37,19 @@ public class OneExerciseRecViewItem implements Parcelable {
         itemRest = in.readInt();
     }
 
-    public static final Creator<OneExerciseRecViewItem> CREATOR = new Creator<OneExerciseRecViewItem>() {
+    public static final Creator<OneExerciseItem> CREATOR = new Creator<OneExerciseItem>() {
         @Override
-        public OneExerciseRecViewItem createFromParcel(Parcel parcel) {
-            return new OneExerciseRecViewItem(parcel);
+        public OneExerciseItem createFromParcel(Parcel parcel) {
+            return new OneExerciseItem(parcel);
         }
 
         @Override
-        public OneExerciseRecViewItem[] newArray(int i) {
-            return new OneExerciseRecViewItem[i];
+        public OneExerciseItem[] newArray(int i) {
+            return new OneExerciseItem[i];
         }
     };
 
-    public OneExerciseRecViewItem() {
+    public OneExerciseItem() {
 
     }
 
@@ -71,43 +69,43 @@ public class OneExerciseRecViewItem implements Parcelable {
         dest.writeInt(itemRest);
     }
 
-    public Date getitemDate() {
+    public Date getItemDate() {
         return itemDate;
     }
 
-    public void setitemDate(Date date) {
+    public void setItemDate(Date date) {
         this.itemDate = date;
     }
 
-    public float getitemWeight() {
+    public float getItemWeight() {
         return itemWeight;
     }
 
-    public void setitemWeight(float weight) {
+    public void setItemWeight(float weight) {
         this.itemWeight = weight;
     }
 
-    public int getitemReps() {
+    public int getItemReps() {
         return itemReps;
     }
 
-    public void setitemReps(int reps) {
+    public void setItemReps(int reps) {
         itemReps = reps;
     }
 
-    public int getitemDuration() {
+    public int getItemDuration() {
         return itemDuration;
     }
 
-    public void setitemDuration(int duration) {
+    public void setItemDuration(int duration) {
         itemDuration = duration;
     }
 
-    public int getitemRest() {
+    public int getItemRest() {
         return itemRest;
     }
 
-    public void setitemRest(int rest) {
+    public void setItemRest(int rest) {
         itemRest = rest;
     }
 
@@ -115,7 +113,7 @@ public class OneExerciseRecViewItem implements Parcelable {
     @NonNull
     @Override
     public String toString() {
-        return "OneExerciseRecViewItem{" +
+        return "OneExerciseItem{" +
                 "Date='" + itemDate + '\'' +
                 ", Weight=" + itemWeight + '\'' +
                 ", Reps=" + itemReps + '\'' +

@@ -5,20 +5,19 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.util.Date;
 
-public class DietRecViewItem implements Parcelable {
+public class DietItem implements Parcelable {
 
-    //private SimpleDateFormat food_name;
+    private Date date;
     private String food_name;
     private int proteins;
     private int fats;
     private int carbohydrates;
     private int sugars;
 
-    public DietRecViewItem(String name, int protein, int fat, int carbs, int sugar) {
-        //this.food_name = new SimpleDateFormat(date, Locale.getDefaultsugar;
+    public DietItem(Date this_date, String name, int protein, int fat, int carbs, int sugar) {
+        date = this_date;
         food_name = name;
         proteins = protein;
         fats = fat;
@@ -27,9 +26,11 @@ public class DietRecViewItem implements Parcelable {
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
-    protected DietRecViewItem(Parcel in){
+    protected DietItem(Parcel in){
         //String date = in.readString();
         //this.food_name = new SimpleDateFormat(date, Locale.getDefault());
+        long tmpDate = in.readLong();
+        date = tmpDate == -1 ? null : new Date(tmpDate);
         this.food_name = in.readString();
         this.proteins = in.readInt();
         this.fats = in.readInt();
@@ -37,19 +38,19 @@ public class DietRecViewItem implements Parcelable {
         this.sugars = in.readInt();
     }
 
-    public static final Creator<DietRecViewItem> CREATOR = new Creator<DietRecViewItem>() {
+    public static final Creator<DietItem> CREATOR = new Creator<DietItem>() {
         @Override
-        public DietRecViewItem createFromParcel(Parcel parcel) {
-            return new DietRecViewItem(parcel);
+        public DietItem createFromParcel(Parcel parcel) {
+            return new DietItem(parcel);
         }
 
         @Override
-        public DietRecViewItem[] newArray(int i) {
-            return new DietRecViewItem[i];
+        public DietItem[] newArray(int i) {
+            return new DietItem[i];
         }
     };
 
-    public DietRecViewItem() {
+    public DietItem() {
     }
 
     @Override
@@ -60,6 +61,7 @@ public class DietRecViewItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //dest.writeString(food_name.toPattern());
+        dest.writeLong(date.getTime());
         dest.writeString(food_name);
         dest.writeInt(proteins);
         dest.writeInt(fats);
@@ -67,43 +69,47 @@ public class DietRecViewItem implements Parcelable {
         dest.writeInt(sugars);
     }
 
-    public String getfood_name() {
+    public Date getDate(){return date;}
+
+    public void setDate(Date this_date){this.date = this_date;}
+
+    public String getFood_name() {
         return food_name;
     }
 
-    public void setfood_name(String food) {
+    public void setFood_name(String food) {
         this.food_name = food;
     }
 
-    public int getprotein() {
+    public int getProtein() {
         return proteins;
     }
 
-    public void setprotein(int protein) {
+    public void setProtein(int protein) {
         this.proteins = protein;
     }
 
-    public int getfat() {
+    public int getFat() {
         return fats;
     }
 
-    public void setfat(int fat) {
+    public void setFat(int fat) {
         this.fats = fat;
     }
 
-    public int getcarbohydrates() {
+    public int getCarbohydrates() {
         return carbohydrates;
     }
 
-    public void setcarbohydrates(int carbs) {
+    public void setCarbohydrates(int carbs) {
         this.carbohydrates = carbs;
     }
 
-    public int getsugar() {
+    public int getSugar() {
         return sugars;
     }
 
-    public void setsugar(int sugar) {
+    public void setSugar(int sugar) {
         this.sugars = sugar;
     }
 
@@ -111,8 +117,9 @@ public class DietRecViewItem implements Parcelable {
     @NonNull
     @Override
     public String toString() {
-        return "DietRecViewItem{" +
-                "Food='" + food_name + '\'' +
+        return "DietItem{" +
+                "Date='" + date + '\'' +
+                ", Food='" + food_name + '\'' +
                 ", Protein=" + proteins + '\'' +
                 ", Fat=" + fats + '\'' +
                 ", Carbs=" + carbohydrates + '\'' +

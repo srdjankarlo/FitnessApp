@@ -6,23 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -36,7 +31,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this);
     ViewPager2 viewPager2;
     DotsIndicator dotsIndicator;
-    ArrayList<OneExerciseRecViewItem> items = new ArrayList<>();
+    ArrayList<OneExerciseItem> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +76,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
 
         // set the adapter for recycler view and show items in it
         // ToDo: first manage to add one item
-        //items.add(new OneExerciseRecViewItem("formated_date", "weight_text", "reps_text", "duration"));
+        //items.add(new OneExerciseItem("formated_date", "weight_text", "reps_text", "duration"));
         recViewAdapter.setItems(items);
         recView.setAdapter(recViewAdapter);
 
@@ -130,9 +125,9 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         int reps_text = (TextUtils.isEmpty(editable_reps.toString())) ? 0 : Integer.parseInt(editable_reps.toString());;
         int duration = (TextUtils.isEmpty(editable_duration.toString())) ? 0 : Integer.parseInt(editable_duration.toString());;
 
-        //items.add(new OneExerciseRecViewItem(formated_date, weight_text, reps_text, duration));
-        //OneExerciseRecViewItem new_item = new OneExerciseRecViewItem(formated_date, weight_text, reps_text, duration);
-        OneExerciseRecViewItem new_item = new OneExerciseRecViewItem(current_date, weight_text, reps_text, duration);
+        //items.add(new OneExerciseItem(formated_date, weight_text, reps_text, duration));
+        //OneExerciseItem new_item = new OneExerciseItem(formated_date, weight_text, reps_text, duration);
+        OneExerciseItem new_item = new OneExerciseItem(current_date, weight_text, reps_text, duration);
 
         recViewAdapter.addItem(new_item);
 

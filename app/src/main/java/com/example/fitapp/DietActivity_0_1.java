@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,11 +14,12 @@ import android.view.View;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class DietActivity_0_1 extends AppCompatActivity {
 
-    ArrayList<DietRecViewItem> item_list = new ArrayList<>();
+    ArrayList<DietItem> item_list = new ArrayList<>();
     DietRecViewAdapter adapter = new DietRecViewAdapter(this);
     RecyclerView RecView;
 
@@ -62,6 +62,7 @@ public class DietActivity_0_1 extends AppCompatActivity {
     // what to do when ADD MEAL button is pressed
     public void AddMeal(View view) {
 
+        Date current_date = new Date();
         EditText edit_name = findViewById(R.id.id_ac_di_EditText1);
         EditText edit_proteins = findViewById(R.id.id_ac_di_EditText2);
         EditText edit_fats = findViewById(R.id.id_ac_di_EditText3);
@@ -92,7 +93,8 @@ public class DietActivity_0_1 extends AppCompatActivity {
         //String carbs_text = (editable_carbs.toString().equals("")) ? "-" : editable_carbs.toString();
         //String sugars_text = (editable_sugars.toString().equals("")) ? "-" : editable_sugars.toString();
 
-        DietRecViewItem new_item = new DietRecViewItem(name_text, proteins_text, fats_text, carbs_text, sugars_text);
+        // ToDo: make a date field, to be the same as the type of date field used in one exercise
+        DietItem new_item = new DietItem(current_date, name_text, proteins_text, fats_text, carbs_text, sugars_text);
 
         adapter.addItem(new_item);
 

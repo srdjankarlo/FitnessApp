@@ -33,7 +33,7 @@ public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecView
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main_menu_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_menu_item, parent, false);
         return new ViewHolder(view, mainMenuRecViewInterface);
     }
 
