@@ -8,5 +8,12 @@
 <!--        <item name="android:textColorPrimary">@color/gray_light</item>-->
 <!--        <item name="android:textColorSecondary">@color/gray_light</item>-->
 <!--        <item name="android:textColorTertiary">@color/gray_light</item>-->
+        <item name="android:itemTextAppearance">@style/ChangeTextColor</item>
+        <item name="android:itemBackground">@color/white</item>
+    </style>
+
+    <style name="ChangeTextColor" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>
