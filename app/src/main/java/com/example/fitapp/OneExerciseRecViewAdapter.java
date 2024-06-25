@@ -42,13 +42,14 @@ public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseR
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        OneExerciseRecViewItem item = recViewItems.get(position);
-        holder.item_date.setText(item.getOneExerciseRecViewDate());
+        //OneExerciseRecViewItem item = recViewItems.get(position);
+        //holder.item_date.setText(item.getitemDate());
+        holder.item_date.setText(String.valueOf(recViewItems.get(position).getitemDate()));
         //holder.date.setText(recViewItems.get(position).getOneExerciseRecViewDate());
-        holder.item_weight.setText(recViewItems.get(position).getOneExerciseRecViewWeight());
-        holder.item_reps.setText(recViewItems.get(position).getOneExerciseRecViewReps());
-        holder.item_duration.setText(recViewItems.get(position).getOneExerciseRecViewDuration());
-        holder.item_rest.setText(recViewItems.get(position).getOneExerciseRecViewRest());
+        holder.item_weight.setText(String.valueOf(recViewItems.get(position).getitemWeight()));
+        holder.item_reps.setText(String.valueOf(recViewItems.get(position).getitemReps()));
+        holder.item_duration.setText(String.valueOf(recViewItems.get(position).getitemDuration()));
+        holder.item_rest.setText(String.valueOf(recViewItems.get(position).getitemRest()));
     }
 
     @Override

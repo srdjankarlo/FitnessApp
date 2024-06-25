@@ -11,9 +11,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
@@ -113,16 +115,24 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
 
         EditText edit_weight = findViewById(R.id.id_ac_on_ex_TextView3);
         EditText edit_reps = findViewById(R.id.id_ac_on_ex_TextView4);
+        TextView edit_duration = findViewById(R.id.id_ac_on_ex_TextView2);
 
         Editable editable_weight = edit_weight.getText();
         Editable editable_reps = edit_reps.getText();
+        CharSequence editable_duration = edit_duration.getText();
 
-        String weight_text = editable_weight.toString();
-        String reps_text = editable_reps.toString();
-        String duration = "ToDo";
+        //String weight_text = editable_weight.toString();
+        //String reps_text = editable_reps.toString();
+        ////String duration = "ToDo";
+        //String duration_text = editable_duration.toString();
+
+        float weight_text = (TextUtils.isEmpty(editable_weight.toString())) ? 0 : Float.parseFloat(editable_weight.toString());;
+        int reps_text = (TextUtils.isEmpty(editable_reps.toString())) ? 0 : Integer.parseInt(editable_reps.toString());;
+        int duration = (TextUtils.isEmpty(editable_duration.toString())) ? 0 : Integer.parseInt(editable_duration.toString());;
 
         //items.add(new OneExerciseRecViewItem(formated_date, weight_text, reps_text, duration));
-        OneExerciseRecViewItem new_item = new OneExerciseRecViewItem(formated_date, weight_text, reps_text, duration);
+        //OneExerciseRecViewItem new_item = new OneExerciseRecViewItem(formated_date, weight_text, reps_text, duration);
+        OneExerciseRecViewItem new_item = new OneExerciseRecViewItem(current_date, weight_text, reps_text, duration);
 
         recViewAdapter.addItem(new_item);
 

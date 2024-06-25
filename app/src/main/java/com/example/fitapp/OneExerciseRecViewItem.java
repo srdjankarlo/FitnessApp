@@ -6,35 +6,37 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class OneExerciseRecViewItem implements Parcelable {
 
-    //private SimpleDateFormat oneExerciseRecViewDate;
-    private String oneExerciseRecViewDate;
-    private String oneExerciseRecViewWeight;
-    private String oneExerciseRecViewReps;
-    private String oneExerciseRecViewDuration;
-    private String oneExerciseRecViewRest;
+    //private SimpleDateFormat itemDate;
+    private Date itemDate;
+    private float itemWeight;
+    private int itemReps;
+    private int itemDuration;
+    private int itemRest;
 
-    public OneExerciseRecViewItem(String date, String weight, String reps, String duration) {
-        //this.oneExerciseRecViewDate = new SimpleDateFormat(date, Locale.getDefault());
-        oneExerciseRecViewDate = date;
-        oneExerciseRecViewWeight = weight;
-        oneExerciseRecViewReps = reps;
-        oneExerciseRecViewDuration = duration;
-        oneExerciseRecViewRest = "-";
+    public OneExerciseRecViewItem(Date date, float weight, int reps, int duration) {
+        //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
+        itemDate = date;
+        itemWeight = weight;
+        itemReps = reps;
+        itemDuration = duration;
+        itemRest = 0;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected OneExerciseRecViewItem(Parcel in){
         //String date = in.readString();
-        //this.oneExerciseRecViewDate = new SimpleDateFormat(date, Locale.getDefault());
-        oneExerciseRecViewDate = in.readString();
-        oneExerciseRecViewWeight = in.readString();
-        oneExerciseRecViewReps = in.readString();
-        oneExerciseRecViewDuration = in.readString();
-        oneExerciseRecViewRest = in.readString();
+        //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
+        long tmpDate = in.readLong();
+        itemDate = tmpDate == -1 ? null : new Date(tmpDate);
+        itemWeight = in.readFloat();
+        itemReps = in.readInt();
+        itemDuration = in.readInt();
+        itemRest = in.readInt();
     }
 
     public static final Creator<OneExerciseRecViewItem> CREATOR = new Creator<OneExerciseRecViewItem>() {
@@ -60,52 +62,53 @@ public class OneExerciseRecViewItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
-        //dest.writeString(oneExerciseRecViewDate.toPattern());
-        dest.writeString(oneExerciseRecViewDate);
-        dest.writeString(oneExerciseRecViewWeight);
-        dest.writeString(oneExerciseRecViewReps);
-        dest.writeString(oneExerciseRecViewDuration);
-        dest.writeString(oneExerciseRecViewRest);
+        //dest.writeString(itemDate.toPattern());
+        dest.writeLong(itemDate.getTime());
+        //dest.writeString(itemDate);
+        dest.writeFloat(itemWeight);
+        dest.writeInt(itemReps);
+        dest.writeInt(itemDuration);
+        dest.writeInt(itemRest);
     }
 
-    public String getOneExerciseRecViewDate() {
-        return oneExerciseRecViewDate;
+    public Date getitemDate() {
+        return itemDate;
     }
 
-    public void setOneExerciseRecViewDate(String date) {
-        this.oneExerciseRecViewDate = date;
+    public void setitemDate(Date date) {
+        this.itemDate = date;
     }
 
-    public String getOneExerciseRecViewWeight() {
-        return oneExerciseRecViewWeight;
+    public float getitemWeight() {
+        return itemWeight;
     }
 
-    public void setOneExerciseRecViewWeight(String weight) {
-        this.oneExerciseRecViewWeight = weight;
+    public void setitemWeight(float weight) {
+        this.itemWeight = weight;
     }
 
-    public String getOneExerciseRecViewReps() {
-        return oneExerciseRecViewReps;
+    public int getitemReps() {
+        return itemReps;
     }
 
-    public void setOneExerciseRecViewReps(String reps) {
-        oneExerciseRecViewReps = reps;
+    public void setitemReps(int reps) {
+        itemReps = reps;
     }
 
-    public String getOneExerciseRecViewDuration() {
-        return oneExerciseRecViewDuration;
+    public int getitemDuration() {
+        return itemDuration;
     }
 
-    public void setOneExerciseRecViewDuration(String duration) {
-        oneExerciseRecViewDuration = duration;
+    public void setitemDuration(int duration) {
+        itemDuration = duration;
     }
 
-    public String getOneExerciseRecViewRest() {
-        return oneExerciseRecViewRest;
+    public int getitemRest() {
+        return itemRest;
     }
 
-    public void setOneExerciseRecViewRest(String rest) {
-        oneExerciseRecViewRest = rest;
+    public void setitemRest(int rest) {
+        itemRest = rest;
     }
 
 
@@ -113,11 +116,11 @@ public class OneExerciseRecViewItem implements Parcelable {
     @Override
     public String toString() {
         return "OneExerciseRecViewItem{" +
-                "Date='" + oneExerciseRecViewDate + '\'' +
-                ", Weight=" + oneExerciseRecViewWeight + '\'' +
-                ", Reps=" + oneExerciseRecViewReps + '\'' +
-                ", Duration=" + oneExerciseRecViewDuration + '\'' +
-                ", Rest=" + oneExerciseRecViewRest + '\'' +
+                "Date='" + itemDate + '\'' +
+                ", Weight=" + itemWeight + '\'' +
+                ", Reps=" + itemReps + '\'' +
+                ", Duration=" + itemDuration + '\'' +
+                ", Rest=" + itemRest + '\'' +
                 '}';
     }
 }
