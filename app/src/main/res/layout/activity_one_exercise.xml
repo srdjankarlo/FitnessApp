@@ -11,7 +11,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/id_ac_on_ex_ScrollView">
+        android:id="@+id/id_ac_on_ex_ScrollView"
+        android:isScrollContainer="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

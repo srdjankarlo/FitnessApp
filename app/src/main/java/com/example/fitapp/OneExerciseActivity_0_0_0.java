@@ -129,7 +129,9 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         //OneExerciseItem new_item = new OneExerciseItem(formated_date, weight_text, reps_text, duration);
         OneExerciseItem new_item = new OneExerciseItem(current_date, weight_text, reps_text, duration);
 
+        // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
         recViewAdapter.addItem(new_item);
+        recView.smoothScrollToPosition(recViewAdapter.getItemCount() - 1);
 
         edit_weight.getText().clear();
         edit_reps.getText().clear();

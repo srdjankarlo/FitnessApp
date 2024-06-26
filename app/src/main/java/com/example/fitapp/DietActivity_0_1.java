@@ -96,7 +96,9 @@ public class DietActivity_0_1 extends AppCompatActivity {
         // ToDo: make a date field, to be the same as the type of date field used in one exercise
         DietItem new_item = new DietItem(current_date, name_text, proteins_text, fats_text, carbs_text, sugars_text);
 
+        // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
         adapter.addItem(new_item);
+        RecView.smoothScrollToPosition(adapter.getItemCount() - 1);
 
         edit_name.getText().clear();
         edit_proteins.getText().clear();
