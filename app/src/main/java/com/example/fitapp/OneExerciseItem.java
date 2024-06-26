@@ -16,13 +16,13 @@ public class OneExerciseItem implements Parcelable {
     private int itemDuration;
     private int itemRest;
 
-    public OneExerciseItem(Date date, float weight, int reps, int duration) {
+    public OneExerciseItem(Date date, float weight, int reps, int work_duration, int rest_duration) {
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
         itemDate = date;
         itemWeight = weight;
         itemReps = reps;
-        itemDuration = duration;
-        itemRest = 0;
+        itemDuration = work_duration;
+        itemRest = rest_duration;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities

@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
@@ -31,7 +32,14 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this);
     ViewPager2 viewPager2;
     DotsIndicator dotsIndicator;
+    TextView workTimer;
+    TextView restTimer;
     ArrayList<OneExerciseItem> items = new ArrayList<>();
+    private boolean stopwatchWorkIsRunning = false;
+    private boolean stopwatchRestIsRunning = false;
+    private Handler handler = new Handler();
+    private long startWorkTime = 0;
+    private long startRestTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +78,10 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
         viewPager2.setAdapter(imagePagerAdapter);
         dotsIndicator.setViewPager2(viewPager2);
+
+        // get the timer text view
+        workTimer = findViewById(R.id.id_ac_on_ex_TextView2_1);
+        restTimer = findViewById((R.id.id_ac_on_ex_TextView2_2));
 
         // get the recycler view in order to manipulate it
         recView = findViewById(R.id.id_ac_on_ex_RecView1);
@@ -110,34 +122,80 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
 
         EditText edit_weight = findViewById(R.id.id_ac_on_ex_TextView3);
         EditText edit_reps = findViewById(R.id.id_ac_on_ex_TextView4);
-        TextView edit_duration = findViewById(R.id.id_ac_on_ex_TextView2);
+        TextView edit_work_duration = workTimer;
+        TextView edit_rest_duration = restTimer;
 
         Editable editable_weight = edit_weight.getText();
         Editable editable_reps = edit_reps.getText();
-        CharSequence editable_duration = edit_duration.getText();
+        CharSequence editable_work_duration = edit_work_duration.getText();
+        CharSequence editable_rest_duration = edit_rest_duration.getText();
 
-        //String weight_text = editable_weight.toString();
-        //String reps_text = editable_reps.toString();
-        ////String duration = "ToDo";
-        //String duration_text = editable_duration.toString();
+        float weight_text = (TextUtils.isEmpty(editable_weight.toString())) ? 0 : Float.parseFloat(editable_weight.toString());
+        int reps_text = (TextUtils.isEmpty(editable_reps.toString())) ? 0 : Integer.parseInt(editable_reps.toString());
+        int work_duration = (TextUtils.isEmpty(editable_work_duration.toString())) ? 0 : Integer.parseInt(editable_work_duration.toString());
+        int rest_duration = (TextUtils.isEmpty(editable_rest_duration.toString())) ? 0 : Integer.parseInt(editable_rest_duration.toString());
 
-        float weight_text = (TextUtils.isEmpty(editable_weight.toString())) ? 0 : Float.parseFloat(editable_weight.toString());;
-        int reps_text = (TextUtils.isEmpty(editable_reps.toString())) ? 0 : Integer.parseInt(editable_reps.toString());;
-        int duration = (TextUtils.isEmpty(editable_duration.toString())) ? 0 : Integer.parseInt(editable_duration.toString());;
-
-        //items.add(new OneExerciseItem(formated_date, weight_text, reps_text, duration));
-        //OneExerciseItem new_item = new OneExerciseItem(formated_date, weight_text, reps_text, duration);
-        OneExerciseItem new_item = new OneExerciseItem(current_date, weight_text, reps_text, duration);
+        OneExerciseItem new_item = new OneExerciseItem(current_date, weight_text, reps_text, work_duration, rest_duration);
 
         // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
         recViewAdapter.addItem(new_item);
         recView.smoothScrollToPosition(recViewAdapter.getItemCount() - 1);
 
+        if (!stopwatchWorkIsRunning){
+            workTimer.setText("0");
+        }
+        
+        if (!stopwatchRestIsRunning){
+            restTimer.setText("0");
+        }
+
         edit_weight.getText().clear();
         edit_reps.getText().clear();
     }
 
-    public void DurationTimer(View view) {
-        // ToDo: make to be a stopwatch, click one time to start time, click second time to stop time and it cant be clicked again
+    private Runnable work_runnable = new Runnable() {
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - startWorkTime;
+            int seconds = (int) (millis / 1000);
+
+            workTimer.setText(String.format("%03d", seconds));
+
+            handler.postDelayed(this, 1000);
+        }
+    };
+
+    private Runnable rest_runnable = new Runnable() {
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - startRestTime;
+            int seconds = (int) (millis / 1000);
+
+            restTimer.setText(String.format("%03d", seconds));
+
+            handler.postDelayed(this, 1000);
+        }
+    };
+
+    public void WorkoutTimer(View view) {
+
+        if (stopwatchWorkIsRunning){
+            handler.removeCallbacks(work_runnable);
+        } else {
+            startWorkTime = System.currentTimeMillis();
+            handler.post(work_runnable);
+        }
+        stopwatchWorkIsRunning = !stopwatchWorkIsRunning;
+    }
+
+    public void RestingTimer(View view) {
+
+        if (stopwatchRestIsRunning){
+            handler.removeCallbacks(rest_runnable);
+        } else {
+            startRestTime = System.currentTimeMillis();
+            handler.post(rest_runnable);
+        }
+        stopwatchRestIsRunning = !stopwatchRestIsRunning;
     }
 }
