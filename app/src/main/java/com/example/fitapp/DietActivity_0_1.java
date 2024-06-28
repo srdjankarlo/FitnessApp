@@ -2,6 +2,8 @@ package com.example.fitapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,13 +17,15 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class DietActivity_0_1 extends AppCompatActivity {
 
-    ArrayList<DietItem> item_list = new ArrayList<>();
+    List<DietItem> item_list = new ArrayList<>();
     DietRecViewAdapter adapter = new DietRecViewAdapter(this);
     RecyclerView RecView;
+    DietViewModel dietViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +49,33 @@ public class DietActivity_0_1 extends AppCompatActivity {
         // get the recycler view in order to manipulate it
         RecView = findViewById(R.id.id_ac_di_RecView);
 
-        // set the adapter for recycler view and show items in it
-        //MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
-        adapter.setItems(item_list);
-        RecView.setAdapter(adapter);
-
-        // to show items in reverse
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        // to show items in reverse
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
 
         RecView.setLayoutManager(layoutManager);
+        RecView.setHasFixedSize(true);
+
+        // set the adapter for recycler view and show items in it
+        adapter.setItems(item_list);
+        RecView.setAdapter(adapter);
+
+        dietViewModel = new ViewModelProvider(this).get(DietViewModel.class);
+        dietViewModel.getAllDietData().observe(this, new Observer<List<DietItem>>() {
+            @Override
+            public void onChanged(List<DietItem> dietItems) {
+                adapter.setItems(dietItems);
+            }
+        });
 
     }
 
     // what to do when ADD MEAL button is pressed
     public void AddMeal(View view) {
 
-        Date current_date = new Date();
+        //Date current_date = new Date();
+        long current_date = System.currentTimeMillis();
         EditText edit_name = findViewById(R.id.id_ac_di_EditText1);
         EditText edit_proteins = findViewById(R.id.id_ac_di_EditText2);
         EditText edit_fats = findViewById(R.id.id_ac_di_EditText3);
@@ -95,10 +108,11 @@ public class DietActivity_0_1 extends AppCompatActivity {
 
         // ToDo: make a date field, to be the same as the type of date field used in one exercise
         DietItem new_item = new DietItem(current_date, name_text, proteins_text, fats_text, carbs_text, sugars_text);
+        dietViewModel.insert(new_item);
 
         // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
-        adapter.addItem(new_item);
-        RecView.smoothScrollToPosition(adapter.getItemCount() - 1);
+        //adapter.addItem(new_item);
+        //RecView.smoothScrollToPosition(adapter.getItemCount() - 1);
 
         edit_name.getText().clear();
         edit_proteins.getText().clear();

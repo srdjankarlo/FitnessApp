@@ -4,19 +4,24 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
+@Entity(tableName = "diet_table")
 public class DietItem implements Parcelable {
 
-    private Date date;
+    // ToDo: see when you learn how to plot, will date be good wor x axis and how to get that data
+    @PrimaryKey
+    private long date;
     private String food_name;
     private int proteins;
     private int fats;
     private int carbohydrates;
     private int sugars;
 
-    public DietItem(Date this_date, String name, int protein, int fat, int carbs, int sugar) {
+    public DietItem(long this_date, String name, int protein, int fat, int carbs, int sugar) {
         date = this_date;
         food_name = name;
         proteins = protein;
@@ -29,8 +34,11 @@ public class DietItem implements Parcelable {
     protected DietItem(Parcel in){
         //String date = in.readString();
         //this.food_name = new SimpleDateFormat(date, Locale.getDefault());
-        long tmpDate = in.readLong();
-        date = tmpDate == -1 ? null : new Date(tmpDate);
+
+        //long tmpDate = in.readLong();
+        //date = tmpDate == -1 ? null : new Date(tmpDate);
+
+        this.date = in.readLong();
         this.food_name = in.readString();
         this.proteins = in.readInt();
         this.fats = in.readInt();
@@ -61,7 +69,8 @@ public class DietItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //dest.writeString(food_name.toPattern());
-        dest.writeLong(date.getTime());
+        //dest.writeLong(date.getTime());
+        dest.writeLong(date);
         dest.writeString(food_name);
         dest.writeInt(proteins);
         dest.writeInt(fats);
@@ -69,9 +78,9 @@ public class DietItem implements Parcelable {
         dest.writeInt(sugars);
     }
 
-    public Date getDate(){return date;}
+    public long getDate(){return date;}
 
-    public void setDate(Date this_date){this.date = this_date;}
+    public void setDate(long this_date){this.date = this_date;}
 
     public String getFood_name() {
         return food_name;
@@ -81,19 +90,19 @@ public class DietItem implements Parcelable {
         this.food_name = food;
     }
 
-    public int getProtein() {
+    public int getProteins() {
         return proteins;
     }
 
-    public void setProtein(int protein) {
+    public void setProteins(int protein) {
         this.proteins = protein;
     }
 
-    public int getFat() {
+    public int getFats() {
         return fats;
     }
 
-    public void setFat(int fat) {
+    public void setFats(int fat) {
         this.fats = fat;
     }
 
@@ -105,11 +114,11 @@ public class DietItem implements Parcelable {
         this.carbohydrates = carbs;
     }
 
-    public int getSugar() {
+    public int getSugars() {
         return sugars;
     }
 
-    public void setSugar(int sugar) {
+    public void setSugars(int sugar) {
         this.sugars = sugar;
     }
 

@@ -9,13 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
 public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.ViewHolder> {
 
     //private final OneExerciseRecViewInterface oneExerciseRecViewInterface;
-    private ArrayList<DietItem> recViewItems = new ArrayList<>();
+    private List<DietItem> recViewItems = new ArrayList<>();
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
@@ -34,20 +38,21 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.diet_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.diet_item, parent, false);
         //return new ViewHolder(view, oneExerciseRecViewInterface);
-        return new ViewHolder(view);
+        return new ViewHolder(itemView);
     }
 
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.date.setText(String.valueOf(recViewItems.get(position).getDate()));
+        //holder.date.setText(String.valueOf(recViewItems.get(position).getDate()));
+        holder.date.setText(formatTimestamp(recViewItems.get(position).getDate()));  // ToDo: do long instead of Date in DietItem?
         holder.food_name.setText(recViewItems.get(position).getFood_name());
-        holder.protein.setText(String.valueOf(recViewItems.get(position).getProtein()));
-        holder.fat.setText(String.valueOf(recViewItems.get(position).getFat()));
+        holder.protein.setText(String.valueOf(recViewItems.get(position).getProteins()));
+        holder.fat.setText(String.valueOf(recViewItems.get(position).getFats()));
         holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getCarbohydrates()));
-        holder.sugar.setText(String.valueOf(recViewItems.get(position).getSugar()));
+        holder.sugar.setText(String.valueOf(recViewItems.get(position).getSugars()));
 
         //holder.protein.setText(recViewItems.get(position).getprotein());
         //holder.fat.setText(recViewItems.get(position).getfat());
@@ -57,12 +62,17 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
 
     @Override
     public int getItemCount() {
-        return recViewItems.size();
+        return recViewItems == null ? 0 : recViewItems.size();
     }
 
-    public void setItems(ArrayList<DietItem> items) {
+    public void setItems(List<DietItem> items) {
         this.recViewItems = items;
-        /* notifyDataSetChanged();  // refresh recycler view if there are new muscle items added later*/
+        notifyDataSetChanged();  // refresh recycler view if there are new muscle items added later
+    }
+
+    private String formatTimestamp(long timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return sdf.format(new Date(timestamp));
     }
 
     // need to create this ViewHolder, this is the way by convention
