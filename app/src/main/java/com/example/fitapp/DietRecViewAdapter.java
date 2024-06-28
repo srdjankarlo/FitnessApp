@@ -19,7 +19,7 @@ import java.util.Locale;
 // extends and whats written later we add additionally after we make class bellow with constructor
 public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.ViewHolder> {
 
-    //private final OneExerciseRecViewInterface oneExerciseRecViewInterface;
+    private final DietItemInterface dietItemInterface;
     private List<DietItem> recViewItems = new ArrayList<>();
     private Context context;
     private OnItemClickListener listener;
@@ -29,8 +29,9 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     //    this.context = context;
     //    this.oneExerciseRecViewInterface = oneExerciseRecViewInterface;
     //}
-    public DietRecViewAdapter(Context context) {
+    public DietRecViewAdapter(Context context, DietItemInterface dietItemInterface) {
         this.context = context;
+        this.dietItemInterface = dietItemInterface;
     }
 
 
@@ -42,7 +43,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.diet_item, parent, false);
         //return new ViewHolder(view, oneExerciseRecViewInterface);
-        return new ViewHolder(itemView);
+        return new ViewHolder(itemView, dietItemInterface);
     }
 
     // assign values to each item (row) of the recycler view
@@ -89,7 +90,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
 
         // to create constructor, press Alt+ins
         //public ViewHolder(@NonNull View itemView, OneExerciseRecViewInterface mainMenuRecViewInterface) {
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, DietItemInterface dietItemInterface) {
             super(itemView);
             context = itemView.getContext();
             //MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
@@ -104,10 +105,17 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onItemClick(recViewItems.get(position));
+                    if (dietItemInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION){
+                            dietItemInterface.onItemClick(pos);
+                        }
                     }
+                    //int position = getAdapterPosition();
+                    //if (listener != null && position != RecyclerView.NO_POSITION){
+                    //    listener.onItemClick(recViewItems.get(position));
+                    //}
                 }
             });
         }

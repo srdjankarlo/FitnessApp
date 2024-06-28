@@ -27,7 +27,7 @@ import java.util.Objects;
 public class DietActivity_0_1 extends AppCompatActivity implements DietItemInterface {
 
     List<DietItem> item_list = new ArrayList<>();
-    DietRecViewAdapter adapter = new DietRecViewAdapter(this);
+    DietRecViewAdapter adapter = new DietRecViewAdapter(this, this);
     RecyclerView RecView;
     DietViewModel dietViewModel;
 
@@ -72,46 +72,6 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
                 adapter.setItems(dietItems);
             }
         });
-
-        adapter.setOnItemClickListener(new DietRecViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DietItem dietItem) {
-                showUpdateDialog(dietItem);
-            }
-
-            @Override
-            public void onItemLongClick(DietItem dietItem) {
-                dietViewModel.delete(dietItem);
-                Toast.makeText(DietActivity_0_1.this, "Item deleted", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void showUpdateDialog(final DietItem dietItem){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Update Item");
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input.setText(dietItem.getProteins());
-        builder.setView(input);
-
-        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                int updatedProteins = Integer.parseInt(input.getText().toString());
-
-                dietItem.setProteins(updatedProteins);
-                dietViewModel.update(dietItem);
-                Toast.makeText(DietActivity_0_1.this, "Item updated", Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
     }
 
     // what to do when ADD MEAL button is pressed
@@ -150,5 +110,33 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
     @Override
     public void onItemClick(int position) {
         // ToDo: logic to delete or update diet item
+
+        Toast.makeText(DietActivity_0_1.this, "Item clicked", Toast.LENGTH_SHORT).show();
+
+        //AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //builder.setTitle("Update Item");
+        //
+        //final EditText input = new EditText(this);
+        //input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        //DietItem dietItem = adapter.getDietAtPosition(position);
+        //input.setText(dietItem.getProteins());
+        //builder.setView(input);
+        //
+        //builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+        //    @Override
+        //    public void onClick(DialogInterface dialogInterface, int i) {
+        //        int updatedProteins = Integer.parseInt(input.getText().toString());
+        //
+        //        dietItem.setProteins(updatedProteins);
+        //        dietViewModel.update(dietItem);
+        //        Toast.makeText(DietActivity_0_1.this, "Item updated", Toast.LENGTH_SHORT).show();
+        //    }
+        //});
+        //builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        //    @Override
+        //    public void onClick(DialogInterface dialogInterface, int i) {
+        //        dialogInterface.cancel();
+        //    }
+        //});
     }
 }
