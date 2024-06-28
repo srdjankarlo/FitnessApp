@@ -23,6 +23,10 @@ public class DietViewModel extends AndroidViewModel {
         dietRepository.insertDietData(dietItem);
     }
 
+    public void delete(DietItem dietItem){dietRepository.deleteDietData(dietItem);}
+
+    public void update(DietItem dietItem){dietRepository.updateDietData(dietItem);}
+
     public LiveData<List<DietItem>> getAllDietData(){
         return allDietData;
     }

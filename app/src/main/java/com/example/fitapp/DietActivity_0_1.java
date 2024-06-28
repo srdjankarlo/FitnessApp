@@ -1,26 +1,30 @@
 package com.example.fitapp;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class DietActivity_0_1 extends AppCompatActivity {
+public class DietActivity_0_1 extends AppCompatActivity implements DietItemInterface {
 
     List<DietItem> item_list = new ArrayList<>();
     DietRecViewAdapter adapter = new DietRecViewAdapter(this);
@@ -51,8 +55,8 @@ public class DietActivity_0_1 extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         // to show items in reverse
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
+        //layoutManager.setReverseLayout(true);
+        //layoutManager.setStackFromEnd(true);
 
         RecView.setLayoutManager(layoutManager);
         RecView.setHasFixedSize(true);
@@ -69,12 +73,50 @@ public class DietActivity_0_1 extends AppCompatActivity {
             }
         });
 
+        adapter.setOnItemClickListener(new DietRecViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DietItem dietItem) {
+                showUpdateDialog(dietItem);
+            }
+
+            @Override
+            public void onItemLongClick(DietItem dietItem) {
+                dietViewModel.delete(dietItem);
+                Toast.makeText(DietActivity_0_1.this, "Item deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showUpdateDialog(final DietItem dietItem){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Item");
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setText(dietItem.getProteins());
+        builder.setView(input);
+
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int updatedProteins = Integer.parseInt(input.getText().toString());
+
+                dietItem.setProteins(updatedProteins);
+                dietViewModel.update(dietItem);
+                Toast.makeText(DietActivity_0_1.this, "Item updated", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
     }
 
     // what to do when ADD MEAL button is pressed
     public void AddMeal(View view) {
 
-        //Date current_date = new Date();
         long current_date = System.currentTimeMillis();
         EditText edit_name = findViewById(R.id.id_ac_di_EditText1);
         EditText edit_proteins = findViewById(R.id.id_ac_di_EditText2);
@@ -94,30 +136,19 @@ public class DietActivity_0_1 extends AppCompatActivity {
         int carbs_text = (TextUtils.isEmpty(editable_carbs.toString())) ? 0 : Integer.parseInt(editable_carbs.toString());
         int sugars_text = (TextUtils.isEmpty(editable_sugars.toString())) ? 0 : Integer.parseInt(editable_sugars.toString());
 
-        //String name_text = editable_name.toString();
-        //int proteins_text = Integer.parseInt(editable_proteins.toString());
-        //int fats_text = Integer.parseInt(editable_fats.toString());
-        //int carbs_text = Integer.parseInt(editable_carbs.toString());
-        //int sugars_text = Integer.parseInt(editable_sugars.toString());
-
-        //String name_text = (editable_name.toString().equals("")) ? "-" : editable_name.toString();
-        //String proteins_text = (editable_proteins.toString().equals("")) ? "-" : editable_proteins.toString();
-        //String fats_text = (editable_fats.toString().equals("")) ? "-" : editable_fats.toString();
-        //String carbs_text = (editable_carbs.toString().equals("")) ? "-" : editable_carbs.toString();
-        //String sugars_text = (editable_sugars.toString().equals("")) ? "-" : editable_sugars.toString();
-
         // ToDo: make a date field, to be the same as the type of date field used in one exercise
         DietItem new_item = new DietItem(current_date, name_text, proteins_text, fats_text, carbs_text, sugars_text);
         dietViewModel.insert(new_item);
-
-        // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
-        //adapter.addItem(new_item);
-        //RecView.smoothScrollToPosition(adapter.getItemCount() - 1);
 
         edit_name.getText().clear();
         edit_proteins.getText().clear();
         edit_fats.getText().clear();
         edit_carbs.getText().clear();
         edit_sugars.getText().clear();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        // ToDo: logic to delete or update diet item
     }
 }
