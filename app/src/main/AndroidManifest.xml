@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FitApp"
         tools:targetApi="31">
         <activity
+            android:name=".PopUpDietEdit"
+            android:exported="false" />
+        <activity
             android:name=".DietActivity_0_1"
             android:exported="false" />
         <activity

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -27,7 +28,8 @@ import java.util.Objects;
 public class DietActivity_0_1 extends AppCompatActivity implements DietItemInterface {
 
     List<DietItem> item_list = new ArrayList<>();
-    DietRecViewAdapter adapter = new DietRecViewAdapter(this, this);
+    //DietRecViewAdapter adapter = new DietRecViewAdapter(this, this);
+    protected DietRecViewAdapter adapter;
     RecyclerView RecView;
     DietViewModel dietViewModel;
 
@@ -62,6 +64,7 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
         RecView.setHasFixedSize(true);
 
         // set the adapter for recycler view and show items in it
+        adapter = new DietRecViewAdapter(this, this);
         adapter.setItems(item_list);
         RecView.setAdapter(adapter);
 
@@ -72,6 +75,10 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
                 adapter.setItems(dietItems);
             }
         });
+    }
+
+    public DietRecViewAdapter getAdapter(){
+        return adapter;
     }
 
     // what to do when ADD MEAL button is pressed
@@ -111,32 +118,12 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
     public void onItemClick(int position) {
         // ToDo: logic to delete or update diet item
 
-        Toast.makeText(DietActivity_0_1.this, "Item clicked", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(DietActivity_0_1.this, "Item clicked", Toast.LENGTH_SHORT).show();
 
-        //AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //builder.setTitle("Update Item");
-        //
-        //final EditText input = new EditText(this);
-        //input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        //DietItem dietItem = adapter.getDietAtPosition(position);
-        //input.setText(dietItem.getProteins());
-        //builder.setView(input);
-        //
-        //builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-        //    @Override
-        //    public void onClick(DialogInterface dialogInterface, int i) {
-        //        int updatedProteins = Integer.parseInt(input.getText().toString());
-        //
-        //        dietItem.setProteins(updatedProteins);
-        //        dietViewModel.update(dietItem);
-        //        Toast.makeText(DietActivity_0_1.this, "Item updated", Toast.LENGTH_SHORT).show();
-        //    }
-        //});
-        //builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-        //    @Override
-        //    public void onClick(DialogInterface dialogInterface, int i) {
-        //        dialogInterface.cancel();
-        //    }
-        //});
+        Intent intent = new Intent(getApplicationContext(), PopUpDietEdit.class);
+        //intent.putExtra("position", position);
+        intent.putExtra("dietItem", adapter.getDietAtPosition(position));
+        startActivity(intent);
+        //startActivity(new Intent(DietActivity_0_1.this, PopUpDietEdit.class));
     }
 }
