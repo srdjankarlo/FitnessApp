@@ -16,7 +16,8 @@
             android:exported="false" />
         <activity
             android:name=".DietActivity_0_1"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.FitApp.CustomTheme"/>
         <activity
             android:name=".OneExerciseActivity_0_0_0"
             android:exported="false" />

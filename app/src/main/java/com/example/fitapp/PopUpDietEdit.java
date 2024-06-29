@@ -21,8 +21,7 @@ public class PopUpDietEdit extends DietActivity_0_1 {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-
-        getWindow().setLayout(width, (int) (height*.2));
+        getWindow().setLayout(width, (int) (height*.25));
 
         // ToDO: see this https://www.youtube.com/watch?v=fn5OlqQuOCk to make see previous activity bellow this one
 
