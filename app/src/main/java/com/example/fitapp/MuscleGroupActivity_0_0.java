@@ -34,8 +34,8 @@ public class MuscleGroupActivity_0_0 extends MuscleGroupsActivity_0 implements M
         muscleGroupItems = intent.getParcelableArrayListExtra("RecViewItemsList");
 
         // get the type of the item
-        muscleGroupName = muscleGroupItems.get(0).getName();
-        muscleGroupName = muscleGroupName.split(" ")[0];
+        muscleGroupName = muscleGroupItems.get(0).getMuscleGroup();
+        //muscleGroupName = muscleGroupName.split(" ")[0];
 
         // set layout
         setContentView(R.layout.activity_muscle_group);
@@ -172,7 +172,7 @@ public class MuscleGroupActivity_0_0 extends MuscleGroupsActivity_0 implements M
     public void onItemClick(int position) {
 
         //MainMenuRecViewItem exercise = item_list.get(position);
-        String exercise_name = muscleGroupItems.get(position).getName();
+        String exercise_name = muscleGroupItems.get(position).getExerciseName();
 
         Intent intent = new Intent(this, OneExerciseActivity_0_0_0.class);
         intent.putExtra("ExerciseName", exercise_name);

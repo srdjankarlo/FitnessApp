@@ -39,7 +39,7 @@ public class MuscleGroupAdapter extends RecyclerView.Adapter<MuscleGroupAdapter.
     @Override
     public void onBindViewHolder(@NonNull MuscleGroupAdapter.ViewHolder holder, int position) {
         holder.MainMenuRecView_ImageView1.setImageResource(muscleGroupItems.get(position).getImage());
-        holder.MainMenuRecView_TextView1.setText(muscleGroupItems.get(position).getName());
+        holder.MainMenuRecView_TextView1.setText(muscleGroupItems.get(position).getExerciseName());
     }
 
     @Override

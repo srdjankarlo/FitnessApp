@@ -65,8 +65,8 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
 
         // set the adapter for recycler view and show items in it
         adapter = new DietRecViewAdapter(this, this);
-        adapter.setItems(item_list);
-        RecView.setAdapter(adapter);
+        //adapter.setItems(item_list); // items are set in adapter in view model
+        RecView.setAdapter(adapter);  // To show items in recycler view, attach adapter to it
 
         dietViewModel = new ViewModelProvider(this).get(DietViewModel.class);
         dietViewModel.getAllDietData().observe(this, new Observer<List<DietItem>>() {

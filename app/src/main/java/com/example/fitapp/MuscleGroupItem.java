@@ -10,19 +10,19 @@ public class MuscleGroupItem implements Parcelable {
     @DrawableRes
     private int image;
     private String muscleGroup;
-    private String name;
+    private String exerciseName;
 
-    public MuscleGroupItem(@DrawableRes int image, String muscleGroup, String name) {
+    public MuscleGroupItem(@DrawableRes int image, String muscleGroup, String exerciseName) {
         this.image = image;
         this.muscleGroup = muscleGroup;
-        this.name = name;
+        this.exerciseName = exerciseName;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected MuscleGroupItem(Parcel in){
         image = in.readInt();
         muscleGroup = in.readString();
-        name = in.readString();
+        exerciseName = in.readString();
     }
 
     public static final Creator<MuscleGroupItem> CREATOR = new Creator<MuscleGroupItem>() {
@@ -46,7 +46,7 @@ public class MuscleGroupItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags){
         dest.writeInt(image);
         dest.writeString(muscleGroup);
-        dest.writeString(name);
+        dest.writeString(exerciseName);
     }
 
     @DrawableRes
@@ -66,19 +66,19 @@ public class MuscleGroupItem implements Parcelable {
         this.muscleGroup = muscleGroup;
     }
 
-    public String getName() {
-        return name;
+    public String getExerciseName() {
+        return exerciseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setExerciseName(String exerciseName) {
+        this.exerciseName = exerciseName;
     }
 
     @NonNull
     @Override
     public String toString() {
         return "MainMenuRecViewItem{" +
-                "CommonRecViewName='" + name + '\'' +
+                "CommonRecViewName='" + exerciseName + '\'' +
                 ", CommonRecViewImage=" + image + '\'' +
                 '}';
     }
