@@ -22,7 +22,7 @@
             android:name=".OneExerciseActivity_0_0_0"
             android:exported="false" />
         <activity
-            android:name=".MuscleGroupActivity_0_0"
+            android:name=".ExercisesActivity_0_0"
             android:exported="false" />
         <activity
             android:name=".DonateActivity"

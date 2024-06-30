@@ -1,5 +1,5 @@
 package com.example.fitapp;
 
-public interface MuscleGroupInterface {
+public interface OneExerciseInterface {
     void onItemClick(int position);
 }

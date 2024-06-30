@@ -1,5 +1,5 @@
 package com.example.fitapp;
 
-public interface DietItemInterface {
+public interface ExercisesInterface {
     void onItemClick(int position);
 }

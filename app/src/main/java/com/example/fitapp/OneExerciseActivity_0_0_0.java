@@ -19,10 +19,7 @@ import android.widget.TextView;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
 
 //public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneExerciseRecViewInterface {
@@ -30,7 +27,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
 
     //OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this, this);
     RecyclerView recView;
-    OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this);
+    OneExerciseAdapter recViewAdapter = new OneExerciseAdapter(this);
     ViewPager2 viewPager2;
     DotsIndicator dotsIndicator;
     TextView workTimer;

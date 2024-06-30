@@ -5,35 +5,37 @@ import android.os.Parcelable;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
 
-public class MuscleGroupItem implements Parcelable {
+@Entity(tableName = "exercises_table")
+public class ExercisesItem implements Parcelable {
     @DrawableRes
     private int image;
     private String muscleGroup;
     private String exerciseName;
 
-    public MuscleGroupItem(@DrawableRes int image, String muscleGroup, String exerciseName) {
+    public ExercisesItem(@DrawableRes int image, String muscleGroup, String exerciseName) {
         this.image = image;
         this.muscleGroup = muscleGroup;
         this.exerciseName = exerciseName;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
-    protected MuscleGroupItem(Parcel in){
+    protected ExercisesItem(Parcel in){
         image = in.readInt();
         muscleGroup = in.readString();
         exerciseName = in.readString();
     }
 
-    public static final Creator<MuscleGroupItem> CREATOR = new Creator<MuscleGroupItem>() {
+    public static final Creator<ExercisesItem> CREATOR = new Creator<ExercisesItem>() {
         @Override
-        public MuscleGroupItem createFromParcel(Parcel parcel) {
-            return new MuscleGroupItem(parcel);
+        public ExercisesItem createFromParcel(Parcel parcel) {
+            return new ExercisesItem(parcel);
         }
 
         @Override
-        public MuscleGroupItem[] newArray(int i) {
-            return new MuscleGroupItem[i];
+        public ExercisesItem[] newArray(int i) {
+            return new ExercisesItem[i];
         }
     };
 

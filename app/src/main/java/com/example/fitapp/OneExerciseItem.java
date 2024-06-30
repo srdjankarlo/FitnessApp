@@ -4,9 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
 
 import java.util.Date;
 
+@Entity(tableName = "one_exercise_table")
 public class OneExerciseItem implements Parcelable {
 
     //private SimpleDateFormat itemDate;

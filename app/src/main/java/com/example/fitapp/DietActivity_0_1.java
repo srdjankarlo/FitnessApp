@@ -1,35 +1,30 @@
 package com.example.fitapp;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class DietActivity_0_1 extends AppCompatActivity implements DietItemInterface {
+public class DietActivity_0_1 extends AppCompatActivity implements DietInterface {
 
     List<DietItem> item_list = new ArrayList<>();
     //DietRecViewAdapter adapter = new DietRecViewAdapter(this, this);
-    protected DietRecViewAdapter adapter;
+    protected DietAdapter adapter;
     RecyclerView RecView;
     DietViewModel dietViewModel;
 
@@ -64,7 +59,7 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
         RecView.setHasFixedSize(true);
 
         // set the adapter for recycler view and show items in it
-        adapter = new DietRecViewAdapter(this, this);
+        adapter = new DietAdapter(this, this);
         //adapter.setItems(item_list); // items are set in adapter in view model
         RecView.setAdapter(adapter);  // To show items in recycler view, attach adapter to it
 

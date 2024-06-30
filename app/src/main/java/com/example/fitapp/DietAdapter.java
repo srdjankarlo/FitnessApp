@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Locale;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
-public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.ViewHolder> {
+public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
-    private final DietItemInterface dietItemInterface;
+    private final DietInterface dietItemInterface;
     private List<DietItem> recViewItems = new ArrayList<>();
     private Context context;
     private OnItemClickListener listener;
@@ -28,7 +28,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     //    this.context = context;
     //    this.oneExerciseRecViewInterface = oneExerciseRecViewInterface;
     //}
-    public DietRecViewAdapter(Context context, DietItemInterface dietItemInterface) {
+    public DietAdapter(Context context, DietInterface dietItemInterface) {
         this.context = context;
         this.dietItemInterface = dietItemInterface;
     }
@@ -89,7 +89,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
 
         // to create constructor, press Alt+ins
         //public ViewHolder(@NonNull View itemView, OneExerciseRecViewInterface mainMenuRecViewInterface) {
-        public ViewHolder(@NonNull View itemView, DietItemInterface dietItemInterface) {
+        public ViewHolder(@NonNull View itemView, DietInterface dietItemInterface) {
             super(itemView);
             context = itemView.getContext();
             //MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);

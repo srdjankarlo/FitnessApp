@@ -36,7 +36,7 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
     // create array list to populate recycler view
     ArrayList<MuscleGroupsItem> RecViewItems = new ArrayList<>(),
             exercises = new ArrayList<>();
-    ArrayList<MuscleGroupItem> chest_exercises = new ArrayList<>(), shoulder_exercises = new ArrayList<>(),
+    ArrayList<ExercisesItem> chest_exercises = new ArrayList<>(), shoulder_exercises = new ArrayList<>(),
             biceps_exercises = new ArrayList<>(), triceps_exercises = new ArrayList<>(),
             forearms_exercises = new ArrayList<>(), back_exercises = new ArrayList<>(),
             abs_exercises = new ArrayList<>(), legs_exercises = new ArrayList<>();
@@ -58,62 +58,62 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
         bar.setBackgroundDrawable(color);
 
         // fill lists with items for exercises
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 0"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 1"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 2"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 3"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 4"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 5"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 6"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 7"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 8"));
-        chest_exercises.add(new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 9"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 0"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 1"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 2"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 3"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 4"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 5"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 6"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 7"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 8"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 9"));
         chest_exercise_counter = 10;
 
-        shoulder_exercises.add(new MuscleGroupItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 0"));
-        shoulder_exercises.add(new MuscleGroupItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 1"));
-        shoulder_exercises.add(new MuscleGroupItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 2"));
-        shoulder_exercises.add(new MuscleGroupItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 3"));
-        shoulder_exercises.add(new MuscleGroupItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 4"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 0"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 1"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 2"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 3"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 4"));
         shoulder_exercise_counter = 5;
 
-        biceps_exercises.add(new MuscleGroupItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 0"));
-        biceps_exercises.add(new MuscleGroupItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 1"));
-        biceps_exercises.add(new MuscleGroupItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 2"));
-        biceps_exercises.add(new MuscleGroupItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 3"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 0"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 1"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 2"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 3"));
         biceps_exercise_counter = 4;
 
-        triceps_exercises.add(new MuscleGroupItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 0"));
-        triceps_exercises.add(new MuscleGroupItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 1"));
-        triceps_exercises.add(new MuscleGroupItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 2"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 0"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 1"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 2"));
         triceps_exercise_counter = 3;
 
-        forearms_exercises.add(new MuscleGroupItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms 0"));
-        forearms_exercises.add(new MuscleGroupItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms 1"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms 0"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms 1"));
         forearms_exercise_counter = 2;
 
-        back_exercises.add(new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back 0"));
-        back_exercises.add(new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back 1"));
-        back_exercises.add(new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back 2"));
-        back_exercises.add(new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back 3"));
-        back_exercises.add(new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back 4"));
-        back_exercises.add(new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back 5"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 0"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 1"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 2"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 3"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 4"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 5"));
         back_exercise_counter = 6;
 
-        abs_exercises.add(new MuscleGroupItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 0"));
-        abs_exercises.add(new MuscleGroupItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 1"));
-        abs_exercises.add(new MuscleGroupItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 2"));
-        abs_exercises.add(new MuscleGroupItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 3"));
-        abs_exercises.add(new MuscleGroupItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 4"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 0"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 1"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 2"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 3"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 4"));
         abs_exercise_counter = 5;
 
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 0"));
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 1"));
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 2"));
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 3"));
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 4"));
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 5"));
-        legs_exercises.add(new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 6"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 0"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 1"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 2"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 3"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 4"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 5"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 6"));
         legs_exercise_counter = 7;
 
         exercises.add(new MuscleGroupsItem(R.drawable.chest, getString(R.string.chest_exercise), String.valueOf(chest_exercises.size()) + " exercises"));
@@ -206,35 +206,35 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
 
         // for exercises
         if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.chest_exercise))){
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", chest_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.shoulders_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", shoulder_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.biceps_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", biceps_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.triceps_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", triceps_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.forearms_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", forearms_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.back_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", back_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.abs_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", abs_exercises);
             startActivity(intent);
         } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.legs_exercise))) {
-            Intent intent = new Intent(getApplicationContext(), MuscleGroupActivity_0_0.class);
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", legs_exercises);
             startActivity(intent);
         }

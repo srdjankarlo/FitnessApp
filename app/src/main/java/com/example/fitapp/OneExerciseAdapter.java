@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.Locale;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
-public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseRecViewAdapter.ViewHolder> {
+public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.ViewHolder> {
 
     //private final OneExerciseRecViewInterface oneExerciseRecViewInterface;
     private ArrayList<OneExerciseItem> recViewItems = new ArrayList<>();
@@ -26,7 +26,7 @@ public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseR
     //    this.context = context;
     //    this.oneExerciseRecViewInterface = oneExerciseRecViewInterface;
     //}
-    public OneExerciseRecViewAdapter(Context context) {
+    public OneExerciseAdapter(Context context) {
         this.context = context;
     }
 

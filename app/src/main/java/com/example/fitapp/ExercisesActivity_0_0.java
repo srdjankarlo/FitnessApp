@@ -15,11 +15,11 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MuscleGroupActivity_0_0 extends MuscleGroupsActivity_0 implements MuscleGroupInterface {
+public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements ExercisesInterface {
 
-    ArrayList<MuscleGroupItem> muscleGroupItems = new ArrayList<>();
-    MuscleGroupAdapter muscleGroupAdapter = new MuscleGroupAdapter(this, this);
-    MuscleGroupItem muscleGroupItem;
+    ArrayList<ExercisesItem> muscleGroupItems = new ArrayList<>();
+    ExercisesAdapter muscleGroupAdapter = new ExercisesAdapter(this, this);
+    ExercisesItem muscleGroupItem;
     RecyclerView recyclerView;
     String muscleGroupName;
 
@@ -38,7 +38,7 @@ public class MuscleGroupActivity_0_0 extends MuscleGroupsActivity_0 implements M
         //muscleGroupName = muscleGroupName.split(" ")[0];
 
         // set layout
-        setContentView(R.layout.activity_muscle_group);
+        setContentView(R.layout.activity_exercises);
 
         // change app bar title
         Objects.requireNonNull(getSupportActionBar()).setTitle(muscleGroupName + " exercises");
@@ -49,11 +49,11 @@ public class MuscleGroupActivity_0_0 extends MuscleGroupsActivity_0 implements M
         bar.setBackgroundDrawable(color);
 
         // get the recycler view in order to manipulate it
-        recyclerView = findViewById(R.id.ac_mu_group_RecView);
+        recyclerView = findViewById(R.id.ac_ex_RecView);
 
         // set the adapter for recycler view and show items in it
         //MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
-        muscleGroupAdapter.setMuscleGroupItems(muscleGroupItems);
+        muscleGroupAdapter.setExercisesItems(muscleGroupItems);
 
         recyclerView.setAdapter(muscleGroupAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -91,65 +91,65 @@ public class MuscleGroupActivity_0_0 extends MuscleGroupsActivity_0 implements M
             case R.id.ex_me_item1:
                 //ToDo: make database to store exercises and tidy this up a bit
                 if (Objects.equals(muscleGroupName, getString(R.string.chest_exercise))){
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.chest, getString(R.string.chest_exercise), "Chest " + chest_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise), "Chest " + chest_exercise_counter);
                     chest_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(chest_exercises);
+                    muscleGroupAdapter.setExercisesItems(chest_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     chest_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.shoulders_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders " + shoulder_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders " + shoulder_exercise_counter);
                     shoulder_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(shoulder_exercises);
+                    muscleGroupAdapter.setExercisesItems(shoulder_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     shoulder_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.biceps_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps " + biceps_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps " + biceps_exercise_counter);
                     biceps_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(biceps_exercises);
+                    muscleGroupAdapter.setExercisesItems(biceps_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     biceps_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.triceps_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps " + triceps_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps " + triceps_exercise_counter);
                     triceps_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(triceps_exercises);
+                    muscleGroupAdapter.setExercisesItems(triceps_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     triceps_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.forearms_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms " + forearms_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms " + forearms_exercise_counter);
                     forearms_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(forearms_exercises);
+                    muscleGroupAdapter.setExercisesItems(forearms_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     forearms_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.back_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.back, getString(R.string.back_exercise), "Back " + back_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back " + back_exercise_counter);
                     back_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(back_exercises);
+                    muscleGroupAdapter.setExercisesItems(back_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     back_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.abs_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs " + abs_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs " + abs_exercise_counter);
                     abs_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(abs_exercises);
+                    muscleGroupAdapter.setExercisesItems(abs_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
                     abs_exercise_counter += 1;
                 } else if (Objects.equals(muscleGroupName, getString(R.string.legs_exercise))) {
-                    muscleGroupItem = new MuscleGroupItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs " + legs_exercise_counter);
+                    muscleGroupItem = new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs " + legs_exercise_counter);
                     legs_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setMuscleGroupItems(legs_exercises);
+                    muscleGroupAdapter.setExercisesItems(legs_exercises);
                     recyclerView.setAdapter(muscleGroupAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     muscleGroupItems.add(muscleGroupItem);
