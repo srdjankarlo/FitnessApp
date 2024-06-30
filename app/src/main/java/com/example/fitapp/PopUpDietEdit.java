@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -28,13 +30,14 @@ public class PopUpDietEdit extends DietActivity_0_1 {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-        getWindow().setLayout(width, (int) (height*.25));
+        //int width = dm.widthPixels;
+        //int height = dm.heightPixels;
+        //getWindow().setLayout(width, (int) (height*.25));
+        int width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        getWindow().setLayout(width, height);
 
         // ToDO: see this https://www.youtube.com/watch?v=fn5OlqQuOCk to make see previous activity bellow this one // this doent work
-
-        DietRecViewAdapter adapter = getAdapter();
 
         // get data from previous activity
         Bundle intent = getIntent().getExtras();
@@ -69,7 +72,7 @@ public class PopUpDietEdit extends DietActivity_0_1 {
     }
 
     public void Update(View view) {
-        // ToDo: make to work update
+        // ToDo: make to work update in sense that strings are not allowed to be added where ints are expected
         EditText edit_name = findViewById(R.id.ac_po_up_di_EditText1);
         EditText edit_proteins = findViewById(R.id.ac_po_up_di_EditText2);
         EditText edit_fats = findViewById(R.id.ac_po_up_di_EditText3);
@@ -102,5 +105,28 @@ public class PopUpDietEdit extends DietActivity_0_1 {
     public void Delete(View view) {
         dietViewModel.delete(dietItem);
         finish();
+    }
+
+    // close activity if clicked outside the activity window
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View popupView = findViewById(R.id.ac_po_up_di_ConstraintLayout);
+            if (popupView != null && !isPointInsideView(ev.getRawX(), ev.getRawY(), popupView)) {
+                finish(); // Close the activity
+                return true;
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private boolean isPointInsideView(float x, float y, View view) {
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int viewX = location[0];
+        int viewY = location[1];
+        int viewWidth = view.getWidth();
+        int viewHeight = view.getHeight();
+        return !(x < viewX || x > viewX + viewWidth || y < viewY || y > viewY + viewHeight);
     }
 }

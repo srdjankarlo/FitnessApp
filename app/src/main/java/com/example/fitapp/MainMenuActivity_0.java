@@ -19,6 +19,7 @@ import java.util.Objects;
 public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecViewInterface {
 
     int id;
+    int chest_exercise_counter;
     RecyclerView MainMenu_RecView;
 
     MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
@@ -59,6 +60,7 @@ public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecVie
         chest_exercises.add(new MainMenuRecViewItem(R.drawable.chest, "Chest 7", getString(R.string.chest_exercise), ""));
         chest_exercises.add(new MainMenuRecViewItem(R.drawable.chest, "Chest 8", getString(R.string.chest_exercise), ""));
         chest_exercises.add(new MainMenuRecViewItem(R.drawable.chest, "Chest 9", getString(R.string.chest_exercise), ""));
+        chest_exercise_counter = 10;
 
         shoulder_exercises.add(new MainMenuRecViewItem(R.drawable.shoulders, "Shoulders 0", getString(R.string.shoulders_exercise), ""));
         shoulder_exercises.add(new MainMenuRecViewItem(R.drawable.shoulders, "Shoulders 1", getString(R.string.shoulders_exercise), ""));
@@ -168,6 +170,7 @@ public class MainMenuActivity_0 extends DonateActivity implements MainMenuRecVie
             //RecViewItems = item_list;
 
         } else if (id == R.id.id_ma_me_item_progress) {
+            // ToDo: add progress to exercises or something
             // change action bar title and icon
             Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_progress));
             //RecViewItems = item_list;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".PopUpDietEdit"
-    android:id="@+id/ac_po_up_di_LinearLayout">
+    android:id="@+id/ac_po_up_di_ConstraintLayout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:hint="Name of the food"
             android:layout_weight="2"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:inputType="text"/>
 
     </LinearLayout>
 
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
+            android:inputType="numberSigned"
             android:hint="Protein"/>
 
         <EditText
@@ -51,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
+            android:inputType="numberSigned"
             android:hint="Fat"/>
 
         <EditText
@@ -59,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
+            android:inputType="numberSigned"
             android:hint="Carbs"/>
 
         <EditText
@@ -67,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
+            android:inputType="numberSigned"
             android:hint="Sugar"/>
 
     </LinearLayout>

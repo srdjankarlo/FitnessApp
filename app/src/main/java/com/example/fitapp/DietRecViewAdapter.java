@@ -72,7 +72,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
     }
 
     private String formatTimestamp(long timestamp) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss|yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss|dd-MM-yyyy", Locale.getDefault());
         return sdf.format(new Date(timestamp));
     }
 

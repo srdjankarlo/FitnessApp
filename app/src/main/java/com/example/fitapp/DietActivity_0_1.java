@@ -77,10 +77,6 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
         });
     }
 
-    public DietRecViewAdapter getAdapter(){
-        return adapter;
-    }
-
     // what to do when ADD MEAL button is pressed
     public void AddMeal(View view) {
 
