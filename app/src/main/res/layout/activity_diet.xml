@@ -58,7 +58,7 @@
             android:id="@+id/id_ac_di_EditText5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Sugars"
+            android:hint="Calories"
             android:inputType="numberSigned"
             android:layout_weight="1"/>
 

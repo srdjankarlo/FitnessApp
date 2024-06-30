@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -34,6 +35,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     DotsIndicator dotsIndicator;
     TextView workTimer;
     TextView restTimer;
+    Button workButtonTimer;
+    Button restButtonTimer;
     ArrayList<OneExerciseItem> items = new ArrayList<>();
     private boolean stopwatchWorkIsRunning = false;
     private boolean stopwatchRestIsRunning = false;
@@ -71,7 +74,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         // get view pager dots
         dotsIndicator = findViewById(R.id.id_ac_on_ex_DotsIndicator);
 
-        // Sample images
+        // Sample images for particular exercise
         int[] images = {R.drawable.back, R.drawable.abs, R.drawable.legs, R.drawable.shoulders};
 
         // set images in image pager adapter, set adapter and view pager dots
@@ -82,6 +85,9 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         // get the timer text view
         workTimer = findViewById(R.id.id_ac_on_ex_TextView2_1);
         restTimer = findViewById((R.id.id_ac_on_ex_TextView2_2));
+
+        workButtonTimer = findViewById(R.id.id_ac_on_ex_Button1_1);
+        restButtonTimer = findViewById(R.id.id_ac_on_ex_Button1_2);
 
         // get the recycler view in order to manipulate it
         recView = findViewById(R.id.id_ac_on_ex_RecView1);
@@ -116,9 +122,10 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     // what to do when ADD button is pressed
     public void ADD(View view) {
 
-        Date current_date = new Date();
-        SimpleDateFormat date_formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String formated_date = date_formater.format(current_date);
+        //Date current_date = new Date();
+        //SimpleDateFormat date_formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        //String formated_date = date_formater.format(current_date);
+        long current_date = System.currentTimeMillis();
 
         EditText edit_weight = findViewById(R.id.id_ac_on_ex_TextView3);
         EditText edit_reps = findViewById(R.id.id_ac_on_ex_TextView4);
@@ -180,8 +187,10 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     public void WorkoutTimer(View view) {
 
         if (stopwatchWorkIsRunning){
+            workButtonTimer.setText("Start Workout Timer");
             handler.removeCallbacks(work_runnable);
         } else {
+            workButtonTimer.setText("Stop Workout Timer");
             startWorkTime = System.currentTimeMillis();
             handler.post(work_runnable);
         }
@@ -191,8 +200,10 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     public void RestingTimer(View view) {
 
         if (stopwatchRestIsRunning){
+            restButtonTimer.setText("Start Rest Timer");
             handler.removeCallbacks(rest_runnable);
         } else {
+            restButtonTimer.setText("Stop Rest Timer");
             startRestTime = System.currentTimeMillis();
             handler.post(rest_runnable);
         }

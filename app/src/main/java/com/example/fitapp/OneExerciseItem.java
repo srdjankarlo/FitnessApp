@@ -10,13 +10,13 @@ import java.util.Date;
 public class OneExerciseItem implements Parcelable {
 
     //private SimpleDateFormat itemDate;
-    private Date itemDate;
+    private long itemDate;
     private float itemWeight;
     private int itemReps;
     private int itemDuration;
     private int itemRest;
 
-    public OneExerciseItem(Date date, float weight, int reps, int work_duration, int rest_duration) {
+    public OneExerciseItem(long date, float weight, int reps, int work_duration, int rest_duration) {
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
         itemDate = date;
         itemWeight = weight;
@@ -29,8 +29,10 @@ public class OneExerciseItem implements Parcelable {
     protected OneExerciseItem(Parcel in){
         //String date = in.readString();
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
-        long tmpDate = in.readLong();
-        itemDate = tmpDate == -1 ? null : new Date(tmpDate);
+        //long tmpDate = in.readLong();
+        //itemDate = tmpDate == -1 ? null : new Date(tmpDate);
+
+        itemDate = in.readLong();
         itemWeight = in.readFloat();
         itemReps = in.readInt();
         itemDuration = in.readInt();
@@ -61,7 +63,8 @@ public class OneExerciseItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //dest.writeString(itemDate.toPattern());
-        dest.writeLong(itemDate.getTime());
+        //dest.writeLong(itemDate.getTime());
+        dest.writeLong(itemDate);
         //dest.writeString(itemDate);
         dest.writeFloat(itemWeight);
         dest.writeInt(itemReps);
@@ -69,11 +72,11 @@ public class OneExerciseItem implements Parcelable {
         dest.writeInt(itemRest);
     }
 
-    public Date getItemDate() {
+    public long getItemDate() {
         return itemDate;
     }
 
-    public void setItemDate(Date date) {
+    public void setItemDate(long date) {
         this.itemDate = date;
     }
 

@@ -72,7 +72,7 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:inputType="numberSigned"
-            android:hint="Sugar"/>
+            android:hint="Calories"/>
 
     </LinearLayout>
 

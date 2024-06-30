@@ -85,29 +85,29 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietItemInter
         EditText edit_proteins = findViewById(R.id.id_ac_di_EditText2);
         EditText edit_fats = findViewById(R.id.id_ac_di_EditText3);
         EditText edit_carbs = findViewById(R.id.id_ac_di_EditText4);
-        EditText edit_sugars = findViewById(R.id.id_ac_di_EditText5);
+        EditText edit_calories = findViewById(R.id.id_ac_di_EditText5);
 
         Editable editable_name = edit_name.getText();
         Editable editable_proteins = edit_proteins.getText();
         Editable editable_fats = edit_fats.getText();
         Editable editable_carbs = edit_carbs.getText();
-        Editable editable_sugars = edit_sugars.getText();
+        Editable editable_calories = edit_calories.getText();
 
         String name_text = (TextUtils.isEmpty(editable_name.toString())) ? "None" : editable_name.toString();
         int proteins_text = (TextUtils.isEmpty(editable_proteins.toString())) ? 0 : Integer.parseInt(editable_proteins.toString());
         int fats_text = (TextUtils.isEmpty(editable_fats.toString())) ? 0 : Integer.parseInt(editable_fats.toString());
         int carbs_text = (TextUtils.isEmpty(editable_carbs.toString())) ? 0 : Integer.parseInt(editable_carbs.toString());
-        int sugars_text = (TextUtils.isEmpty(editable_sugars.toString())) ? 0 : Integer.parseInt(editable_sugars.toString());
+        int calories_text = (TextUtils.isEmpty(editable_calories.toString())) ? 0 : Integer.parseInt(editable_calories.toString());
 
         // ToDo: make a date field, to be the same as the type of date field used in one exercise
-        DietItem new_item = new DietItem(current_date, name_text, proteins_text, fats_text, carbs_text, sugars_text);
+        DietItem new_item = new DietItem(current_date, name_text, proteins_text, fats_text, carbs_text, calories_text);
         dietViewModel.insert(new_item);
 
         edit_name.getText().clear();
         edit_proteins.getText().clear();
         edit_fats.getText().clear();
         edit_carbs.getText().clear();
-        edit_sugars.getText().clear();
+        edit_calories.getText().clear();
     }
 
     @Override

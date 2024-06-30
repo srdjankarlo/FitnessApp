@@ -9,7 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
 public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseRecViewAdapter.ViewHolder> {
@@ -44,7 +47,8 @@ public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseR
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //OneExerciseItem item = recViewItems.get(position);
         //holder.item_date.setText(item.getitemDate());
-        holder.item_date.setText(String.valueOf(recViewItems.get(position).getItemDate()));
+        //holder.item_date.setText(String.valueOf(recViewItems.get(position).getItemDate()));
+        holder.item_date.setText(formatTimestamp(recViewItems.get(position).getItemDate()));
         //holder.date.setText(recViewItems.get(position).getOneExerciseRecViewDate());
         holder.item_weight.setText(String.valueOf(recViewItems.get(position).getItemWeight()));
         holder.item_reps.setText(String.valueOf(recViewItems.get(position).getItemReps()));
@@ -60,6 +64,11 @@ public class OneExerciseRecViewAdapter extends RecyclerView.Adapter<OneExerciseR
     public void setItems(ArrayList<OneExerciseItem> mainMenuRecView_items) {
         this.recViewItems = mainMenuRecView_items;
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle items added later*/
+    }
+
+    private String formatTimestamp(long timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss|dd-MM-yyyy", Locale.getDefault());
+        return sdf.format(new Date(timestamp));
     }
 
     // need to create this ViewHolder, this is the way by convention

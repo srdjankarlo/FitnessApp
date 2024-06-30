@@ -1,8 +1,5 @@
 package com.example.fitapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,7 +17,7 @@ public class PopUpDietEdit extends DietActivity_0_1 {
     EditText edit_proteins;
     EditText edit_fats;
     EditText edit_carbs;
-    EditText edit_sugars;
+    EditText edit_calories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +47,7 @@ public class PopUpDietEdit extends DietActivity_0_1 {
         int proteins = dietItem.getProteins();
         int fats = dietItem.getFats();
         int carbs = dietItem.getCarbohydrates();
-        int sugars = dietItem.getSugars();
+        int sugars = dietItem.getCalories();
 
         TextView date2 = findViewById(R.id.ac_po_up_di_TextView0);
         date2.setText(String.valueOf(date));  // ToDo: this writes timestamp and not formated date
@@ -67,8 +64,8 @@ public class PopUpDietEdit extends DietActivity_0_1 {
         edit_carbs = findViewById(R.id.ac_po_up_di_EditText4);
         edit_carbs.setText(String.valueOf(carbs));
 
-        edit_sugars = findViewById(R.id.ac_po_up_di_EditText5);
-        edit_sugars.setText(String.valueOf(sugars));
+        edit_calories = findViewById(R.id.ac_po_up_di_EditText5);
+        edit_calories.setText(String.valueOf(sugars));
     }
 
     public void Update(View view) {
@@ -77,25 +74,25 @@ public class PopUpDietEdit extends DietActivity_0_1 {
         EditText edit_proteins = findViewById(R.id.ac_po_up_di_EditText2);
         EditText edit_fats = findViewById(R.id.ac_po_up_di_EditText3);
         EditText edit_carbs = findViewById(R.id.ac_po_up_di_EditText4);
-        EditText edit_sugars = findViewById(R.id.ac_po_up_di_EditText5);
+        EditText edit_calories = findViewById(R.id.ac_po_up_di_EditText5);
 
         Editable editable_name = edit_name.getText();
         Editable editable_proteins = edit_proteins.getText();
         Editable editable_fats = edit_fats.getText();
         Editable editable_carbs = edit_carbs.getText();
-        Editable editable_sugars = edit_sugars.getText();
+        Editable editable_calories = edit_calories.getText();
 
         String name_text = (TextUtils.isEmpty(editable_name.toString())) ? "None" : editable_name.toString();
         int proteins_text = (TextUtils.isEmpty(editable_proteins.toString())) ? 0 : Integer.parseInt(editable_proteins.toString());
         int fats_text = (TextUtils.isEmpty(editable_fats.toString())) ? 0 : Integer.parseInt(editable_fats.toString());
         int carbs_text = (TextUtils.isEmpty(editable_carbs.toString())) ? 0 : Integer.parseInt(editable_carbs.toString());
-        int sugars_text = (TextUtils.isEmpty(editable_sugars.toString())) ? 0 : Integer.parseInt(editable_sugars.toString());
+        int calories_text = (TextUtils.isEmpty(editable_calories.toString())) ? 0 : Integer.parseInt(editable_calories.toString());
 
         dietItem.setFood_name(name_text);
         dietItem.setProteins(proteins_text);
         dietItem.setFats(fats_text);
         dietItem.setCarbohydrates(carbs_text);
-        dietItem.setSugars(sugars_text);
+        dietItem.setCalories(calories_text);
         
         dietViewModel.update(dietItem);
 

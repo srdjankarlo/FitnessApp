@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Workout timer"
+                    android:text="Start Workout timer"
                     android:onClick="WorkoutTimer"/>
 
                 <TextView
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Resting timer"
+                    android:text="Start Rest timer"
                     android:onClick="RestingTimer"/>
 
                 <TextView

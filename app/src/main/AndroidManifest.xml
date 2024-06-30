@@ -22,13 +22,13 @@
             android:name=".OneExerciseActivity_0_0_0"
             android:exported="false" />
         <activity
-            android:name=".ExercisesActivity_0_0"
+            android:name=".MuscleGroupActivity_0_0"
             android:exported="false" />
         <activity
             android:name=".DonateActivity"
             android:exported="false" />
         <activity
-            android:name=".MainMenuActivity_0"
+            android:name=".MuscleGroupsActivity_0"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

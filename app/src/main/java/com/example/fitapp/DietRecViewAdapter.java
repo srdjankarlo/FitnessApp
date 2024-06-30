@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,7 +53,7 @@ public class DietRecViewAdapter extends RecyclerView.Adapter<DietRecViewAdapter.
         holder.protein.setText(String.valueOf(recViewItems.get(position).getProteins()));
         holder.fat.setText(String.valueOf(recViewItems.get(position).getFats()));
         holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getCarbohydrates()));
-        holder.sugar.setText(String.valueOf(recViewItems.get(position).getSugars()));
+        holder.sugar.setText(String.valueOf(recViewItems.get(position).getCalories()));
     }
 
     @Override

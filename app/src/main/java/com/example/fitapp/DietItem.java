@@ -7,8 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
+// Parcelable is in order to be able to send DietItem objext to another activity
 @Entity(tableName = "diet_table")
 public class DietItem implements Parcelable {
 
@@ -19,15 +18,15 @@ public class DietItem implements Parcelable {
     private int proteins;
     private int fats;
     private int carbohydrates;
-    private int sugars;
+    private int calories;
 
-    public DietItem(long this_date, String name, int protein, int fat, int carbs, int sugar) {
+    public DietItem(long this_date, String name, int protein, int fat, int carbs, int calorie) {
         date = this_date;
         food_name = name;
         proteins = protein;
         fats = fat;
         carbohydrates = carbs;
-        sugars = sugar;
+        calories = calorie;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
@@ -43,7 +42,7 @@ public class DietItem implements Parcelable {
         this.proteins = in.readInt();
         this.fats = in.readInt();
         this.carbohydrates = in.readInt();
-        this.sugars = in.readInt();
+        this.calories = in.readInt();
     }
 
     public static final Creator<DietItem> CREATOR = new Creator<DietItem>() {
@@ -75,7 +74,7 @@ public class DietItem implements Parcelable {
         dest.writeInt(proteins);
         dest.writeInt(fats);
         dest.writeInt(carbohydrates);
-        dest.writeInt(sugars);
+        dest.writeInt(calories);
     }
 
     public long getDate(){return date;}
@@ -114,12 +113,12 @@ public class DietItem implements Parcelable {
         this.carbohydrates = carbs;
     }
 
-    public int getSugars() {
-        return sugars;
+    public int getCalories() {
+        return calories;
     }
 
-    public void setSugars(int sugar) {
-        this.sugars = sugar;
+    public void setCalories(int calorie) {
+        this.calories = calorie;
     }
 
 
@@ -132,7 +131,7 @@ public class DietItem implements Parcelable {
                 ", Protein=" + proteins + '\'' +
                 ", Fat=" + fats + '\'' +
                 ", Carbs=" + carbohydrates + '\'' +
-                ", Sugar=" + sugars + '\'' +
+                ", Sugar=" + calories + '\'' +
                 '}';
     }
 }

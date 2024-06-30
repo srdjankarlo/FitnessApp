@@ -14,16 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
-public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecViewAdapter.ViewHolder> {
-
-    private final MainMenuRecViewInterface mainMenuRecViewInterface;
-    private ArrayList<MainMenuRecViewItem> MainMenuRecView_items = new ArrayList<>();
+public class MuscleGroupsAdapter extends RecyclerView.Adapter<MuscleGroupsAdapter.ViewHolder> {
+    private final MuscleGroupsInterface muscleGroupsInterface;
+    private ArrayList<MuscleGroupsItem> muscleGroupsItems = new ArrayList<>();
     private Context context;
 
     // we need constructor for this ViewAdapter, so alt+ins
-    public MainMenuRecViewAdapter(Context context, MainMenuRecViewInterface mainMenuRecViewInterface) {
+    public MuscleGroupsAdapter(Context context, MuscleGroupsInterface muscleGroupsInterface) {
         this.context = context;
-        this.mainMenuRecViewInterface = mainMenuRecViewInterface;
+        this.muscleGroupsInterface = muscleGroupsInterface;
     }
 
 
@@ -33,26 +32,25 @@ public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecView
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_menu_item, parent, false);
-        return new ViewHolder(view, mainMenuRecViewInterface);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.muscle_groups_item, parent, false);
+        return new ViewHolder(view, muscleGroupsInterface);
     }
 
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.MainMenuRecView_ImageView1.setImageResource(MainMenuRecView_items.get(position).getMainMenuViewImageView1());
-        holder.MainMenuRecView_TextView1.setText(MainMenuRecView_items.get(position).getMainMenuRecViewTextView1());
-        holder.MainMenuRecView_TextView2.setText(MainMenuRecView_items.get(position).getMainMenuRecViewTextView2());
-        String rec_view_type = MainMenuRecView_items.get(position).getMainMenuRecViewType();
+        holder.MainMenuRecView_ImageView1.setImageResource(muscleGroupsItems.get(position).getImage());
+        holder.MainMenuRecView_TextView1.setText(muscleGroupsItems.get(position).getName());
+        holder.MainMenuRecView_TextView2.setText(muscleGroupsItems.get(position).getNumberOfExercises());
     }
 
     @Override
     public int getItemCount() {
-        return MainMenuRecView_items.size();
+        return muscleGroupsItems.size();
     }
 
-    public void setMainMenuRecView_items(ArrayList<MainMenuRecViewItem> mainMenuRecView_items) {
-        this.MainMenuRecView_items = mainMenuRecView_items;
+    public void setMuscleGroupsItems(ArrayList<MuscleGroupsItem> muscleGroupsItems) {
+        this.muscleGroupsItems = muscleGroupsItems;
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle groups added later
 
         i dont need this because i wont change the existing muscle groups, but it will be usefull in
@@ -73,13 +71,13 @@ public class MainMenuRecViewAdapter extends RecyclerView.Adapter<MainMenuRecView
         private TextView MainMenuRecView_TextView2;
 
         // to create constructor, press Alt+ins
-        public ViewHolder(@NonNull View itemView, MainMenuRecViewInterface mainMenuRecViewInterface) {
+        public ViewHolder(@NonNull View itemView, MuscleGroupsInterface mainMenuRecViewInterface) {
             super(itemView);
             context = itemView.getContext();
-            MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
-            MainMenuRecView_ImageView1 = itemView.findViewById(R.id.id_ac_ma_me_it_ImageView1);
-            MainMenuRecView_TextView1 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView1);
-            MainMenuRecView_TextView2 = itemView.findViewById(R.id.id_ac_ma_me_it_TextView2);
+            MainMenuRecView_Layout = itemView.findViewById(R.id.mu_groups_it_Layout);
+            MainMenuRecView_ImageView1 = itemView.findViewById(R.id.mu_groups_it_ImageView1);
+            MainMenuRecView_TextView1 = itemView.findViewById(R.id.mu_groups_it_TextView1);
+            MainMenuRecView_TextView2 = itemView.findViewById(R.id.mu_groups_it_TextView2);
 
             // set on click
             itemView.setOnClickListener(new View.OnClickListener() {
