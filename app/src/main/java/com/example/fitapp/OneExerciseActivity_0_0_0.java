@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -45,6 +44,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     private Handler handler = new Handler();
     private long startWorkTime = 0;
     private long startRestTime = 0;
+    private long elapsedWorkTime = 0;
+    private long elapsedRestTime = 0;
     private String exercise_name;
     OneExerciseViewModel oneExerciseViewModel;
 
@@ -59,7 +60,9 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         //item = intent.getParcelableExtra("ExerciseName");
         //String name = item.getMainMenuRecViewTextView1();
         Bundle intent = getIntent().getExtras();
-        exercise_name = intent.getString("ExerciseName");
+        //exercise_name = intent.getString("ExercisesName");
+        ExercisesItem exercisesItem = intent.getParcelable("ExercisesItem");
+        exercise_name = exercisesItem.getExerciseName();
 
         // set layout
         setContentView(R.layout.activity_one_exercise);
@@ -73,13 +76,33 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         Objects.requireNonNull(bar).setBackgroundDrawable(color);
 
         // get image adapter
-        viewPager2 = findViewById(R.id.id_ac_on_ex_ViewPager1);
+        viewPager2 = findViewById(R.id.ac_on_ex_ViewPager1);
 
         // get view pager dots
-        dotsIndicator = findViewById(R.id.id_ac_on_ex_DotsIndicator);
+        dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
 
         // Sample images for particular exercise
-        int[] images = {R.drawable.back, R.drawable.abs, R.drawable.legs, R.drawable.shoulders};
+        //int[] images = {R.drawable.back, R.drawable.abs, R.drawable.legs, R.drawable.shoulders};
+        int[] images = {};
+
+        String muscleGroup = exercisesItem.getMuscleGroup();
+        if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
+            images = new int[]{R.drawable.chest, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
+            images = new int[]{R.drawable.shoulders, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
+            images = new int[]{R.drawable.biceps, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
+            images = new int[]{R.drawable.triceps, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
+            images = new int[]{R.drawable.forearms, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
+            images = new int[]{R.drawable.back, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
+            images = new int[]{R.drawable.abs, R.drawable.weight};
+        } else if (Objects.equals(muscleGroup, getString(R.string.legs_exercise))) {
+            images = new int[]{R.drawable.legs, R.drawable.weight};
+        }
 
         // set images in image pager adapter, set adapter and view pager dots
         ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
@@ -87,11 +110,11 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         dotsIndicator.setViewPager2(viewPager2);
 
         // get the timer text view
-        workTimer = findViewById(R.id.id_ac_on_ex_TextView2_1);
-        restTimer = findViewById((R.id.id_ac_on_ex_TextView2_2));
+        workTimer = findViewById(R.id.ac_on_ex_TextView1);
+        restTimer = findViewById((R.id.ac_on_ex_TextView2));
 
-        workButtonTimer = findViewById(R.id.id_ac_on_ex_Button1_1);
-        restButtonTimer = findViewById(R.id.id_ac_on_ex_Button1_2);
+        workButtonTimer = findViewById(R.id.ac_on_ex_Button1);
+        restButtonTimer = findViewById(R.id.ac_on_ex_Button2);
 
         // get the recycler view in order to manipulate it
         recView = findViewById(R.id.id_ac_on_ex_RecView1);
@@ -133,43 +156,47 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     //}
 
     // what to do when ADD button is pressed
-    public void ADD(View view) {
+    public void ADD_EXERCISE(View view) {
 
         //Date current_date = new Date();
         //SimpleDateFormat date_formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         //String formated_date = date_formater.format(current_date);
         long current_date = System.currentTimeMillis();
 
-        EditText edit_weight = findViewById(R.id.id_ac_on_ex_TextView3);
-        EditText edit_reps = findViewById(R.id.id_ac_on_ex_TextView4);
+        EditText edit_set = findViewById(R.id.ac_on_ex_EditText1);
+        EditText edit_weight = findViewById(R.id.ac_on_ex_EditText2);
+        EditText edit_reps = findViewById(R.id.ac_on_ex_EditText3);
         TextView edit_work_duration = workTimer;
         TextView edit_rest_duration = restTimer;
 
+        Editable editable_set = edit_set.getText();
         Editable editable_weight = edit_weight.getText();
         Editable editable_reps = edit_reps.getText();
         CharSequence editable_work_duration = edit_work_duration.getText();
         CharSequence editable_rest_duration = edit_rest_duration.getText();
 
+        int set_text = (TextUtils.isEmpty(editable_set.toString())) ? 0 : Integer.parseInt(editable_set.toString());
         float weight_text = (TextUtils.isEmpty(editable_weight.toString())) ? 0 : Float.parseFloat(editable_weight.toString());
         int reps_text = (TextUtils.isEmpty(editable_reps.toString())) ? 0 : Integer.parseInt(editable_reps.toString());
         int work_duration = (TextUtils.isEmpty(editable_work_duration.toString())) ? 0 : Integer.parseInt(editable_work_duration.toString());
         int rest_duration = (TextUtils.isEmpty(editable_rest_duration.toString())) ? 0 : Integer.parseInt(editable_rest_duration.toString());
 
-        OneExerciseItem new_item = new OneExerciseItem(exercise_name, current_date, weight_text, reps_text, work_duration, rest_duration);
+        OneExerciseItem new_item = new OneExerciseItem(exercise_name, current_date, set_text, weight_text, reps_text, work_duration, rest_duration);
         oneExerciseViewModel.insert(new_item);
 
         // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
         //recViewAdapter.addItem(new_item);
         //recView.smoothScrollToPosition(recViewAdapter.getItemCount() - 1);
 
-        if (!stopwatchWorkIsRunning){
-            workTimer.setText("0");
-        }
+        //if (!stopwatchWorkIsRunning){
+        //    workTimer.setText("0");
+        //}
         
-        if (!stopwatchRestIsRunning){
-            restTimer.setText("0");
-        }
+        //if (!stopwatchRestIsRunning){
+        //    restTimer.setText("0");
+        //}
 
+        edit_set.getText().clear();
         edit_weight.getText().clear();
         edit_reps.getText().clear();
     }
@@ -190,7 +217,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     private Runnable work_runnable = new Runnable() {
         @Override
         public void run() {
-            long millis = System.currentTimeMillis() - startWorkTime;
+            long millis = System.currentTimeMillis() - startWorkTime + elapsedWorkTime;
             int seconds = (int) (millis / 1000);
 
             workTimer.setText(String.format("%03d", seconds));
@@ -202,7 +229,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     private Runnable rest_runnable = new Runnable() {
         @Override
         public void run() {
-            long millis = System.currentTimeMillis() - startRestTime;
+            long millis = System.currentTimeMillis() - startRestTime + elapsedRestTime;
             int seconds = (int) (millis / 1000);
 
             restTimer.setText(String.format("%03d", seconds));
@@ -213,27 +240,69 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
 
     public void WorkoutTimer(View view) {
 
-        if (stopwatchWorkIsRunning){
-            workButtonTimer.setText("Start Workout Timer");
-            handler.removeCallbacks(work_runnable);
+        if(stopwatchWorkIsRunning){
+            stopWorkTimer();
         } else {
-            workButtonTimer.setText("Stop Workout Timer");
-            startWorkTime = System.currentTimeMillis();
-            handler.post(work_runnable);
+            startWorkTimer();
         }
-        stopwatchWorkIsRunning = !stopwatchWorkIsRunning;
+    }
+
+    public void ResetWorkoutT(View view){
+        resetWorkTimer();
+    }
+
+    public void startWorkTimer(){
+        startWorkTime = System.currentTimeMillis();
+        handler.postDelayed(work_runnable, 0);
+        stopwatchWorkIsRunning = true;
+        workButtonTimer.setText("Stop Workout Timer");
+    }
+
+    public void stopWorkTimer(){
+        handler.removeCallbacks(work_runnable);
+        elapsedWorkTime += System.currentTimeMillis() - startWorkTime;
+        stopwatchWorkIsRunning = false;
+        workButtonTimer.setText("Start Workout Timer");
+    }
+
+    public void resetWorkTimer(){
+        workTimer.setText("000");
+        elapsedWorkTime = 0;
+        stopwatchWorkIsRunning = false;
+        workButtonTimer.setText("Start Workout Timer");
     }
 
     public void RestingTimer(View view) {
 
-        if (stopwatchRestIsRunning){
-            restButtonTimer.setText("Start Rest Timer");
-            handler.removeCallbacks(rest_runnable);
+        if(stopwatchRestIsRunning){
+            stopRestTimer();
         } else {
-            restButtonTimer.setText("Stop Rest Timer");
-            startRestTime = System.currentTimeMillis();
-            handler.post(rest_runnable);
+            startRestTimer();
         }
-        stopwatchRestIsRunning = !stopwatchRestIsRunning;
+    }
+
+    public void ResetRestingT(View view){
+        resetRestTimer();
+    }
+
+    public void startRestTimer(){
+        startRestTime = System.currentTimeMillis();
+        handler.postDelayed(rest_runnable, 0);
+        stopwatchRestIsRunning = true;
+        restButtonTimer.setText("Stop Rest Timer");
+    }
+
+    public void stopRestTimer(){
+        handler.removeCallbacks(rest_runnable);
+        elapsedRestTime += System.currentTimeMillis() - startRestTime;
+        stopwatchRestIsRunning = false;
+        restButtonTimer.setText("Start Rest Timer");
+    }
+
+    public void resetRestTimer(){
+        restTimer.setText("000");
+        elapsedRestTime = 0;
+        stopwatchRestIsRunning = false;
+        restButtonTimer.setText("Start Rest Timer");
     }
 }

@@ -17,19 +17,21 @@ public class OneExerciseItem implements Parcelable {
     @PrimaryKey
     @NonNull
     private long itemDate;
+    private int setNumber;
     private float itemWeight;
     private int itemReps;
     private int itemDuration;
     private int itemRest;
 
-    public OneExerciseItem(String exerciseName, long date, float weight, int reps, int work_duration, int rest_duration) {
+    public OneExerciseItem(String exerciseName, long date, int setNumber, float weight, int reps, int work_duration, int rest_duration) {
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
         this.exerciseName = exerciseName;
-        itemDate = date;
-        itemWeight = weight;
-        itemReps = reps;
-        itemDuration = work_duration;
-        itemRest = rest_duration;
+        this.itemDate = date;
+        this.setNumber = setNumber;
+        this.itemWeight = weight;
+        this.itemReps = reps;
+        this.itemDuration = work_duration;
+        this.itemRest = rest_duration;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
@@ -41,6 +43,7 @@ public class OneExerciseItem implements Parcelable {
 
         exerciseName = in.readString();
         itemDate = in.readLong();
+        setNumber = in.readInt();
         itemWeight = in.readFloat();
         itemReps = in.readInt();
         itemDuration = in.readInt();
@@ -74,6 +77,7 @@ public class OneExerciseItem implements Parcelable {
         //dest.writeLong(itemDate.getTime());
         dest.writeString(exerciseName);
         dest.writeLong(itemDate);
+        dest.writeInt(setNumber);
         //dest.writeString(itemDate);
         dest.writeFloat(itemWeight);
         dest.writeInt(itemReps);
@@ -91,6 +95,10 @@ public class OneExerciseItem implements Parcelable {
     public void setItemDate(long date) {
         this.itemDate = date;
     }
+
+    public int getSetNumber(){return setNumber;}
+
+    public void setSetNumber(int setNumber){this.setNumber = setNumber;}
 
     public float getItemWeight() {
         return itemWeight;
@@ -130,6 +138,7 @@ public class OneExerciseItem implements Parcelable {
         return "OneExerciseItem{" +
                 " Name='" + exerciseName + '\'' +
                 " Date='" + itemDate + '\'' +
+                " Set='" + setNumber + '\'' +
                 ", Weight=" + itemWeight + '\'' +
                 ", Reps=" + itemReps + '\'' +
                 ", Duration=" + itemDuration + '\'' +

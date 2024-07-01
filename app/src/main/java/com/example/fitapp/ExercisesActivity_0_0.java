@@ -58,6 +58,8 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         recyclerView.setAdapter(muscleGroupAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // ToDo: make database for added exercises also, do that in Activity_0, storing exercises in Activity_0 and adding exercises here in this activity
+
         //// Get the OnBackPressedDispatcher
         //OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         //
@@ -173,9 +175,11 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
 
         //MainMenuRecViewItem exercise = item_list.get(position);
         String exercise_name = muscleGroupItems.get(position).getExerciseName();
+        ExercisesItem exercisesItem = muscleGroupItems.get(position);
 
         Intent intent = new Intent(this, OneExerciseActivity_0_0_0.class);
-        intent.putExtra("ExerciseName", exercise_name);
+        //intent.putExtra("ExercisesName", exercise_name);
+        intent.putExtra("ExercisesItem", exercisesItem);
         startActivity(intent);
     }
 }

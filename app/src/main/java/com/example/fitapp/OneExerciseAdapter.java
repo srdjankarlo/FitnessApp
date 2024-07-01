@@ -52,6 +52,7 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
         //holder.item_date.setText(item.getitemDate());
         //holder.item_date.setText(String.valueOf(recViewItems.get(position).getItemDate()));
         holder.item_date.setText(formatTimestamp(recViewItems.get(position).getItemDate()));
+        holder.item_set.setText(String.valueOf(recViewItems.get(position).getSetNumber()));
         //holder.date.setText(recViewItems.get(position).getOneExerciseRecViewDate());
         holder.item_weight.setText(String.valueOf(recViewItems.get(position).getItemWeight()));
         holder.item_reps.setText(String.valueOf(recViewItems.get(position).getItemReps()));
@@ -85,6 +86,7 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
         // if we want to have access to elements inside view object, add them as fields of this inner class
         //private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
         private TextView item_date;
+        private TextView item_set;
         private TextView item_weight;
         private TextView item_reps;
         private TextView item_duration;
@@ -96,7 +98,8 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
             super(itemView);
             context = itemView.getContext();
             //MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
-            item_date = itemView.findViewById(R.id.id_ac_on_ex_it_TextView1);
+            item_date = itemView.findViewById(R.id.id_ac_on_ex_it_TextView0);
+            item_set = itemView.findViewById(R.id.id_ac_on_ex_it_TextView1);
             item_weight = itemView.findViewById(R.id.id_ac_on_ex_it_TextView2);
             item_reps = itemView.findViewById(R.id.id_ac_on_ex_it_TextView3);
             item_duration = itemView.findViewById(R.id.id_ac_on_ex_it_TextView4);
