@@ -6,12 +6,15 @@ import android.os.Parcelable;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "exercises_table")
 public class ExercisesItem implements Parcelable {
     @DrawableRes
     private int image;
     private String muscleGroup;
+    @PrimaryKey
+    @NonNull
     private String exerciseName;
 
     public ExercisesItem(@DrawableRes int image, String muscleGroup, String exerciseName) {

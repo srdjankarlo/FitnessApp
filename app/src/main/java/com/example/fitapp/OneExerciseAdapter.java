@@ -12,22 +12,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 // extends and whats written later we add additionally after we make class bellow with constructor
 public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.ViewHolder> {
 
-    //private final OneExerciseRecViewInterface oneExerciseRecViewInterface;
-    private ArrayList<OneExerciseItem> recViewItems = new ArrayList<>();
+    private final OneExerciseInterface oneExerciseInterface;
+    private List<OneExerciseItem> recViewItems = new ArrayList<>();
     private Context context;
+    private OneExerciseAdapter.OnItemClickListener listener;
 
     // we need constructor for this ViewAdapter, so alt+ins
     //public OneExerciseRecViewAdapter(Context context, OneExerciseRecViewInterface oneExerciseRecViewInterface) {
     //    this.context = context;
     //    this.oneExerciseRecViewInterface = oneExerciseRecViewInterface;
     //}
-    public OneExerciseAdapter(Context context) {
+    public OneExerciseAdapter(Context context, OneExerciseInterface oneExerciseInterface) {
         this.context = context;
+        this.oneExerciseInterface = oneExerciseInterface;
     }
 
 
@@ -61,9 +64,14 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
         return recViewItems.size();
     }
 
-    public void setItems(ArrayList<OneExerciseItem> mainMenuRecView_items) {
-        this.recViewItems = mainMenuRecView_items;
+    public void setItems(List<OneExerciseItem> oneExerciseItems) {
+        this.recViewItems = oneExerciseItems;
+        notifyDataSetChanged();
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle items added later*/
+    }
+
+    public OneExerciseItem getOneExerciseAtPosition(int position){
+        return recViewItems.get(position);
     }
 
     private String formatTimestamp(long timestamp) {
@@ -94,20 +102,27 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
             item_duration = itemView.findViewById(R.id.id_ac_on_ex_it_TextView4);
             item_rest = itemView.findViewById(R.id.id_ac_on_ex_it_TextView5);
 
-            //// set on click
-            //itemView.setOnClickListener(new View.OnClickListener() {
-            //    @Override
-            //    public void onClick(View view) {
-            //        if (mainMenuRecViewInterface != null){
-            //            int pos = getAdapterPosition();
-            //
-            //            if (pos != RecyclerView.NO_POSITION){
-            //                mainMenuRecViewInterface.onItemClick(pos);
-            //            }
-            //        }
-            //    }
-            //});
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (oneExerciseInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION){
+                            oneExerciseInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(OneExerciseItem oneExerciseItem);
+    }
+
+    public void setOnItemClickListener(OneExerciseAdapter.OnItemClickListener listener){
+        this.listener = (OneExerciseAdapter.OnItemClickListener) listener;
     }
 
     // Method to add an item

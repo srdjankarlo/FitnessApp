@@ -49,6 +49,7 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
 
     public void setExercisesItems(ArrayList<ExercisesItem> exercisesItems) {
         this.exercisesItems = exercisesItems;
+        notifyDataSetChanged();
         /* notifyDataSetChanged();  // refresh recycler view if there are new muscle groups added later
 
         i dont need this because i wont change the existing muscle groups, but it will be usefull in

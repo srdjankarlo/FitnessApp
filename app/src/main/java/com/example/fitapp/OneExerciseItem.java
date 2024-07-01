@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
@@ -12,14 +13,18 @@ import java.util.Date;
 public class OneExerciseItem implements Parcelable {
 
     //private SimpleDateFormat itemDate;
+    private String exerciseName;
+    @PrimaryKey
+    @NonNull
     private long itemDate;
     private float itemWeight;
     private int itemReps;
     private int itemDuration;
     private int itemRest;
 
-    public OneExerciseItem(long date, float weight, int reps, int work_duration, int rest_duration) {
+    public OneExerciseItem(String exerciseName, long date, float weight, int reps, int work_duration, int rest_duration) {
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
+        this.exerciseName = exerciseName;
         itemDate = date;
         itemWeight = weight;
         itemReps = reps;
@@ -34,6 +39,7 @@ public class OneExerciseItem implements Parcelable {
         //long tmpDate = in.readLong();
         //itemDate = tmpDate == -1 ? null : new Date(tmpDate);
 
+        exerciseName = in.readString();
         itemDate = in.readLong();
         itemWeight = in.readFloat();
         itemReps = in.readInt();
@@ -66,6 +72,7 @@ public class OneExerciseItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags){
         //dest.writeString(itemDate.toPattern());
         //dest.writeLong(itemDate.getTime());
+        dest.writeString(exerciseName);
         dest.writeLong(itemDate);
         //dest.writeString(itemDate);
         dest.writeFloat(itemWeight);
@@ -73,6 +80,9 @@ public class OneExerciseItem implements Parcelable {
         dest.writeInt(itemDuration);
         dest.writeInt(itemRest);
     }
+
+    public String getExerciseName(){return exerciseName;}
+    public  void setExerciseName(String exerciseName){this.exerciseName = exerciseName;}
 
     public long getItemDate() {
         return itemDate;
@@ -114,12 +124,12 @@ public class OneExerciseItem implements Parcelable {
         itemRest = rest;
     }
 
-
     @NonNull
     @Override
     public String toString() {
         return "OneExerciseItem{" +
-                "Date='" + itemDate + '\'' +
+                " Name='" + exerciseName + '\'' +
+                " Date='" + itemDate + '\'' +
                 ", Weight=" + itemWeight + '\'' +
                 ", Reps=" + itemReps + '\'' +
                 ", Duration=" + itemDuration + '\'' +

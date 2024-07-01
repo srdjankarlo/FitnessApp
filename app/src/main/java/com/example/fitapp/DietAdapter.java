@@ -111,10 +111,6 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
                             dietItemInterface.onItemClick(pos);
                         }
                     }
-                    //int position = getAdapterPosition();
-                    //if (listener != null && position != RecyclerView.NO_POSITION){
-                    //    listener.onItemClick(recViewItems.get(position));
-                    //}
                 }
             });
         }
@@ -122,7 +118,6 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
     public interface OnItemClickListener{
         void onItemClick(DietItem dietItem);
-        void onItemLongClick(DietItem dietItem);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){

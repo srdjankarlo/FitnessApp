@@ -2,10 +2,13 @@ package com.example.fitapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,18 +19,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 //public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneExerciseRecViewInterface {
-public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
+public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneExerciseInterface {
 
     //OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this, this);
     RecyclerView recView;
-    OneExerciseAdapter recViewAdapter = new OneExerciseAdapter(this);
+    OneExerciseAdapter recViewAdapter;
     ViewPager2 viewPager2;
     DotsIndicator dotsIndicator;
     TextView workTimer;
@@ -40,6 +45,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
     private Handler handler = new Handler();
     private long startWorkTime = 0;
     private long startRestTime = 0;
+    private String exercise_name;
+    OneExerciseViewModel oneExerciseViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +59,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         //item = intent.getParcelableExtra("ExerciseName");
         //String name = item.getMainMenuRecViewTextView1();
         Bundle intent = getIntent().getExtras();
-        String exercise_name = intent.getString("ExerciseName");
+        exercise_name = intent.getString("ExerciseName");
 
         // set layout
         setContentView(R.layout.activity_one_exercise);
@@ -92,6 +99,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         // set the adapter for recycler view and show items in it
         // ToDo: first manage to add one item
         //items.add(new OneExerciseItem("formated_date", "weight_text", "reps_text", "duration"));
+        recViewAdapter = new OneExerciseAdapter(this, this);
         recViewAdapter.setItems(items);
         recView.setAdapter(recViewAdapter);
 
@@ -102,6 +110,14 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
 
         recView.setLayoutManager(layoutManager);
         //recView.setLayoutManager(new LinearLayoutManager(this));
+
+        oneExerciseViewModel = new ViewModelProvider(this).get(OneExerciseViewModel.class);
+        oneExerciseViewModel.getAllOneExerciseData(exercise_name).observe(this, new Observer<List<OneExerciseItem>>() {
+            @Override
+            public void onChanged(List<OneExerciseItem> oneExerciseItems) {
+                recViewAdapter.setItems(oneExerciseItems);
+            }
+        });
 
     }
 
@@ -139,11 +155,12 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
         int work_duration = (TextUtils.isEmpty(editable_work_duration.toString())) ? 0 : Integer.parseInt(editable_work_duration.toString());
         int rest_duration = (TextUtils.isEmpty(editable_rest_duration.toString())) ? 0 : Integer.parseInt(editable_rest_duration.toString());
 
-        OneExerciseItem new_item = new OneExerciseItem(current_date, weight_text, reps_text, work_duration, rest_duration);
+        OneExerciseItem new_item = new OneExerciseItem(exercise_name, current_date, weight_text, reps_text, work_duration, rest_duration);
+        oneExerciseViewModel.insert(new_item);
 
         // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
-        recViewAdapter.addItem(new_item);
-        recView.smoothScrollToPosition(recViewAdapter.getItemCount() - 1);
+        //recViewAdapter.addItem(new_item);
+        //recView.smoothScrollToPosition(recViewAdapter.getItemCount() - 1);
 
         if (!stopwatchWorkIsRunning){
             workTimer.setText("0");
@@ -155,6 +172,19 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity {
 
         edit_weight.getText().clear();
         edit_reps.getText().clear();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        // ToDo: logic to delete or update diet item
+
+        Toast.makeText(OneExerciseActivity_0_0_0.this, "Item clicked", Toast.LENGTH_SHORT).show();
+
+        //Intent intent = new Intent(getApplicationContext(), PopUpDietEdit.class);
+        ////intent.putExtra("position", position);
+        //intent.putExtra("dietItem", adapter.getDietAtPosition(position));
+        //startActivity(intent);
+        ////startActivity(new Intent(DietActivity_0_1.this, PopUpDietEdit.class));
     }
 
     private Runnable work_runnable = new Runnable() {
