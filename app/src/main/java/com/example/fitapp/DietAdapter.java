@@ -50,10 +50,10 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.date.setText(formatTimestamp(recViewItems.get(position).getDate()));
         holder.food_name.setText(recViewItems.get(position).getFood_name());
-        holder.protein.setText(String.valueOf(recViewItems.get(position).getProteins()));
-        holder.fat.setText(String.valueOf(recViewItems.get(position).getFats()));
-        holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getCarbohydrates()));
-        holder.sugar.setText(String.valueOf(recViewItems.get(position).getCalories()));
+        holder.protein.setText(String.valueOf(recViewItems.get(position).getProteins()) + "g");
+        holder.fat.setText(String.valueOf(recViewItems.get(position).getFats()) + "g");
+        holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getCarbohydrates()) + "g");
+        holder.sugar.setText(String.valueOf(recViewItems.get(position).getCalories()) + "kcal");
     }
 
     @Override
