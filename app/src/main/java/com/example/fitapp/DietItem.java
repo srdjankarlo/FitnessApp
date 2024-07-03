@@ -15,18 +15,20 @@ public class DietItem implements Parcelable {
     @PrimaryKey
     private long date;
     private String food_name;
+    private int own_weight;
     private int proteins;
     private int fats;
     private int carbohydrates;
     private int calories;
 
-    public DietItem(long this_date, String name, int protein, int fat, int carbs, int calorie) {
-        date = this_date;
-        food_name = name;
-        proteins = protein;
-        fats = fat;
-        carbohydrates = carbs;
-        calories = calorie;
+    public DietItem(long this_date, String name, int own_weight, int protein, int fat, int carbs, int calorie) {
+        this.date = this_date;
+        this.food_name = name;
+        this.own_weight = own_weight;
+        this.proteins = protein;
+        this.fats = fat;
+        this.carbohydrates = carbs;
+        this.calories = calorie;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
@@ -39,6 +41,7 @@ public class DietItem implements Parcelable {
 
         this.date = in.readLong();
         this.food_name = in.readString();
+        this.own_weight = in.readInt();
         this.proteins = in.readInt();
         this.fats = in.readInt();
         this.carbohydrates = in.readInt();
@@ -71,6 +74,7 @@ public class DietItem implements Parcelable {
         //dest.writeLong(date.getTime());
         dest.writeLong(date);
         dest.writeString(food_name);
+        dest.writeInt(own_weight);
         dest.writeInt(proteins);
         dest.writeInt(fats);
         dest.writeInt(carbohydrates);
@@ -88,6 +92,10 @@ public class DietItem implements Parcelable {
     public void setFood_name(String food) {
         this.food_name = food;
     }
+
+    public int getOwn_weight(){return own_weight;}
+
+    public void setOwn_weight(int own_weight){this.own_weight = own_weight;}
 
     public int getProteins() {
         return proteins;
@@ -128,6 +136,7 @@ public class DietItem implements Parcelable {
         return "DietItem{" +
                 "Date='" + date + '\'' +
                 ", Food='" + food_name + '\'' +
+                ", OwnWeight='" + own_weight + '\'' +
                 ", Protein=" + proteins + '\'' +
                 ", Fat=" + fats + '\'' +
                 ", Carbs=" + carbohydrates + '\'' +

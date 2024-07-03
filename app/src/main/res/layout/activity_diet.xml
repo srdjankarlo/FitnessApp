@@ -8,67 +8,89 @@
 
     <!--    // ToDo: add plot above recycler view-->
 
-    <EditText
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/id_ac_di_EditText1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Food name"/>
+        android:id="@+id/ac_di_LinearLayout0"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/ac_di_EditTextFoodName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Food name"/>
+
+        <EditText
+            android:id="@+id/ac_di_EditTextOwnWeight"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:hint="Own Weight[kg]"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ac_di_LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/id_ac_di_EditText1">
+        app:layout_constraintTop_toBottomOf="@id/ac_di_LinearLayout0">
 
         <EditText
-            android:id="@+id/id_ac_di_EditText2"
+            android:id="@+id/ac_di_EditTextProteins"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Proteins[g]"
             android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
 
         <EditText
-            android:id="@+id/id_ac_di_EditText3"
+            android:id="@+id/ac_di_EditTextFats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Fats[g]"
             android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
 
         <EditText
-            android:id="@+id/id_ac_di_EditText4"
+            android:id="@+id/ac_di_EditTextCarbs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Carbs[g]"
             android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
 
         <EditText
-            android:id="@+id/id_ac_di_EditText5"
+            android:id="@+id/ac_di_EditTextCals"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Cals[kcal]"
             android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/ac_di_Button1"
+        android:id="@+id/ac_di_ButtonAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/ac_di_LinearLayout1"
-        android:text="Add Meal"
+        android:text="Add"
         android:onClick="AddMeal"/>
 
     <TextView
-        android:id="@+id/ac_di_TextView1"
+        android:id="@+id/ac_di_TextViewDailyNutrients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ac_di_Button1"
+        app:layout_constraintTop_toBottomOf="@+id/ac_di_ButtonAdd"
         android:text="Daily Nutrients Intake"
         android:gravity="center"/>
 
@@ -76,7 +98,7 @@
         android:id="@+id/ac_di_LinearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ac_di_TextView1"
+        app:layout_constraintTop_toBottomOf="@+id/ac_di_TextViewDailyNutrients"
         android:orientation="horizontal">
 
         <TextView

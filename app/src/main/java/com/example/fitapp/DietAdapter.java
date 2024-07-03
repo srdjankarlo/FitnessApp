@@ -50,6 +50,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.date.setText(formatTimestamp(recViewItems.get(position).getDate()));
         holder.food_name.setText(recViewItems.get(position).getFood_name());
+        holder.own_weight.setText(String.valueOf(recViewItems.get(position).getOwn_weight()) + "kg");
         holder.protein.setText(String.valueOf(recViewItems.get(position).getProteins()) + "g");
         holder.fat.setText(String.valueOf(recViewItems.get(position).getFats()) + "g");
         holder.carbohydrates.setText(String.valueOf(recViewItems.get(position).getCarbohydrates()) + "g");
@@ -82,6 +83,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
         //private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
         private TextView date;
         private TextView food_name;
+        private TextView own_weight;
         private TextView protein;
         private TextView fat;
         private TextView carbohydrates;
@@ -93,8 +95,9 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
             super(itemView);
             context = itemView.getContext();
             //MainMenuRecView_Layout = itemView.findViewById(R.id.id_ac_ma_me_it_Layout);
-            date = itemView.findViewById(R.id.id_di_it_TextView0);
-            food_name = itemView.findViewById(R.id.id_di_it_TextView1);
+            date = itemView.findViewById(R.id.di_it_TextViewDate);
+            food_name = itemView.findViewById(R.id.di_it_TextViewFoodName);
+            own_weight = itemView.findViewById(R.id.di_it_TextViewOwnWeight);
             protein = itemView.findViewById(R.id.id_di_it_TextView2);
             fat = itemView.findViewById(R.id.id_di_it_TextView3);
             carbohydrates = itemView.findViewById(R.id.id_di_it_TextView4);

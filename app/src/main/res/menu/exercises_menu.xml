@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/ex_me_item1"
-        android:title="Add Exercise"/>
+        app:showAsAction="ifRoom"
+        android:id="@+id/ex_me_item"
+        android:title=""
+        android:icon="@drawable/baseline_menu_24">
+        <menu>
+
+            <item android:id="@+id/ex_me_item1"
+                android:title="Add Exercise"
+                app:showAsAction="never"
+                android:icon="@drawable/weight"/>
+
+        </menu>
+    </item>
 
 </menu>
