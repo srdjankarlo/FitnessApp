@@ -31,7 +31,7 @@
             android:padding="10dp"
             android:inputType="numberDecimal"
             android:gravity="center"
-            android:hint="Weight[kg]"/>
+            android:hint="[kg]"/>
 
         <EditText
             android:id="@+id/ac_po_up_on_ex_ed_EditText3"
@@ -42,6 +42,26 @@
             android:inputType="numberSigned"
             android:gravity="center"
             android:hint="Reps"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_on_ex_ed_EditText4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:gravity="center"
+            android:hint="Work[s]"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_on_ex_ed_EditText5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:gravity="center"
+            android:hint="Rest[s]"/>
 
     </LinearLayout>
 

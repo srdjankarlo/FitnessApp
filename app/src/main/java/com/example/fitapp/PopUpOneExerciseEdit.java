@@ -12,7 +12,7 @@ import android.widget.EditText;
 public class PopUpOneExerciseEdit extends OneExerciseActivity_0_0_0 {
 
     OneExerciseItem oneExerciseItem;
-    EditText edit_set, edit_weight, edit_reps;
+    EditText edit_set, edit_weight, edit_reps, edit_work_t, edit_rest_t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +32,20 @@ public class PopUpOneExerciseEdit extends OneExerciseActivity_0_0_0 {
         int set = oneExerciseItem.getSetNumber();
         float weight = oneExerciseItem.getItemWeight();
         int reps = oneExerciseItem.getItemReps();
+        int work_t = oneExerciseItem.getItemWorkTime();
+        int rest_t = oneExerciseItem.getItemRestTime();
 
         edit_set = findViewById(R.id.ac_po_up_on_ex_ed_EditText1);
         edit_weight = findViewById(R.id.ac_po_up_on_ex_ed_EditText2);
         edit_reps = findViewById(R.id.ac_po_up_on_ex_ed_EditText3);
+        edit_work_t = findViewById(R.id.ac_po_up_on_ex_ed_EditText4);
+        edit_rest_t = findViewById(R.id.ac_po_up_on_ex_ed_EditText5);
 
         edit_set.setText(String.valueOf(set));
         edit_weight.setText(String.valueOf(weight));
         edit_reps.setText(String.valueOf(reps));
+        edit_work_t.setText(String.valueOf(work_t));
+        edit_rest_t.setText(String.valueOf(rest_t));
     }
 
     public void Update(View view) {
@@ -47,18 +53,26 @@ public class PopUpOneExerciseEdit extends OneExerciseActivity_0_0_0 {
         EditText edit_set = findViewById(R.id.ac_po_up_on_ex_ed_EditText1);
         EditText edit_weight = findViewById(R.id.ac_po_up_on_ex_ed_EditText2);
         EditText edit_reps = findViewById(R.id.ac_po_up_on_ex_ed_EditText3);
+        EditText edit_work_t = findViewById(R.id.ac_po_up_on_ex_ed_EditText4);
+        EditText edit_rest_t = findViewById(R.id.ac_po_up_on_ex_ed_EditText5);
 
         Editable editable_set = edit_set.getText();
         Editable editable_weight = edit_weight.getText();
         Editable editable_reps = edit_reps.getText();
+        Editable editable_work_t = edit_work_t.getText();
+        Editable editable_rest_t = edit_rest_t.getText();
 
         int set_text = (TextUtils.isEmpty(editable_set.toString())) ? 0 : Integer.parseInt(editable_set.toString());
         float weight_text = (TextUtils.isEmpty(editable_weight.toString())) ? 0 : Float.parseFloat(editable_weight.toString());
         int reps_text = (TextUtils.isEmpty(editable_reps.toString())) ? 0 : Integer.parseInt(editable_reps.toString());
+        int work_t_text = (TextUtils.isEmpty(editable_work_t.toString())) ? 0 : Integer.parseInt(editable_work_t.toString());
+        int rest_t_text = (TextUtils.isEmpty(editable_rest_t.toString())) ? 0 : Integer.parseInt(editable_rest_t.toString());
 
         oneExerciseItem.setSetNumber(set_text);
         oneExerciseItem.setItemWeight(weight_text);
         oneExerciseItem.setItemReps(reps_text);
+        oneExerciseItem.setItemWorkTime(work_t_text);
+        oneExerciseItem.setItemRestTime(rest_t_text);
 
         oneExerciseViewModel.update(oneExerciseItem);
 

@@ -56,8 +56,8 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
         //holder.date.setText(recViewItems.get(position).getOneExerciseRecViewDate());
         holder.item_weight.setText(String.valueOf(recViewItems.get(position).getItemWeight()));
         holder.item_reps.setText(String.valueOf(recViewItems.get(position).getItemReps()));
-        holder.item_duration.setText(String.valueOf(recViewItems.get(position).getItemDuration()));
-        holder.item_rest.setText(String.valueOf(recViewItems.get(position).getItemRest()));
+        holder.item_duration.setText(String.valueOf(recViewItems.get(position).getItemWorkTime()));
+        holder.item_rest.setText(String.valueOf(recViewItems.get(position).getItemRestTime()));
     }
 
     @Override

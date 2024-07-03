@@ -58,64 +58,105 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
         bar.setBackgroundDrawable(color);
 
         // fill lists with items for exercises
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 0"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 1"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 2"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 3"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 4"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 5"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 6"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 7"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 8"));
-        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Chest 9"));
-        chest_exercise_counter = 10;
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Push-Ups"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Close Grip Push-Ups"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Wide Grip Push-Ups"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Decline Push-Ups"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Incline Push-Ups"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Parallel Bar Dips"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Bench Press"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Incline Press"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Decline Press"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Dumbbell Press"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Incline Dumbbell Press"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Decline Dumbbell Press"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Dumbbell Flys"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Incline Dumbbell Flys"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Decline Dumbbell Flys"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Cable Crossover Flys"));
+        chest_exercises.add(new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise),"Peck Deck Flys"));
+        chest_exercise_counter = 17;
 
-        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 0"));
-        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 1"));
-        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 2"));
-        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 3"));
-        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders 4"));
-        shoulder_exercise_counter = 5;
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Lateral Raises"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Bent-Over Lateral Raise"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Standing Back Presses"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Standing Front Presses"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Sitting Back Presses"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Sitting Front Presses"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Standing Dumbbell Presses"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Sitting Dumbbell Presses"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Upright Rows"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Peck Deck Rear-Delt Flys"));
+        shoulder_exercises.add(new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Front Weight Raise"));
+        shoulder_exercise_counter = 11;
 
-        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 0"));
-        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 1"));
-        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 2"));
-        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps 3"));
-        biceps_exercise_counter = 4;
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Synchronized Dumbbell Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Synchronized Hammer Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Synchronized Reverse Dumbbell Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Asynchronous Dumbbell Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Asynchronous Hammer Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Asynchronous Reverse Dumbbell Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Barbell Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Reverse Barbell Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "EZ-Bar Curls"));
+        biceps_exercises.add(new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Reverse EZ-Bar Curls"));
+        biceps_exercise_counter = 10;
 
-        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 0"));
-        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 1"));
-        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps 2"));
-        triceps_exercise_counter = 3;
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Push-Downs"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Cable Push-Downs"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Reverse Push-Downs"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Parallel Bar Dips")); // this is also for chest, think somehow to connect the two
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise),"Close Grip Push-Ups")); // this is also for chest, think somehow to connect the two
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps Dips"));
+        triceps_exercises.add(new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Dumbbell Kickbacks"));
+        triceps_exercise_counter = 7;
 
-        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms 0"));
-        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms 1"));
-        forearms_exercise_counter = 2;
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Barbel Wrist Curls"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Dumbbell Wrist Curls"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Dumbbell Wrist Twist"));
+        // ToDo: these are also for biceps exercises, think somehow to connect them
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms,getString(R.string.forearms_exercise), "Synchronized Hammer Curls"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms,getString(R.string.forearms_exercise), "Synchronized Reverse Dumbbell Curls"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms,getString(R.string.forearms_exercise), "Asynchronous Hammer Curls"));
+        forearms_exercises.add(new ExercisesItem(R.drawable.forearms,getString(R.string.forearms_exercise), "Asynchronous Reverse Dumbbell Curls"));
+        forearms_exercise_counter = 7;
 
-        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 0"));
-        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 1"));
-        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 2"));
-        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 3"));
-        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 4"));
-        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back 5"));
-        back_exercise_counter = 6;
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Chin-Ups"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Reverse Chin-Ups"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Deadlifts"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Barbell Bent Over Row"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Dumbell Bent Over Row"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "T-Bar Bent Over Row"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Dumbbell Shrugs"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Barbell Shrugs"));
+        back_exercises.add(new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back Extensions"));
+        back_exercise_counter = 9;
 
-        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 0"));
-        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 1"));
-        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 2"));
-        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 3"));
-        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs 4"));
-        abs_exercise_counter = 5;
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Incline Bench Sit-Ups"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Sit-Ups"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Crunches"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Leg Raises"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Hanging Leg Raises"));
+        abs_exercises.add(new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Parallel Bar Leg Raises"));
+        abs_exercise_counter = 6;
 
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 0"));
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 1"));
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 2"));
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 3"));
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 4"));
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 5"));
-        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs 6"));
-        legs_exercise_counter = 7;
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Leg Extensions"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Squats"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Dumbbell Squats"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Barbell Squats"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Lunges"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Dumbbell Lunges"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Barbell Lunges"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Bench Jump"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Good Mornings"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Single Leg Squats"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Open Jump"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Leg Curls"));
+        legs_exercises.add(new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Hip Thrust"));
+        legs_exercise_counter = 13;
+        // ToDo: separate legs into calfs, glutes, hamstrings, quads and what else
 
+        // ToDo: add Category (List: MuslceGroup) attribute to the constructor so you can have all exercises in one place (list) and show those only for what category you want
         exercises.add(new MuscleGroupsItem(R.drawable.chest, getString(R.string.chest_exercise), String.valueOf(chest_exercises.size()) + " exercises"));
         exercises.add(new MuscleGroupsItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), String.valueOf(shoulder_exercises.size()) + " exercises"));
         exercises.add(new MuscleGroupsItem(R.drawable.biceps, getString(R.string.biceps_exercise), String.valueOf(biceps_exercises.size()) + " exercises"));

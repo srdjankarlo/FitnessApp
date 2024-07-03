@@ -7,8 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "one_exercise_table")
 public class OneExerciseItem implements Parcelable {
 
@@ -20,8 +18,8 @@ public class OneExerciseItem implements Parcelable {
     private int setNumber;
     private float itemWeight;
     private int itemReps;
-    private int itemDuration;
-    private int itemRest;
+    private int itemWorkTime;
+    private int itemRestTime;
 
     public OneExerciseItem(String exerciseName, long date, int setNumber, float weight, int reps, int work_duration, int rest_duration) {
         //this.itemDate = new SimpleDateFormat(date, Locale.getDefault());
@@ -30,8 +28,8 @@ public class OneExerciseItem implements Parcelable {
         this.setNumber = setNumber;
         this.itemWeight = weight;
         this.itemReps = reps;
-        this.itemDuration = work_duration;
-        this.itemRest = rest_duration;
+        this.itemWorkTime = work_duration;
+        this.itemRestTime = rest_duration;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
@@ -46,8 +44,8 @@ public class OneExerciseItem implements Parcelable {
         setNumber = in.readInt();
         itemWeight = in.readFloat();
         itemReps = in.readInt();
-        itemDuration = in.readInt();
-        itemRest = in.readInt();
+        itemWorkTime = in.readInt();
+        itemRestTime = in.readInt();
     }
 
     public static final Creator<OneExerciseItem> CREATOR = new Creator<OneExerciseItem>() {
@@ -81,8 +79,8 @@ public class OneExerciseItem implements Parcelable {
         //dest.writeString(itemDate);
         dest.writeFloat(itemWeight);
         dest.writeInt(itemReps);
-        dest.writeInt(itemDuration);
-        dest.writeInt(itemRest);
+        dest.writeInt(itemWorkTime);
+        dest.writeInt(itemRestTime);
     }
 
     public String getExerciseName(){return exerciseName;}
@@ -116,20 +114,20 @@ public class OneExerciseItem implements Parcelable {
         itemReps = reps;
     }
 
-    public int getItemDuration() {
-        return itemDuration;
+    public int getItemWorkTime() {
+        return itemWorkTime;
     }
 
-    public void setItemDuration(int duration) {
-        itemDuration = duration;
+    public void setItemWorkTime(int duration) {
+        itemWorkTime = duration;
     }
 
-    public int getItemRest() {
-        return itemRest;
+    public int getItemRestTime() {
+        return itemRestTime;
     }
 
-    public void setItemRest(int rest) {
-        itemRest = rest;
+    public void setItemRestTime(int rest) {
+        itemRestTime = rest;
     }
 
     @NonNull
@@ -141,8 +139,8 @@ public class OneExerciseItem implements Parcelable {
                 " Set='" + setNumber + '\'' +
                 ", Weight=" + itemWeight + '\'' +
                 ", Reps=" + itemReps + '\'' +
-                ", Duration=" + itemDuration + '\'' +
-                ", Rest=" + itemRest + '\'' +
+                ", Duration=" + itemWorkTime + '\'' +
+                ", Rest=" + itemRestTime + '\'' +
                 '}';
     }
 }
