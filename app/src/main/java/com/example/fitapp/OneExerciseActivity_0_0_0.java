@@ -228,6 +228,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     }
 
     public void ResetWorkoutT(View view){
+        stopWorkTimer();
         resetWorkTimer();
     }
 
@@ -262,6 +263,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     }
 
     public void ResetRestingT(View view){
+        stopRestTimer();
         resetRestTimer();
     }
 
