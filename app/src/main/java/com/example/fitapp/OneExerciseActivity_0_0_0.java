@@ -53,14 +53,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ToDo: make slide image explanations for all exercises
-
         // get intent and set action bar title
-        //Intent intent = getIntent();
-        //item = intent.getParcelableExtra("ExerciseName");
-        //String name = item.getMainMenuRecViewTextView1();
         Bundle intent = getIntent().getExtras();
-        //exercise_name = intent.getString("ExercisesName");
         ExercisesItem exercisesItem = intent.getParcelable("ExercisesItem");
         exercise_name = exercisesItem.getExerciseName();
 
@@ -82,9 +76,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
 
         // Sample images for particular exercise
-        //int[] images = {R.drawable.back, R.drawable.abs, R.drawable.legs, R.drawable.shoulders};
         int[] images = {};
-
         String muscleGroup = exercisesItem.getMuscleGroup();
         if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
             images = new int[]{R.drawable.chest, R.drawable.weight};
@@ -113,6 +105,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         workTimer = findViewById(R.id.ac_on_ex_TextView1);
         restTimer = findViewById((R.id.ac_on_ex_TextView2));
 
+        // get the buttons
         workButtonTimer = findViewById(R.id.ac_on_ex_Button1);
         restButtonTimer = findViewById(R.id.ac_on_ex_Button2);
 
@@ -120,10 +113,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         recView = findViewById(R.id.id_ac_on_ex_RecView1);
 
         // set the adapter for recycler view and show items in it
-        // ToDo: first manage to add one item
-        //items.add(new OneExerciseItem("formated_date", "weight_text", "reps_text", "duration"));
         recViewAdapter = new OneExerciseAdapter(this, this);
-        recViewAdapter.setItems(items);
         recView.setAdapter(recViewAdapter);
 
         // to show items in reverse
@@ -132,35 +122,21 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         layoutManager.setStackFromEnd(true);
 
         recView.setLayoutManager(layoutManager);
-        //recView.setLayoutManager(new LinearLayoutManager(this));
 
+        // get the data from database
         oneExerciseViewModel = new ViewModelProvider(this).get(OneExerciseViewModel.class);
         oneExerciseViewModel.getAllOneExerciseData(exercise_name).observe(this, new Observer<List<OneExerciseItem>>() {
             @Override
             public void onChanged(List<OneExerciseItem> oneExerciseItems) {
+                // add items in adapter so they can be shown
                 recViewAdapter.setItems(oneExerciseItems);
             }
         });
 
     }
 
-    //@Override
-    //public void onItemClick(int position) {
-    //
-    //    //if (Objects.equals(RecViewItems.get(position).getMainMenuRecViewType(), getString(R.string.chest_exercise))){
-    //    //    Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-    //    //    intent.putParcelableArrayListExtra("RecViewItemsList", chest_exercises);
-    //    //    startActivity(intent);
-    //    //}
-    //
-    //}
-
-    // what to do when ADD button is pressed
     public void ADD_EXERCISE(View view) {
 
-        //Date current_date = new Date();
-        //SimpleDateFormat date_formater = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        //String formated_date = date_formater.format(current_date);
         long current_date = System.currentTimeMillis();
 
         EditText edit_set = findViewById(R.id.ac_on_ex_EditText1);
@@ -184,17 +160,13 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         OneExerciseItem new_item = new OneExerciseItem(exercise_name, current_date, set_text, weight_text, reps_text, work_duration, rest_duration);
         oneExerciseViewModel.insert(new_item);
 
-        // add item to adapter and scroll to last item (in this case first item bcs we reversed recyclerview)
-        //recViewAdapter.addItem(new_item);
-        //recView.smoothScrollToPosition(recViewAdapter.getItemCount() - 1);
-
-        //if (!stopwatchWorkIsRunning){
-        //    workTimer.setText("0");
-        //}
+        stopWorkTimer();
+        resetWorkTimer();
+        stopRestTimer();
+        resetRestTimer();
         
-        //if (!stopwatchRestIsRunning){
-        //    restTimer.setText("0");
-        //}
+        // scroll to last item (in this case first item bcs we reversed recyclerview)
+        recView.smoothScrollToPosition(recViewAdapter.getItemCount());
 
         edit_set.getText().clear();
         edit_weight.getText().clear();
