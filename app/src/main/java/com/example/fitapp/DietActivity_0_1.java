@@ -198,6 +198,7 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
         dietViewModel.insert(new_item);
 
         edit_name.getText().clear();
+        edit_own_weight.getText().clear();
         edit_proteins.getText().clear();
         edit_fats.getText().clear();
         edit_carbs.getText().clear();
