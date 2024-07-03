@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopUpOneExerciseEdit"
+    android:id="@+id/ac_po_up_on_ex_ed_ConstraintLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ac_po_up_on_ex_ed_LinearLayout1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/ac_po_up_on_ex_ed_EditText1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:gravity="center"
+            android:hint="Set"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_on_ex_ed_EditText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberDecimal"
+            android:gravity="center"
+            android:hint="Weight[kg]"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_on_ex_ed_EditText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:gravity="center"
+            android:hint="Reps"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ac_po_up_on_ex_ed_LinearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/ac_po_up_on_ex_ed_LinearLayout1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/ac_po_up_on_ex_ed_Button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:onClick="Update"/>
+
+        <Button
+            android:id="@+id/ac_po_up_on_ex_ed_Button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:onClick="Delete"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

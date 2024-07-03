@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -48,58 +49,71 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     private long elapsedRestTime = 0;
     private String exercise_name;
     OneExerciseViewModel oneExerciseViewModel;
+    ExercisesItem exercisesItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // get intent and set action bar title
-        Bundle intent = getIntent().getExtras();
-        ExercisesItem exercisesItem = intent.getParcelable("ExercisesItem");
-        exercise_name = exercisesItem.getExerciseName();
-
         // set layout
         setContentView(R.layout.activity_one_exercise);
 
-        // change app bar title
-        Objects.requireNonNull(getSupportActionBar()).setTitle(exercise_name);
+        // get intent and set action bar title
+        Bundle intent = getIntent().getExtras();
+        if(intent != null){
+            exercisesItem = intent.getParcelable("ExercisesItem");
+            if(exercisesItem != null){
+                exercise_name = exercisesItem.getExerciseName();
 
-        // change app bar color
-        ActionBar bar = getSupportActionBar();
-        ColorDrawable color = new ColorDrawable(Color.parseColor("#757575"));  // gray light
-        Objects.requireNonNull(bar).setBackgroundDrawable(color);
+                // change app bar title
+                Objects.requireNonNull(getSupportActionBar()).setTitle(exercise_name);
 
-        // get image adapter
-        viewPager2 = findViewById(R.id.ac_on_ex_ViewPager1);
+                // change app bar color
+                ActionBar bar = getSupportActionBar();
+                ColorDrawable color = new ColorDrawable(Color.parseColor("#757575"));  // gray light
+                Objects.requireNonNull(bar).setBackgroundDrawable(color);
 
-        // get view pager dots
-        dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
+                // get image adapter
+                viewPager2 = findViewById(R.id.ac_on_ex_ViewPager1);
 
-        // Sample images for particular exercise
-        int[] images = {};
-        String muscleGroup = exercisesItem.getMuscleGroup();
-        if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
-            images = new int[]{R.drawable.chest, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
-            images = new int[]{R.drawable.shoulders, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
-            images = new int[]{R.drawable.biceps, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
-            images = new int[]{R.drawable.triceps, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
-            images = new int[]{R.drawable.forearms, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
-            images = new int[]{R.drawable.back, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
-            images = new int[]{R.drawable.abs, R.drawable.weight};
-        } else if (Objects.equals(muscleGroup, getString(R.string.legs_exercise))) {
-            images = new int[]{R.drawable.legs, R.drawable.weight};
+                // get view pager dots
+                dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
+
+                // Sample images for particular exercise
+                int[] images = {};
+                String muscleGroup = exercisesItem.getMuscleGroup();
+                if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
+                    images = new int[]{R.drawable.chest, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
+                    images = new int[]{R.drawable.shoulders, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
+                    images = new int[]{R.drawable.biceps, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
+                    images = new int[]{R.drawable.triceps, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
+                    images = new int[]{R.drawable.forearms, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
+                    images = new int[]{R.drawable.back, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
+                    images = new int[]{R.drawable.abs, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.legs_exercise))) {
+                    images = new int[]{R.drawable.legs, R.drawable.weight};
+                }
+
+                // set images in image pager adapter, set adapter and view pager dots
+                ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
+                viewPager2.setAdapter(imagePagerAdapter);
+                dotsIndicator.setViewPager2(viewPager2);
+
+            } else {
+                //Toast.makeText(this, "ExercisesItem not found", Toast.LENGTH_SHORT).show();
+                ;
+            }
+
+        } else {
+            //Toast.makeText(this, "Intent extras not found", Toast.LENGTH_SHORT).show();
+            ;
         }
-
-        // set images in image pager adapter, set adapter and view pager dots
-        ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
-        viewPager2.setAdapter(imagePagerAdapter);
-        dotsIndicator.setViewPager2(viewPager2);
 
         // get the timer text view
         workTimer = findViewById(R.id.ac_on_ex_TextView1);
@@ -164,7 +178,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         resetWorkTimer();
         stopRestTimer();
         resetRestTimer();
-        
+
         // scroll to last item (in this case first item bcs we reversed recyclerview)
         recView.smoothScrollToPosition(recViewAdapter.getItemCount());
 
@@ -175,15 +189,9 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
 
     @Override
     public void onItemClick(int position) {
-        // ToDo: logic to delete or update diet item
-
-        Toast.makeText(OneExerciseActivity_0_0_0.this, "Item clicked", Toast.LENGTH_SHORT).show();
-
-        //Intent intent = new Intent(getApplicationContext(), PopUpDietEdit.class);
-        ////intent.putExtra("position", position);
-        //intent.putExtra("dietItem", adapter.getDietAtPosition(position));
-        //startActivity(intent);
-        ////startActivity(new Intent(DietActivity_0_1.this, PopUpDietEdit.class));
+        Intent intent = new Intent(OneExerciseActivity_0_0_0.this, PopUpOneExerciseEdit.class);
+        intent.putExtra("oneExerciseItem", recViewAdapter.getOneExerciseAtPosition(position));
+        startActivity(intent);
     }
 
     private Runnable work_runnable = new Runnable() {

@@ -173,12 +173,8 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
     @Override
     public void onItemClick(int position) {
 
-        //MainMenuRecViewItem exercise = item_list.get(position);
-        String exercise_name = muscleGroupItems.get(position).getExerciseName();
         ExercisesItem exercisesItem = muscleGroupItems.get(position);
-
-        Intent intent = new Intent(this, OneExerciseActivity_0_0_0.class);
-        //intent.putExtra("ExercisesName", exercise_name);
+        Intent intent = new Intent(ExercisesActivity_0_0.this, OneExerciseActivity_0_0_0.class);
         intent.putExtra("ExercisesItem", exercisesItem);
         startActivity(intent);
     }
