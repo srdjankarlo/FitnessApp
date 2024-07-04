@@ -1,6 +1,7 @@
 package com.example.fitapp;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.ViewHolder> {
     private final ExercisesInterface exercisesInterface;
@@ -40,6 +42,9 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
     public void onBindViewHolder(@NonNull ExercisesAdapter.ViewHolder holder, int position) {
         holder.exercises_ImageView1.setImageResource(exercisesItems.get(position).getImage());
         holder.exercises_TextView1.setText(exercisesItems.get(position).getExerciseName());
+        List<String> categories = exercisesItems.get(position).getCategories();
+        String categoriesString = TextUtils.join(", ", categories);
+        holder.exercises_TextView2.setText(categoriesString);
     }
 
     @Override
@@ -67,6 +72,7 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
         private ConstraintLayout exercises_Layout;  // to be able to set on click listener
         private ImageView exercises_ImageView1;
         private TextView exercises_TextView1;
+        private TextView exercises_TextView2;
 
         // to create constructor, press Alt+ins
         public ViewHolder(@NonNull View itemView, ExercisesInterface muscleGroupInterface) {
@@ -75,6 +81,7 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
             exercises_Layout = itemView.findViewById(R.id.mu_group_it_Layout);
             exercises_ImageView1 = itemView.findViewById(R.id.mu_group_it_ImageView1);
             exercises_TextView1 = itemView.findViewById(R.id.mu_group_it_TextView1);
+            exercises_TextView2 = itemView.findViewById(R.id.mu_group_it_TextViewCategories);
 
             // set on click
             itemView.setOnClickListener(new View.OnClickListener() {

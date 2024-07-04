@@ -90,74 +90,8 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.ex_me_item1:
+            case R.id.ex_me_AddExercise:
                 //ToDo: make database to store exercises and tidy this up a bit
-                if (Objects.equals(muscleGroupName, getString(R.string.chest_exercise))){
-                    muscleGroupItem = new ExercisesItem(R.drawable.chest, getString(R.string.chest_exercise), "Chest " + chest_exercise_counter);
-                    chest_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(chest_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    chest_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.shoulders_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), "Shoulders " + shoulder_exercise_counter);
-                    shoulder_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(shoulder_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    shoulder_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.biceps_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.biceps, getString(R.string.biceps_exercise), "Biceps " + biceps_exercise_counter);
-                    biceps_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(biceps_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    biceps_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.triceps_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.triceps, getString(R.string.triceps_exercise), "Triceps " + triceps_exercise_counter);
-                    triceps_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(triceps_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    triceps_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.forearms_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.forearms, getString(R.string.forearms_exercise), "Forearms " + forearms_exercise_counter);
-                    forearms_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(forearms_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    forearms_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.back_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.back, getString(R.string.back_exercise), "Back " + back_exercise_counter);
-                    back_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(back_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    back_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.abs_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.abs, getString(R.string.abs_exercise), "Abs " + abs_exercise_counter);
-                    abs_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(abs_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    abs_exercise_counter += 1;
-                } else if (Objects.equals(muscleGroupName, getString(R.string.legs_exercise))) {
-                    muscleGroupItem = new ExercisesItem(R.drawable.legs, getString(R.string.legs_exercise), "Legs " + legs_exercise_counter);
-                    legs_exercises.add(muscleGroupItem);
-                    muscleGroupAdapter.setExercisesItems(legs_exercises);
-                    recyclerView.setAdapter(muscleGroupAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    muscleGroupItems.add(muscleGroupItem);
-                    legs_exercise_counter += 1;
-                }
-
 
                 //Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
                 //return true;

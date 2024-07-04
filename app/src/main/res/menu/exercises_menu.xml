@@ -9,7 +9,7 @@
         android:icon="@drawable/baseline_menu_24">
         <menu>
 
-            <item android:id="@+id/ex_me_item1"
+            <item android:id="@+id/ex_me_AddExercise"
                 android:title="Add Exercise"
                 app:showAsAction="never"
                 android:icon="@drawable/weight"/>

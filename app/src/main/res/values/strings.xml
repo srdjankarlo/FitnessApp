@@ -17,4 +17,8 @@
     <string name="back_exercise">Back</string>
     <string name="abs_exercise">Abs</string>
     <string name="legs_exercise">Legs</string>
+    <string name="calves_exercise">Calves</string>
+    <string name="quads_exercise">Quads</string>
+    <string name="glutes_exercise">Glutes</string>
+    <string name="hamstrings_exercise">Hamstrings</string>
 </resources>
