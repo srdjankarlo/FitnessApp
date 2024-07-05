@@ -21,7 +21,7 @@
         android:layout_width="150dp"
         android:layout_height="120dp"
         android:contentDescription="@string/ac_ma_me_it_ImageView_contentDescription"
-        android:src="@drawable/weight"
+        android:src="@drawable/muscles"
         app:layout_constraintBottom_toTopOf="@+id/mu_groups_it_divider2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mu_groups_it_divider1" />
@@ -30,9 +30,9 @@
         android:id="@+id/mu_groups_it_TextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ac_ma_me_it_TextView_text"
+        android:text="Muscle group"
         android:textAlignment="viewStart"
-        android:textSize="25sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/mu_groups_it_divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,21 +40,21 @@
         app:layout_constraintTop_toBottomOf="@+id/mu_groups_it_divider1"
         app:layout_constraintVertical_bias="0.1" />
 
-    <TextView
-        android:id="@+id/mu_groups_it_TextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ac_ma_me_it_TextView_text"
-        android:textAlignment="viewStart"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/mu_groups_it_divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/mu_groups_it_ImageView1"
-        app:layout_constraintTop_toBottomOf="@+id/mu_groups_it_TextView1"
-        app:layout_constraintVertical_bias="0.0" />
+<!--    <TextView-->
+<!--        android:id="@+id/mu_groups_it_TextView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/ac_ma_me_it_TextView_text"-->
+<!--        android:textAlignment="viewStart"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/mu_groups_it_divider2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/mu_groups_it_ImageView1"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/mu_groups_it_TextView1"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
 
     <View
         android:id="@+id/mu_groups_it_divider2"

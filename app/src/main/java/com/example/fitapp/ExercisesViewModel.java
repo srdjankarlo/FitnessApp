@@ -30,4 +30,16 @@ public class ExercisesViewModel extends AndroidViewModel {
     public LiveData<List<ExercisesItem>> getAllExercisesData(){
         return allExercisesData;
     }
+
+    public void inserInitialData(){
+        exercisesRepository.insertInitialData();
+    }
+
+    //public LiveData<List<ExercisesItem>> getExercisesByCategory(String category) {
+    //    return exercisesRepository.getExercisesByCategory(category);
+    //}
+    //
+    //public LiveData<Integer> countInCategory(String value) {
+    //    return exercisesRepository.countInCategory(value);
+    //}
 }

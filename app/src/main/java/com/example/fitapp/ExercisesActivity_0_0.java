@@ -13,15 +13,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements ExercisesInterface {
 
     ArrayList<ExercisesItem> muscleGroupItems = new ArrayList<>();
     ExercisesAdapter muscleGroupAdapter = new ExercisesAdapter(this, this);
-    ExercisesItem muscleGroupItem;
     RecyclerView recyclerView;
-    String muscleGroupName;
+    List<String> muscleGroupCategory;
+    String categoryName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +35,14 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         muscleGroupItems = intent.getParcelableArrayListExtra("RecViewItemsList");
 
         // get the type of the item
-        muscleGroupName = muscleGroupItems.get(0).getMuscleGroup();
-        //muscleGroupName = muscleGroupName.split(" ")[0];
+        muscleGroupCategory = muscleGroupItems.get(0).getCategories();
+        categoryName = muscleGroupCategory.get(0);
 
         // set layout
         setContentView(R.layout.activity_exercises);
 
         // change app bar title
-        Objects.requireNonNull(getSupportActionBar()).setTitle(muscleGroupName + " exercises");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(muscleGroupCategory + " exercises");
 
         // change app bar color
         ActionBar bar = getSupportActionBar();

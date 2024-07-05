@@ -230,10 +230,10 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
         tvCals = findViewById(R.id.ac_di_TextViewCalories);
 
         if(tvProteins != null && tvFats != null && tvCarbs != null && tvCals != null) {
-            tvProteins.setText(String.valueOf(sumProteins) + "g");
-            tvFats.setText(String.valueOf(sumFats) + "g");
-            tvCarbs.setText(String.valueOf(sumCarbs) + "g");
-            tvCals.setText(String.valueOf(sumCals) + "kcal");
+            tvProteins.setText(sumProteins + "g");
+            tvFats.setText(sumFats + "g");
+            tvCarbs.setText(sumCarbs + "g");
+            tvCals.setText(sumCals + "kcal");
         }
     }
 

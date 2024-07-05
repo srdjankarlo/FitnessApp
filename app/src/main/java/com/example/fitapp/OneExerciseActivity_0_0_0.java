@@ -81,7 +81,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
 
                 // Sample images for particular exercise
                 int[] images = {};
-                String muscleGroup = exercisesItem.getMuscleGroup();
+                String muscleGroup = exercisesItem.getCategories().get(0);
                 if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
                     images = new int[]{R.drawable.chest, R.drawable.weight};
                 } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
@@ -96,8 +96,14 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                     images = new int[]{R.drawable.back, R.drawable.weight};
                 } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
                     images = new int[]{R.drawable.abs, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.legs_exercise))) {
-                    images = new int[]{R.drawable.legs, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
+                    images = new int[]{R.drawable.quads, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
+                    images = new int[]{R.drawable.hamstrings, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
+                    images = new int[]{R.drawable.glutes, R.drawable.weight};
+                } else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
+                    images = new int[]{R.drawable.calves, R.drawable.weight};
                 }
 
                 // set images in image pager adapter, set adapter and view pager dots
