@@ -170,7 +170,7 @@ public class ExercisesRepository {
                 exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Parallel Bar Leg Raises", Arrays.asList("Abs")));
 
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Leg Extensions", Arrays.asList("Quads")));
-                exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Squats", Arrays.asList("Quads", "Glutes")));
+                exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Squats", Arrays.asList("Quads", "Glutes", "Hamstrings")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Dumbbell Squats", Arrays.asList("Quads", "Glutes")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Barbell Squats", Arrays.asList("Quads", "Glutes")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Lunges", Arrays.asList("Quads")));
