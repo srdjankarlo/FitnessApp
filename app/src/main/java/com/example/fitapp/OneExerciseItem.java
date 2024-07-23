@@ -86,9 +86,7 @@ public class OneExerciseItem implements Parcelable {
     public String getExerciseName(){return exerciseName;}
     public  void setExerciseName(String exerciseName){this.exerciseName = exerciseName;}
 
-    public long getItemDate() {
-        return itemDate;
-    }
+    public long getItemDate() {return itemDate;}
 
     public void setItemDate(long date) {
         this.itemDate = date;

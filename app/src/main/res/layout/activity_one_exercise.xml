@@ -49,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Start Workout timer"
+                    android:backgroundTint="@color/green"
                     android:onClick="WorkoutTimer"/>
 
                 <Button
@@ -73,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Start Rest timer"
+                    android:backgroundTint="@color/green"
                     android:onClick="RestingTimer"/>
 
                 <Button

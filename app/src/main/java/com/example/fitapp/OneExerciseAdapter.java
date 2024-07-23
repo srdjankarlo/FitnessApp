@@ -1,12 +1,14 @@
 package com.example.fitapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -58,6 +60,14 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
         holder.item_reps.setText(String.valueOf(recViewItems.get(position).getItemReps()));
         holder.item_duration.setText(String.valueOf(recViewItems.get(position).getItemWorkTime()));
         holder.item_rest.setText(String.valueOf(recViewItems.get(position).getItemRestTime()));
+
+        // change divider color based on set number
+        OneExerciseItem item = recViewItems.get(position);
+        if (item.getSetNumber() == 1){
+            holder.lower_divider.setBackgroundColor(Color.BLACK);
+        } else {
+            holder.lower_divider.setBackgroundColor(context.getResources().getColor(R.color.white));
+        }
     }
 
     @Override
@@ -85,12 +95,9 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
         //private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
-        private TextView item_date;
-        private TextView item_set;
-        private TextView item_weight;
-        private TextView item_reps;
-        private TextView item_duration;
-        private TextView item_rest;
+        private TextView item_date, item_set, item_weight, item_reps, item_duration, item_rest;
+        private View upper_divider;
+        private View lower_divider;
 
         // to create constructor, press Alt+ins
         //public ViewHolder(@NonNull View itemView, OneExerciseRecViewInterface mainMenuRecViewInterface) {
@@ -104,6 +111,9 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
             item_reps = itemView.findViewById(R.id.id_ac_on_ex_it_TextView3);
             item_duration = itemView.findViewById(R.id.id_ac_on_ex_it_TextView4);
             item_rest = itemView.findViewById(R.id.id_ac_on_ex_it_TextView5);
+
+            upper_divider = itemView.findViewById(R.id.id_ac_on_ex_it_divider1);
+            lower_divider = itemView.findViewById(R.id.id_ac_on_ex_it_divider2);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

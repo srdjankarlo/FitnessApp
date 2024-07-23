@@ -81,31 +81,6 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.exercises_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.ex_me_AddExercise:
-                //ToDo: make database to store exercises and tidy this up a bit
-
-                //Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
-                //return true;
-
-            //case R.id.action_about:
-            //    Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show();
-            //    return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
     public void onItemClick(int position) {
 
         ExercisesItem exercisesItem = muscleGroupItems.get(position);

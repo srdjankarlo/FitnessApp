@@ -67,107 +67,93 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
         ColorDrawable color = new ColorDrawable(Color.parseColor("#757575"));  // gray light
         bar.setBackgroundDrawable(color);
 
-        //// fill lists with items for exercises
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Push-Ups", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Close Grip Push-Ups", Arrays.asList("Chest", "Triceps")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Wide Grip Push-Ups", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Decline Push-Ups", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Incline Push-Ups", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Parallel Bar Dips", Arrays.asList("Chest", "Triceps")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Bench Press", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Incline Press", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Decline Press", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Dumbbell Press", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Incline Dumbbell Press", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Decline Dumbbell Press", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Dumbbell Flys", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Incline Dumbbell Flys", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Decline Dumbbell Flys", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Cable Crossover Flys", Arrays.asList("Chest")));
-        //exercises.add(new ExercisesItem(R.drawable.chest, "Peck Deck Flys", Arrays.asList("Chest")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Lateral Raises", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Bent-Over Lateral Raise", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Standing Back Presses", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Standing Front Presses", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Sitting Back Presses", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Sitting Front Presses", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Standing Dumbbell Presses", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Sitting Dumbbell Presses", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Upright Rows", Arrays.asList("Shoulders")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Peck Deck Rear-Delt Flys", Arrays.asList("Shoulders", "Back")));
-        //exercises.add(new ExercisesItem(R.drawable.shoulders, "Front Weight Raise", Arrays.asList("Shoulders")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Synchronized Dumbbell Curls", Arrays.asList("Biceps")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Synchronized Hammer Curls", Arrays.asList("Biceps", "Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Synchronized Reverse Dumbbell Curls", Arrays.asList("Biceps", "Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Asynchronous Dumbbell Curls", Arrays.asList("Biceps")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Asynchronous Hammer Curls", Arrays.asList("Biceps", "Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Asynchronous Reverse Dumbbell Curls", Arrays.asList("Biceps", "Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Barbell Curls", Arrays.asList("Biceps")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Reverse Barbell Curls", Arrays.asList("Biceps", "Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "EZ-Bar Curls", Arrays.asList("Biceps")));
-        //exercises.add(new ExercisesItem(R.drawable.biceps, "Reverse EZ-Bar Curls", Arrays.asList("Biceps", "Forearms")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.triceps, "Push-Downs", Arrays.asList("Triceps")));
-        //exercises.add(new ExercisesItem(R.drawable.triceps, "Cable Push-Downs", Arrays.asList("Triceps")));
-        //exercises.add(new ExercisesItem(R.drawable.triceps, "Reverse Push-Downs", Arrays.asList("Triceps")));
-        //exercises.add(new ExercisesItem(R.drawable.triceps, "Triceps Dips", Arrays.asList("Triceps")));
-        //exercises.add(new ExercisesItem(R.drawable.triceps, "Dumbbell Kickbacks", Arrays.asList("Triceps")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.forearms, "Barbel Wrist Curls", Arrays.asList("Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.forearms, "Dumbbell Wrist Curls", Arrays.asList("Forearms")));
-        //exercises.add(new ExercisesItem(R.drawable.forearms, "Dumbbell Wrist Twist", Arrays.asList("Forearms")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.back, "Chin-Ups", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Reverse Chin-Ups", Arrays.asList("Back", "Biceps")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Deadlifts", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Barbell Bent Over Row", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Dumbell Bent Over Row", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "T-Bar Bent Over Row", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Dumbbell Shrugs", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Barbell Shrugs", Arrays.asList("Back")));
-        //exercises.add(new ExercisesItem(R.drawable.back, "Back Extensions", Arrays.asList("Back")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.abs, "Incline Bench Sit-Ups", Arrays.asList("Abs")));
-        //exercises.add(new ExercisesItem(R.drawable.abs, "Sit-Ups", Arrays.asList("Abs")));
-        //exercises.add(new ExercisesItem(R.drawable.abs, "Crunches", Arrays.asList("Abs")));
-        //exercises.add(new ExercisesItem(R.drawable.abs, "Leg Raises", Arrays.asList("Abs")));
-        //exercises.add(new ExercisesItem(R.drawable.abs, "Hanging Leg Raises", Arrays.asList("Abs")));
-        //exercises.add(new ExercisesItem(R.drawable.abs, "Parallel Bar Leg Raises", Arrays.asList("Abs")));
-        //
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Leg Extensions", Arrays.asList("Quads")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Squats", Arrays.asList("Quads", "Glutes")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Dumbbell Squats", Arrays.asList("Quads", "Glutes")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Barbell Squats", Arrays.asList("Quads", "Glutes")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Lunges", Arrays.asList("Quads")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Dumbbell Lunges", Arrays.asList("Quads")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Barbell Lunges", Arrays.asList("Quads")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Bench Jump", Arrays.asList("Quads", "Hamstrings")));
-        //exercises.add(new ExercisesItem(R.drawable.glutes, "Good Mornings", Arrays.asList("Glutes", "Hamstrings")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Single Leg Squats", Arrays.asList("Quads")));
-        //exercises.add(new ExercisesItem(R.drawable.quads, "Open Jump", Arrays.asList("Quads")));
-        //exercises.add(new ExercisesItem(R.drawable.hamstrings, "Leg Curls", Arrays.asList("Hamstrings", "Calves")));
-        //exercises.add(new ExercisesItem(R.drawable.glutes, "Hip Thrust", Arrays.asList("Glutes", "Hamstrings")));
+        // fill lists with items for exercises
+        /*exercises.add(new ExercisesItem(R.drawable.chest, "Push-Ups", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Close Grip Push-Ups", Arrays.asList("Chest", "Triceps")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Wide Grip Push-Ups", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Decline Push-Ups", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Incline Push-Ups", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Parallel Bar Dips", Arrays.asList("Chest", "Triceps")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Bench Press", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Incline Press", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Decline Press", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Dumbbell Press", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Incline Dumbbell Press", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Decline Dumbbell Press", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Dumbbell Flys", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Incline Dumbbell Flys", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Decline Dumbbell Flys", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Cable Crossover Flys", Arrays.asList("Chest")));
+        exercises.add(new ExercisesItem(R.drawable.chest, "Peck Deck Flys", Arrays.asList("Chest")));
+
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Lateral Raises", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Bent-Over Lateral Raise", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Standing Back Presses", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Standing Front Presses", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Sitting Back Presses", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Sitting Front Presses", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Standing Dumbbell Presses", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Sitting Dumbbell Presses", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Upright Rows", Arrays.asList("Shoulders")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Peck Deck Rear-Delt Flys", Arrays.asList("Shoulders", "Back")));
+        exercises.add(new ExercisesItem(R.drawable.shoulders, "Front Weight Raise", Arrays.asList("Shoulders")));
+
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Synchronized Dumbbell Curls", Arrays.asList("Biceps")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Synchronized Hammer Curls", Arrays.asList("Biceps", "Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Synchronized Reverse Dumbbell Curls", Arrays.asList("Biceps", "Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Asynchronous Dumbbell Curls", Arrays.asList("Biceps")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Asynchronous Hammer Curls", Arrays.asList("Biceps", "Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Asynchronous Reverse Dumbbell Curls", Arrays.asList("Biceps", "Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Barbell Curls", Arrays.asList("Biceps")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Reverse Barbell Curls", Arrays.asList("Biceps", "Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "EZ-Bar Curls", Arrays.asList("Biceps")));
+        exercises.add(new ExercisesItem(R.drawable.biceps, "Reverse EZ-Bar Curls", Arrays.asList("Biceps", "Forearms")));
+
+        exercises.add(new ExercisesItem(R.drawable.triceps, "Push-Downs", Arrays.asList("Triceps")));
+        exercises.add(new ExercisesItem(R.drawable.triceps, "Cable Push-Downs", Arrays.asList("Triceps")));
+        exercises.add(new ExercisesItem(R.drawable.triceps, "Reverse Push-Downs", Arrays.asList("Triceps")));
+        exercises.add(new ExercisesItem(R.drawable.triceps, "Triceps Dips", Arrays.asList("Triceps")));
+        exercises.add(new ExercisesItem(R.drawable.triceps, "Dumbbell Kickbacks", Arrays.asList("Triceps")));
+
+        exercises.add(new ExercisesItem(R.drawable.forearms, "Barbel Wrist Curls", Arrays.asList("Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.forearms, "Dumbbell Wrist Curls", Arrays.asList("Forearms")));
+        exercises.add(new ExercisesItem(R.drawable.forearms, "Dumbbell Wrist Twist", Arrays.asList("Forearms")));
+
+        exercises.add(new ExercisesItem(R.drawable.back, "Chin-Ups", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Reverse Chin-Ups", Arrays.asList("Back", "Biceps")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Deadlifts", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Barbell Bent Over Row", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Dumbell Bent Over Row", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "T-Bar Bent Over Row", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Dumbbell Shrugs", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Barbell Shrugs", Arrays.asList("Back")));
+        exercises.add(new ExercisesItem(R.drawable.back, "Back Extensions", Arrays.asList("Back")));
+
+        exercises.add(new ExercisesItem(R.drawable.abs, "Incline Bench Sit-Ups", Arrays.asList("Abs")));
+        exercises.add(new ExercisesItem(R.drawable.abs, "Sit-Ups", Arrays.asList("Abs")));
+        exercises.add(new ExercisesItem(R.drawable.abs, "Crunches", Arrays.asList("Abs")));
+        exercises.add(new ExercisesItem(R.drawable.abs, "Leg Raises", Arrays.asList("Abs")));
+        exercises.add(new ExercisesItem(R.drawable.abs, "Hanging Leg Raises", Arrays.asList("Abs")));
+        exercises.add(new ExercisesItem(R.drawable.abs, "Parallel Bar Leg Raises", Arrays.asList("Abs")));
+
+        exercises.add(new ExercisesItem(R.drawable.quads, "Leg Extensions", Arrays.asList("Quads")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Squats", Arrays.asList("Quads", "Glutes")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Dumbbell Squats", Arrays.asList("Quads", "Glutes")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Barbell Squats", Arrays.asList("Quads", "Glutes")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Lunges", Arrays.asList("Quads")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Dumbbell Lunges", Arrays.asList("Quads")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Barbell Lunges", Arrays.asList("Quads")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Bench Jump", Arrays.asList("Quads", "Hamstrings")));
+        exercises.add(new ExercisesItem(R.drawable.glutes, "Good Mornings", Arrays.asList("Glutes", "Hamstrings")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Single Leg Squats", Arrays.asList("Quads")));
+        exercises.add(new ExercisesItem(R.drawable.quads, "Open Jump", Arrays.asList("Quads")));
+        exercises.add(new ExercisesItem(R.drawable.hamstrings, "Leg Curls", Arrays.asList("Hamstrings", "Calves")));
+        exercises.add(new ExercisesItem(R.drawable.glutes, "Hip Thrust", Arrays.asList("Glutes", "Hamstrings")));*/
         // instead of all that do this
         viewModel = new ViewModelProvider(this).get(ExercisesViewModel.class);
         viewModel.inserInitialData();
 
-        // Filter the exercises to get only those of wanted category
-        // ToDo: figure out how to get all exercises from view model
-        //// Fetch and observe exercises by category
-        //viewModel.getExercisesByCategory("Chest").observe(this, new Observer<List<ExercisesItem>>() {
-        //    @Override
-        //    public void onChanged(List<ExercisesItem> exercisesItems) {
-        //        // Update UI with exercisesItems
-        //        for (ExercisesItem item : exercisesItems) {
-        //            System.out.println(item.getExerciseName());
-        //        }
-        //    }
-        //});
-
         // Fetch and observe exercises by category
-
         viewModel.getAllExercisesData().observe(this, new Observer<List<ExercisesItem>>() {
             @Override
             public void onChanged(List<ExercisesItem> exercisesItems) {
@@ -224,21 +210,21 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
         MainMenu_RecView.setAdapter(adapter);
         MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
 
-        //// Get the OnBackPressedDispatcher
-        //OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
-        //
-        //// Register the callback
-        //onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
-        //    @Override
-        //    public void handleOnBackPressed() {
-        //        // Your custom logic here
-        //        //Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
-        //
-        //        // If you want to handle the back press, do not call super.onBackPressed()
-        //        // If you want the default behavior, you can finish the activity or call super
-        //        finish(); // Optionally finish the activity
-        //    }
-        //});
+        // Get the OnBackPressedDispatcher
+        /*OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+
+        // Register the callback
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Your custom logic here
+                //Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
+
+                // If you want to handle the back press, do not call super.onBackPressed()
+                // If you want the default behavior, you can finish the activity or call super
+                finish(); // Optionally finish the activity
+            }
+        });*/
     }
 
     @Override
@@ -251,29 +237,28 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+        // Handle item selection
         // get the id of clicked menu item
         id = item.getItemId();
         if (id == R.id.id_ma_me_item_exercises){
             // change action bar title and icon
             Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_exercises));
             RecViewItems = category;
-
         } else if (id == R.id.id_ma_me_item_diet) {
             // diet activity doesnt need any data from main activity
             Intent intent = new Intent(getApplicationContext(), DietActivity_0_1.class);
             startActivity(intent);
-
+        } else if (id == R.id.ma_me_AddExercise) {
+            //ToDo: make database to store exercises and tidy this up a bit, make a window pop up to fill details about the exercise to be added
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + "Add Exercise");
         } else if (id == R.id.id_ma_me_item_my_workouts){
             // change action bar title and icon
             Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_my_workouts));
             //RecViewItems = item_list;
-
         } else if (id == R.id.id_ma_me_item_progress) {
-            // ToDo: add progress to exercises or something
             // change action bar title and icon
             Objects.requireNonNull(getSupportActionBar()).setTitle("Main menu: " + getString(R.string.menu_item_progress));
             //RecViewItems = item_list;
-
         } else return true;  // this will leave activity_main layout if nothing was selected in menu
 
         //// set the adapter for recycler view and show items in it

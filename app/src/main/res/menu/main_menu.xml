@@ -18,6 +18,11 @@
                 app:showAsAction="never"
                 android:icon="@drawable/fork_and_knife"/>
 
+            <item android:id="@+id/ma_me_AddExercise"
+                android:title="Add Exercise"
+                app:showAsAction="never"
+                android:icon="@drawable/add_exercise"/>
+
             <item android:id="@+id/id_ma_me_item_my_workouts"
                 android:title="@string/menu_item_my_workouts"
                 app:showAsAction="never"

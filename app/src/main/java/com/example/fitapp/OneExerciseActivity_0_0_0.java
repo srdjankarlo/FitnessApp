@@ -2,6 +2,7 @@ package com.example.fitapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -113,12 +114,10 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
 
             } else {
                 //Toast.makeText(this, "ExercisesItem not found", Toast.LENGTH_SHORT).show();
-                ;
             }
 
         } else {
             //Toast.makeText(this, "Intent extras not found", Toast.LENGTH_SHORT).show();
-            ;
         }
 
         // get the timer text view
@@ -177,6 +176,12 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         int work_duration = (TextUtils.isEmpty(editable_work_duration.toString())) ? 0 : Integer.parseInt(editable_work_duration.toString());
         int rest_duration = (TextUtils.isEmpty(editable_rest_duration.toString())) ? 0 : Integer.parseInt(editable_rest_duration.toString());
 
+        // set number must be entered
+        if (set_text == 0 || weight_text == 0 || reps_text == 0){
+            Toast.makeText(this, "Set, kg or Reps entry missing!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         OneExerciseItem new_item = new OneExerciseItem(exercise_name, current_date, set_text, weight_text, reps_text, work_duration, rest_duration);
         oneExerciseViewModel.insert(new_item);
 
@@ -225,7 +230,6 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     };
 
     public void WorkoutTimer(View view) {
-
         if(stopwatchWorkIsRunning){
             stopWorkTimer();
         } else {
@@ -243,6 +247,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         handler.postDelayed(work_runnable, 0);
         stopwatchWorkIsRunning = true;
         workButtonTimer.setText("Stop Workout Timer");
+        workButtonTimer.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.red));
     }
 
     public void stopWorkTimer(){
@@ -250,6 +255,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         elapsedWorkTime += System.currentTimeMillis() - startWorkTime;
         stopwatchWorkIsRunning = false;
         workButtonTimer.setText("Start Workout Timer");
+        workButtonTimer.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.green));
     }
 
     public void resetWorkTimer(){
@@ -257,6 +263,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         elapsedWorkTime = 0;
         stopwatchWorkIsRunning = false;
         workButtonTimer.setText("Start Workout Timer");
+        workButtonTimer.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.green));
     }
 
     public void RestingTimer(View view) {
@@ -274,10 +281,12 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     }
 
     public void startRestTimer(){
+        stopWorkTimer();
         startRestTime = System.currentTimeMillis();
         handler.postDelayed(rest_runnable, 0);
         stopwatchRestIsRunning = true;
         restButtonTimer.setText("Stop Rest Timer");
+        restButtonTimer.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.red));
     }
 
     public void stopRestTimer(){
@@ -285,6 +294,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         elapsedRestTime += System.currentTimeMillis() - startRestTime;
         stopwatchRestIsRunning = false;
         restButtonTimer.setText("Start Rest Timer");
+        restButtonTimer.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.green));
     }
 
     public void resetRestTimer(){
@@ -292,5 +302,6 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         elapsedRestTime = 0;
         stopwatchRestIsRunning = false;
         restButtonTimer.setText("Start Rest Timer");
+        restButtonTimer.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.green));
     }
 }
