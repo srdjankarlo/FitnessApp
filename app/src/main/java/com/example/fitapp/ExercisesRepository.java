@@ -4,15 +4,13 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ExercisesRepository {
-    private ExercisesDao exercisesDao;
-    private LiveData<List<ExercisesItem>> allExercisesData;
+    private final ExercisesDao exercisesDao;
+    private final LiveData<List<ExercisesItem>> allExercisesData;
 
     public ExercisesRepository(Application application){
         FitAppDatabase database = FitAppDatabase.getInstance(application);
@@ -41,7 +39,7 @@ public class ExercisesRepository {
     }
 
     private static class InsertExercisesAsyncTask extends AsyncTask<ExercisesItem, Void, Void>{
-        private ExercisesDao exercisesDao;
+        private final ExercisesDao exercisesDao;
 
         private InsertExercisesAsyncTask(ExercisesDao exercisesDao){
             this.exercisesDao = exercisesDao;
@@ -55,7 +53,7 @@ public class ExercisesRepository {
     }
 
     private static class DeleteExercisesAsyncTask extends AsyncTask<ExercisesItem, Void, Void>{
-        private ExercisesDao exercisesDao;
+        private final ExercisesDao exercisesDao;
 
         private DeleteExercisesAsyncTask(ExercisesDao exercisesDao){
             this.exercisesDao = exercisesDao;
@@ -69,7 +67,7 @@ public class ExercisesRepository {
     }
 
     private static class UpdateExercisesAsyncTask extends AsyncTask<ExercisesItem, Void, Void> {
-        private ExercisesDao exercisesDao;
+        private final ExercisesDao exercisesDao;
 
         private UpdateExercisesAsyncTask(ExercisesDao exercisesDao) {
             this.exercisesDao = exercisesDao;
@@ -93,13 +91,13 @@ public class ExercisesRepository {
         protected Void doInBackground(Void... voids){
             if(exercisesDao.getCount() == 0){
                 // ToDo: ADD INITIAL EXERCISES
-                //List<String> categories = new ArrayList<>();
-                //categories.add("Chest");
-                //exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Push-Up", categories));
-                //
-                //categories = new ArrayList<>();
-                //categories.add("Abs");
-                //exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Sit-Up", categories));
+                /*List<String> categories = new ArrayList<>();
+                categories.add("Chest");
+                exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Push-Up", categories));
+
+                categories = new ArrayList<>();
+                categories.add("Abs");
+                exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Sit-Up", categories));*/
 
                 exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Push-Ups", Arrays.asList("Chest")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Close Grip Push-Ups", Arrays.asList("Chest", "Triceps")));
@@ -186,34 +184,4 @@ public class ExercisesRepository {
             return null;
         }
     }
-
-    //public LiveData<List<ExercisesItem>> getExercisesByCategory(String category) {
-    //    return exercisesDao.getExercisesByCategory(category);
-    //}
-    //
-    //public LiveData<Integer> countInCategory(String value) {
-    //    MutableLiveData<Integer> countLiveData = new MutableLiveData<>();
-    //    new CountCategoryAsyncTask(exercisesDao, countLiveData).execute(value);
-    //    return countLiveData;
-    //}
-    //
-    //private static class CountCategoryAsyncTask extends AsyncTask<String, Void, Integer> {
-    //    private final ExercisesDao exercisesDao;
-    //    private final MutableLiveData<Integer> countLiveData;
-    //
-    //    private CountCategoryAsyncTask(ExercisesDao exercisesDao, MutableLiveData<Integer> countLiveData) {
-    //        this.exercisesDao = exercisesDao;
-    //        this.countLiveData = countLiveData;
-    //    }
-    //
-    //    @Override
-    //    protected Integer doInBackground(String... strings) {
-    //        return exercisesDao.countInCategory(strings[0]);
-    //    }
-    //
-    //    @Override
-    //    protected void onPostExecute(Integer count) {
-    //        countLiveData.setValue(count);
-    //    }
-    //}
 }

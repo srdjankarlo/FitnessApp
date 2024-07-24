@@ -9,9 +9,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Objects;
 
 @Entity(tableName = "exercises_table")
 @TypeConverters(Converters.class)
@@ -25,7 +24,7 @@ public class ExercisesItem implements Parcelable {
 
     // Default no-argument constructor
     public ExercisesItem() {
-        exerciseName = null;
+        exerciseName = "Generic Name";
     }
 
     public ExercisesItem(@DrawableRes int image, @NonNull String exerciseName, List<String> category) {

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -26,14 +26,6 @@ import java.util.stream.Collectors;
 public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleGroupsInterface {
 
     int id;
-    int chest_exercise_counter;
-    int shoulder_exercise_counter;
-    int biceps_exercise_counter;
-    int triceps_exercise_counter;
-    int forearms_exercise_counter;
-    int back_exercise_counter;
-    int abs_exercise_counter;
-    int legs_exercise_counter;
     RecyclerView MainMenu_RecView;
 
     MuscleGroupsAdapter adapter = new MuscleGroupsAdapter(this, this);
@@ -162,16 +154,16 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
                 exercises.addAll(exercisesItems);
 
                 chest_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Chest")).collect(Collectors.toList());
-                shoulder_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Shoulders")).collect(Collectors.toList());;
-                biceps_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Biceps")).collect(Collectors.toList());;
-                triceps_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Triceps")).collect(Collectors.toList());;
-                forearms_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Forearms")).collect(Collectors.toList());;
-                back_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Back")).collect(Collectors.toList());;
-                abs_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Abs")).collect(Collectors.toList());;
-                quads_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Quads")).collect(Collectors.toList());;
-                hamstrings_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Hamstrings")).collect(Collectors.toList());;
-                glutes_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Glutes")).collect(Collectors.toList());;
-                calves_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Calves")).collect(Collectors.toList());;
+                shoulder_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Shoulders")).collect(Collectors.toList());
+                biceps_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Biceps")).collect(Collectors.toList());
+                triceps_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Triceps")).collect(Collectors.toList());
+                forearms_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Forearms")).collect(Collectors.toList());
+                back_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Back")).collect(Collectors.toList());
+                abs_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Abs")).collect(Collectors.toList());
+                quads_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Quads")).collect(Collectors.toList());
+                hamstrings_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Hamstrings")).collect(Collectors.toList());
+                glutes_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Glutes")).collect(Collectors.toList());
+                calves_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Calves")).collect(Collectors.toList());
 
                 num_chest_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Chest")).count();
                 num_shoulder_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Shoulders")).count();

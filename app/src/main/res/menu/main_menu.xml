@@ -19,7 +19,7 @@
                 android:icon="@drawable/fork_and_knife"/>
 
             <item android:id="@+id/ma_me_AddExercise"
-                android:title="Add Exercise"
+                android:title="@string/menu_item_add_exercise"
                 app:showAsAction="never"
                 android:icon="@drawable/add_exercise"/>
 

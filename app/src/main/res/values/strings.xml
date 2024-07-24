@@ -5,6 +5,7 @@
     <string name="no">No</string>
     <string name="menu_item_exercises">Exercises</string>
     <string name="menu_item_my_workouts">My Workouts Plan</string>
+    <string name="menu_item_add_exercise">Add Exercise</string>
     <string name="menu_item_progress">Progress</string>
     <string name="menu_item_diet">Diet</string>
     <string name="ac_ma_me_it_TextView_text">Enter text</string>
