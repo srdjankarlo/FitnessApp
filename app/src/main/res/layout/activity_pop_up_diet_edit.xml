@@ -82,7 +82,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/ac_po_up_di_LinearLayout3"
         app:layout_constraintTop_toBottomOf="@+id/ac_po_up_di_LinearLayout2"
-        android:gravity="center">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/ac_po_up_di_Button1"
