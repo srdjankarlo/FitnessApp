@@ -14,6 +14,7 @@ public class PopUpDietEdit extends DietActivity_0_1 {
 
     DietItem dietItem;
     EditText edit_name;
+    EditText edit_weight;
     EditText edit_proteins;
     EditText edit_fats;
     EditText edit_carbs;
@@ -42,18 +43,18 @@ public class PopUpDietEdit extends DietActivity_0_1 {
         //dietItem = adapter.getDietAtPosition(position);
         dietItem = intent.getParcelable("dietItem");
 
-        long date = dietItem.getDate();
         String food_name = dietItem.getFood_name();
+        int own_weight = dietItem.getOwn_weight();
         int proteins = dietItem.getProteins();
         int fats = dietItem.getFats();
         int carbs = dietItem.getCarbohydrates();
         int sugars = dietItem.getCalories();
 
-        TextView date2 = findViewById(R.id.ac_po_up_di_TextView0);
-        date2.setText(String.valueOf(date));  // ToDo: this writes timestamp and not formated date
-
-        edit_name = findViewById(R.id.ac_po_up_di_EditText1);
+        edit_name = findViewById(R.id.ac_po_up_di_EditText0);
         edit_name.setText(food_name);
+
+        edit_weight = findViewById(R.id.ac_po_up_di_EditText1);
+        edit_weight.setText(String.valueOf(own_weight));
 
         edit_proteins = findViewById(R.id.ac_po_up_di_EditText2);
         edit_proteins.setText(String.valueOf(proteins));
@@ -70,25 +71,29 @@ public class PopUpDietEdit extends DietActivity_0_1 {
 
     public void Update(View view) {
         // ToDo: make to work update in sense that strings are not allowed to be added where ints are expected
-        EditText edit_name = findViewById(R.id.ac_po_up_di_EditText1);
+        EditText edit_name = findViewById(R.id.ac_po_up_di_EditText0);
+        EditText edit_weight = findViewById(R.id.ac_po_up_di_EditText1);
         EditText edit_proteins = findViewById(R.id.ac_po_up_di_EditText2);
         EditText edit_fats = findViewById(R.id.ac_po_up_di_EditText3);
         EditText edit_carbs = findViewById(R.id.ac_po_up_di_EditText4);
         EditText edit_calories = findViewById(R.id.ac_po_up_di_EditText5);
 
         Editable editable_name = edit_name.getText();
+        Editable editable_weight = edit_weight.getText();
         Editable editable_proteins = edit_proteins.getText();
         Editable editable_fats = edit_fats.getText();
         Editable editable_carbs = edit_carbs.getText();
         Editable editable_calories = edit_calories.getText();
 
         String name_text = (TextUtils.isEmpty(editable_name.toString())) ? "None" : editable_name.toString();
+        int weight_text = (TextUtils.isEmpty(editable_weight.toString())) ? 0 : Integer.parseInt(editable_weight.toString());
         int proteins_text = (TextUtils.isEmpty(editable_proteins.toString())) ? 0 : Integer.parseInt(editable_proteins.toString());
         int fats_text = (TextUtils.isEmpty(editable_fats.toString())) ? 0 : Integer.parseInt(editable_fats.toString());
         int carbs_text = (TextUtils.isEmpty(editable_carbs.toString())) ? 0 : Integer.parseInt(editable_carbs.toString());
         int calories_text = (TextUtils.isEmpty(editable_calories.toString())) ? 0 : Integer.parseInt(editable_calories.toString());
 
         dietItem.setFood_name(name_text);
+        dietItem.setOwn_weight(weight_text);
         dietItem.setProteins(proteins_text);
         dietItem.setFats(fats_text);
         dietItem.setCarbohydrates(carbs_text);

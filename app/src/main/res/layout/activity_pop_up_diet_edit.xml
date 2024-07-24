@@ -13,22 +13,23 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/ac_po_up_di_LinearLayout1">
 
-        <TextView
-            android:id="@+id/ac_po_up_di_TextView0"
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText0"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:hint="Food Name"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/ac_po_up_di_EditText1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Name of the food"
+            android:hint="Own Weight[kg]"
             android:layout_weight="2"
             android:gravity="center"
-            android:inputType="text"/>
+            android:inputType="numberSigned"/>
 
     </LinearLayout>
 
@@ -88,14 +89,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Update"
-            android:onClick="Update"/>
+            android:onClick="Update"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/ac_po_up_di_Button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete"
-            android:onClick="Delete"/>
+            android:onClick="Delete"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

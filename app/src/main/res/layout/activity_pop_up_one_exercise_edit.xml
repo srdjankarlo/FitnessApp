@@ -77,14 +77,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Update"
-            android:onClick="Update"/>
+            android:onClick="Update"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/ac_po_up_on_ex_ed_Button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete"
-            android:onClick="Delete"/>
+            android:onClick="Delete"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

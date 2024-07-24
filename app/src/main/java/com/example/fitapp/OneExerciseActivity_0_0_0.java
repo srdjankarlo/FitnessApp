@@ -177,8 +177,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         int rest_duration = (TextUtils.isEmpty(editable_rest_duration.toString())) ? 0 : Integer.parseInt(editable_rest_duration.toString());
 
         // set number must be entered
-        if (set_text == 0 || weight_text == 0 || reps_text == 0){
-            Toast.makeText(this, "Set, kg or Reps entry missing!", Toast.LENGTH_SHORT).show();
+        if (set_text == 0){
+            Toast.makeText(this, "Set entry missing!", Toast.LENGTH_SHORT).show();
             return;
         }
 

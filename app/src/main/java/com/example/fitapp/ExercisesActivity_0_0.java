@@ -81,6 +81,12 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Returning false here hides the menu
+        return false;
+    }
+
+    @Override
     public void onItemClick(int position) {
 
         ExercisesItem exercisesItem = muscleGroupItems.get(position);
