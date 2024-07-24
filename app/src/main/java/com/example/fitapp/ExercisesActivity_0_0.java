@@ -42,7 +42,7 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         setContentView(R.layout.activity_exercises);
 
         // change app bar title
-        Objects.requireNonNull(getSupportActionBar()).setTitle(muscleGroupCategory + " exercises");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(categoryName + " exercises");
 
         // change app bar color
         ActionBar bar = getSupportActionBar();

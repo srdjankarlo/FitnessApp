@@ -12,20 +12,19 @@ public class MuscleGroupsItem implements Parcelable {
     @DrawableRes
     private int image;
     private String name;
-    //private String numberOfExercises;  // ToDo: for future think of a way how to display number of exercises for each group
+    private int numberOfExercises;
 
-    //public MuscleGroupsItem(@DrawableRes int image, String name, String numberOfExercises) {
-    public MuscleGroupsItem(@DrawableRes int image, String name) {
+    public MuscleGroupsItem(@DrawableRes int image, String name, int numberOfExercises) {
         this.image = image;
         this.name = name;
-        //this.numberOfExercises = numberOfExercises;
+        this.numberOfExercises = numberOfExercises;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected MuscleGroupsItem(Parcel in){
         image = in.readInt();
         name = in.readString();
-        //numberOfExercises = in.readString();
+        numberOfExercises = in.readInt();
     }
 
     public static final Creator<MuscleGroupsItem> CREATOR = new Creator<MuscleGroupsItem>() {
@@ -49,7 +48,7 @@ public class MuscleGroupsItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags){
         dest.writeInt(image);
         dest.writeString(name);
-        //dest.writeString(numberOfExercises);
+        dest.writeInt(numberOfExercises);
     }
 
     @DrawableRes
@@ -69,14 +68,13 @@ public class MuscleGroupsItem implements Parcelable {
         this.name = name;
     }
 
-    //public String getNumberOfExercises() {
-    //
-    //    return numberOfExercises;
-    //}
+    public int getNumberOfExercises() {
+        return numberOfExercises;
+    }
 
-    //public void setNumberOfExercises(String numberOfExercises) {
-    //    this.numberOfExercises = numberOfExercises;
-    //}
+    public void setNumberOfExercises(int numberOfExercises) {
+        this.numberOfExercises = numberOfExercises;
+    }
 
     @NonNull
     @Override
@@ -84,7 +82,7 @@ public class MuscleGroupsItem implements Parcelable {
         return "MainMenuRecViewItem{" +
                 "CommonRecViewName='" + name + '\'' +
                 ", CommonRecViewImage=" + image + '\'' +
-                //", CommonRecViewTextView2=" + numberOfExercises + '\'' +
+                ", CommonRecViewNumOfEx=" + numberOfExercises + '\'' +
                 '}';
     }
 }

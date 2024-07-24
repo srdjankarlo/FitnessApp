@@ -167,6 +167,9 @@ public class ExercisesRepository {
                 exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Hanging Leg Raises", Arrays.asList("Abs")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Parallel Bar Leg Raises", Arrays.asList("Abs")));
 
+                exercisesDao.insert(new ExercisesItem(R.drawable.glutes, "Good Mornings", Arrays.asList("Glutes", "Hamstrings")));
+                exercisesDao.insert(new ExercisesItem(R.drawable.glutes, "Hip Thrust", Arrays.asList("Glutes", "Hamstrings")));
+
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Leg Extensions", Arrays.asList("Quads")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Squats", Arrays.asList("Quads", "Glutes", "Hamstrings")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Dumbbell Squats", Arrays.asList("Quads", "Glutes")));
@@ -175,11 +178,10 @@ public class ExercisesRepository {
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Dumbbell Lunges", Arrays.asList("Quads")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Barbell Lunges", Arrays.asList("Quads")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Bench Jump", Arrays.asList("Quads", "Hamstrings")));
-                exercisesDao.insert(new ExercisesItem(R.drawable.glutes, "Good Mornings", Arrays.asList("Glutes", "Hamstrings")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Single Leg Squats", Arrays.asList("Quads")));
                 exercisesDao.insert(new ExercisesItem(R.drawable.quads, "Open Jump", Arrays.asList("Quads")));
+
                 exercisesDao.insert(new ExercisesItem(R.drawable.hamstrings, "Leg Curls", Arrays.asList("Hamstrings", "Calves")));
-                exercisesDao.insert(new ExercisesItem(R.drawable.glutes, "Hip Thrust", Arrays.asList("Glutes", "Hamstrings")));
             }
             return null;
         }

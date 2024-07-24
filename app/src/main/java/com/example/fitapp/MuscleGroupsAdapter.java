@@ -41,7 +41,7 @@ public class MuscleGroupsAdapter extends RecyclerView.Adapter<MuscleGroupsAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.MainMenuRecView_ImageView1.setImageResource(muscleGroupsItems.get(position).getImage());
         holder.MainMenuRecView_TextView1.setText(muscleGroupsItems.get(position).getName());
-        //holder.MainMenuRecView_TextView2.setText(muscleGroupsItems.get(position).getNumberOfExercises());
+        holder.MainMenuRecView_TextView2.setText(String.format("%s exercises", String.valueOf(muscleGroupsItems.get(position).getNumberOfExercises())));
     }
 
     @Override
@@ -65,19 +65,19 @@ public class MuscleGroupsAdapter extends RecyclerView.Adapter<MuscleGroupsAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
-        private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
+        //private ConstraintLayout MainMenuRecView_Layout;  // to be able to set on click listener
         private ImageView MainMenuRecView_ImageView1;
         private TextView MainMenuRecView_TextView1;
-        //private TextView MainMenuRecView_TextView2;
+        private TextView MainMenuRecView_TextView2;
 
         // to create constructor, press Alt+ins
         public ViewHolder(@NonNull View itemView, MuscleGroupsInterface mainMenuRecViewInterface) {
             super(itemView);
-            context = itemView.getContext();
-            MainMenuRecView_Layout = itemView.findViewById(R.id.mu_groups_it_Layout);
+            //context = itemView.getContext();
+            //MainMenuRecView_Layout = itemView.findViewById(R.id.mu_groups_it_Layout);
             MainMenuRecView_ImageView1 = itemView.findViewById(R.id.mu_groups_it_ImageView1);
             MainMenuRecView_TextView1 = itemView.findViewById(R.id.mu_groups_it_TextView1);
-            //MainMenuRecView_TextView2 = itemView.findViewById(R.id.mu_groups_it_TextView2);
+            MainMenuRecView_TextView2 = itemView.findViewById(R.id.mu_groups_it_TextView2);
 
             // set on click
             itemView.setOnClickListener(new View.OnClickListener() {

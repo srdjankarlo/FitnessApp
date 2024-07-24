@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -39,6 +41,11 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
     List<ExercisesItem> chest_exercises, shoulder_exercises, biceps_exercises,
             triceps_exercises, forearms_exercises, back_exercises, abs_exercises, quads_exercises,
             hamstrings_exercises, glutes_exercises, calves_exercises;
+
+    public int og_num_chest_exercises, og_num_shoulder_exercises, og_num_biceps_exercises,
+            og_num_triceps_exercises, og_num_forearms_exercises, og_num_back_exercises, og_num_abs_exercises,
+            og_num_quads_exercises, og_num_hamstrings_exercises, og_num_glutes_exercises,
+            og_num_calves_exercises;
 
     public int num_chest_exercises, num_shoulder_exercises, num_biceps_exercises, num_triceps_exercises,
             num_forearms_exercises, num_back_exercises, num_abs_exercises, num_quads_exercises,
@@ -179,17 +186,29 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
             }
         });
 
-        category.add(new MuscleGroupsItem(R.drawable.chest, getString(R.string.chest_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.shoulders, getString(R.string.shoulders_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.biceps, getString(R.string.biceps_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.triceps, getString(R.string.triceps_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.forearms, getString(R.string.forearms_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.back, getString(R.string.back_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.abs, getString(R.string.abs_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.quads, getString(R.string.quads_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.hamstrings, getString(R.string.hamstrings_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.glutes, getString(R.string.glutes_exercise)));
-        category.add(new MuscleGroupsItem(R.drawable.calves, getString(R.string.calves_exercise)));
+        og_num_chest_exercises = 17;
+        og_num_shoulder_exercises = 11;
+        og_num_biceps_exercises= 11;
+        og_num_triceps_exercises = 7;
+        og_num_forearms_exercises = 9;
+        og_num_back_exercises = 10;
+        og_num_abs_exercises = 6;
+        og_num_quads_exercises = 10;
+        og_num_hamstrings_exercises = 5;
+        og_num_glutes_exercises = 5;
+        og_num_calves_exercises = 1;
+
+        category.add(new MuscleGroupsItem(R.drawable.chest, getString(R.string.chest_exercise), og_num_chest_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.shoulders, getString(R.string.shoulders_exercise), og_num_shoulder_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.biceps, getString(R.string.biceps_exercise), og_num_biceps_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.triceps, getString(R.string.triceps_exercise), og_num_triceps_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.forearms, getString(R.string.forearms_exercise), og_num_forearms_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.back, getString(R.string.back_exercise), og_num_back_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.abs, getString(R.string.abs_exercise), og_num_abs_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.glutes, getString(R.string.glutes_exercise), og_num_glutes_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.quads, getString(R.string.quads_exercise), og_num_quads_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.hamstrings, getString(R.string.hamstrings_exercise), og_num_hamstrings_exercises));
+        category.add(new MuscleGroupsItem(R.drawable.calves, getString(R.string.calves_exercise), og_num_calves_exercises));
 
         // put exercises to show first
         RecViewItems = category;
@@ -266,108 +285,47 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
     public void onItemClick(int position) {
 
         // for exercises
-        if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.chest_exercise))){
-            if(num_chest_exercises == 0){
-                Toast.makeText(this, "No chest exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                // ToDo: figure out how to show num of exercises in muscle_groups_item.xml instead of a Toast
-                Toast.makeText(this, "Available " + num_chest_exercises + " chest exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(chest_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.shoulders_exercise))) {
-            if(num_shoulder_exercises == 0){
-                Toast.makeText(this, "No shoulders exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_shoulder_exercises + " shoulders exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(shoulder_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.biceps_exercise))) {
-            if(num_biceps_exercises == 0){
-                Toast.makeText(this, "No biceps exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_biceps_exercises + " biceps exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(biceps_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.triceps_exercise))) {
-            if(num_triceps_exercises == 0){
-                Toast.makeText(this, "No triceps exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_triceps_exercises + " triceps exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(triceps_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.forearms_exercise))) {
-            if(num_forearms_exercises == 0){
-                Toast.makeText(this, "No forearms exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_forearms_exercises + " forearms exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(forearms_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.back_exercise))) {
-            if(num_back_exercises == 0){
-                Toast.makeText(this, "No back exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_back_exercises + " back exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(back_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.abs_exercise))) {
-            if(num_abs_exercises == 0){
-                Toast.makeText(this, "No abs exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_abs_exercises + " abs exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(abs_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.quads_exercise))) {
-            if(num_quads_exercises == 0){
-                Toast.makeText(this, "No quads exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_quads_exercises + " quads exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(quads_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.hamstrings_exercise))) {
-            if(num_hamstrings_exercises == 0){
-                Toast.makeText(this, "No hamstrings exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_hamstrings_exercises + " hamstrings exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(hamstrings_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.glutes_exercise))) {
-            if(num_glutes_exercises == 0){
-                Toast.makeText(this, "No glutes exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_glutes_exercises + " glutes exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(glutes_exercises));
-                startActivity(intent);
-            }
-        } else if (Objects.equals(RecViewItems.get(position).getName(), getString(R.string.calves_exercise))) {
-            if(num_calves_exercises == 0){
-                Toast.makeText(this, "No calves exercises", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Available " + num_calves_exercises + " calves exercises", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
-                intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(calves_exercises));
-                startActivity(intent);
-            }
-        }
+        MuscleGroupsItem selectedItem = RecViewItems.get(position);
+        String selectedName = selectedItem.getName();
 
+        // Map exercise categories to lists and counts
+        Map<String, List<ExercisesItem>> categoryExercisesMap = new HashMap<>();
+        categoryExercisesMap.put(getString(R.string.chest_exercise), chest_exercises);
+        categoryExercisesMap.put(getString(R.string.shoulders_exercise), shoulder_exercises);
+        categoryExercisesMap.put(getString(R.string.biceps_exercise), biceps_exercises);
+        categoryExercisesMap.put(getString(R.string.triceps_exercise), triceps_exercises);
+        categoryExercisesMap.put(getString(R.string.forearms_exercise), forearms_exercises);
+        categoryExercisesMap.put(getString(R.string.back_exercise), back_exercises);
+        categoryExercisesMap.put(getString(R.string.abs_exercise), abs_exercises);
+        categoryExercisesMap.put(getString(R.string.quads_exercise), quads_exercises);
+        categoryExercisesMap.put(getString(R.string.hamstrings_exercise), hamstrings_exercises);
+        categoryExercisesMap.put(getString(R.string.glutes_exercise), glutes_exercises);
+        categoryExercisesMap.put(getString(R.string.calves_exercise), calves_exercises);
+
+        Map<String, Integer> categoryCountMap = new HashMap<>();
+        categoryCountMap.put(getString(R.string.chest_exercise), num_chest_exercises);
+        categoryCountMap.put(getString(R.string.shoulders_exercise), num_shoulder_exercises);
+        categoryCountMap.put(getString(R.string.biceps_exercise), num_biceps_exercises);
+        categoryCountMap.put(getString(R.string.triceps_exercise), num_triceps_exercises);
+        categoryCountMap.put(getString(R.string.forearms_exercise), num_forearms_exercises);
+        categoryCountMap.put(getString(R.string.back_exercise), num_back_exercises);
+        categoryCountMap.put(getString(R.string.abs_exercise), num_abs_exercises);
+        categoryCountMap.put(getString(R.string.quads_exercise), num_quads_exercises);
+        categoryCountMap.put(getString(R.string.hamstrings_exercise), num_hamstrings_exercises);
+        categoryCountMap.put(getString(R.string.glutes_exercise), num_glutes_exercises);
+        categoryCountMap.put(getString(R.string.calves_exercise), num_calves_exercises);
+
+        List<ExercisesItem> exercisesList = categoryExercisesMap.get(selectedName);
+        int exerciseCount = categoryCountMap.get(selectedName);
+
+        if (exerciseCount == 0) {
+            Toast.makeText(this, "No " + selectedName.toLowerCase() + " exercises", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Available " + exerciseCount + " " + selectedName.toLowerCase() + " exercises", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
+            intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(exercisesList));
+            startActivity(intent);
+        }
     }
 
     // deprecated
