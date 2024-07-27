@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class PopUpDietEdit extends DietActivity_0_1 {
 
@@ -28,19 +27,12 @@ public class PopUpDietEdit extends DietActivity_0_1 {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        //int width = dm.widthPixels;
-        //int height = dm.heightPixels;
-        //getWindow().setLayout(width, (int) (height*.25));
         int width = ViewGroup.LayoutParams.WRAP_CONTENT;
         int height = ViewGroup.LayoutParams.WRAP_CONTENT;
         getWindow().setLayout(width, height);
 
-        // ToDO: see this https://www.youtube.com/watch?v=fn5OlqQuOCk to make see previous activity bellow this one // this doent work
-
         // get data from previous activity
         Bundle intent = getIntent().getExtras();
-        //int position = intent.getInt("position");
-        //dietItem = adapter.getDietAtPosition(position);
         dietItem = intent.getParcelable("dietItem");
 
         String food_name = dietItem.getFood_name();

@@ -23,13 +23,8 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
     private final OneExerciseInterface oneExerciseInterface;
     private List<OneExerciseItem> recViewItems = new ArrayList<>();
     private Context context;
-    private OneExerciseAdapter.OnItemClickListener listener;
 
     // we need constructor for this ViewAdapter, so alt+ins
-    //public OneExerciseRecViewAdapter(Context context, OneExerciseRecViewInterface oneExerciseRecViewInterface) {
-    //    this.context = context;
-    //    this.oneExerciseRecViewInterface = oneExerciseRecViewInterface;
-    //}
     public OneExerciseAdapter(Context context, OneExerciseInterface oneExerciseInterface) {
         this.context = context;
         this.oneExerciseInterface = oneExerciseInterface;
@@ -43,19 +38,14 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.one_exercise_item, parent, false);
-        //return new ViewHolder(view, oneExerciseRecViewInterface);
         return new ViewHolder(view);
     }
 
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //OneExerciseItem item = recViewItems.get(position);
-        //holder.item_date.setText(item.getitemDate());
-        //holder.item_date.setText(String.valueOf(recViewItems.get(position).getItemDate()));
         holder.item_date.setText(formatTimestamp(recViewItems.get(position).getItemDate()));
         holder.item_set.setText(String.valueOf(recViewItems.get(position).getSetNumber()));
-        //holder.date.setText(recViewItems.get(position).getOneExerciseRecViewDate());
         holder.item_weight.setText(String.valueOf(recViewItems.get(position).getItemWeight()));
         holder.item_reps.setText(String.valueOf(recViewItems.get(position).getItemReps()));
         holder.item_duration.setText(String.valueOf(recViewItems.get(position).getItemWorkTime()));
@@ -130,17 +120,4 @@ public class OneExerciseAdapter extends RecyclerView.Adapter<OneExerciseAdapter.
         }
     }
 
-    public interface OnItemClickListener{
-        void onItemClick(OneExerciseItem oneExerciseItem);
-    }
-
-    public void setOnItemClickListener(OneExerciseAdapter.OnItemClickListener listener){
-        this.listener = (OneExerciseAdapter.OnItemClickListener) listener;
-    }
-
-    // Method to add an item
-    public void addItem(OneExerciseItem item) {
-        recViewItems.add(item);
-        notifyItemInserted(recViewItems.size() - 1);  // update to last place
-    }
 }

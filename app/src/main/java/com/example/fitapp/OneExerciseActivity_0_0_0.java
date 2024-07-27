@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-//public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneExerciseRecViewInterface {
 public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneExerciseInterface {
 
     //OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this, this);
@@ -40,7 +39,6 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
     TextView restTimer;
     Button workButtonTimer;
     Button restButtonTimer;
-    ArrayList<OneExerciseItem> items = new ArrayList<>();
     private boolean stopwatchWorkIsRunning = false;
     private boolean stopwatchRestIsRunning = false;
     private Handler handler = new Handler();

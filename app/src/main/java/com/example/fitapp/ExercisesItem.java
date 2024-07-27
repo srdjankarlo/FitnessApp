@@ -20,17 +20,59 @@ public class ExercisesItem implements Parcelable {
     @PrimaryKey
     @NonNull
     private String exerciseName;
-    private List<String> categories;  // more muscle groups, should replace muscleGroup
+    private List<String> categories;  // more muscle groups
+
+    int num_chest_exercises;
+    int num_shoulders_exercises;
+    int num_biceps_exercises;
+    int num_triceps_exercises;
+    int num_forearms_exercises;
+    int num_back_exercises;
+    int num_abs_exercises;
+    int num_quads_exercises;
+    int num_hamstrings_exercises;
+    int num_glutes_exercises;
+    int num_calves_exercises;
+    boolean customExercise;  // true if this is custom added exercise, in order so we can delete just the custom exercises and leave the in app exercises
+    // String explanation;  // ToDo: this is for future
 
     // Default no-argument constructor
     public ExercisesItem() {
         exerciseName = "Generic Name";
     }
 
-    public ExercisesItem(@DrawableRes int image, @NonNull String exerciseName, List<String> category) {
+    public ExercisesItem(@DrawableRes int image, @NonNull String exerciseName, List<String> categories, boolean customExercise) {
         this.image = image;
         this.exerciseName = exerciseName;
-        this.categories = category;
+        this.categories = categories;
+        this.customExercise = customExercise;
+        //this.explanation = explanation;
+
+        for (String category : categories){
+            if (category.equals("Chest")){
+                num_chest_exercises += 1;
+            } else if (category.equals("Shoulders")) {
+                num_shoulders_exercises += 1;
+            } else if (category.equals("Biceps")) {
+                num_biceps_exercises += 1;
+            } else if (category.equals("Triceps")) {
+                num_triceps_exercises += 1;
+            } else if (category.equals("Forearms")) {
+                num_forearms_exercises += 1;
+            } else if (category.equals("Back")) {
+                num_back_exercises += 1;
+            } else if (category.equals("Abs")) {
+                num_abs_exercises += 1;
+            } else if (category.equals("Quads")) {
+                num_quads_exercises += 1;
+            } else if (category.equals("Hamstrings")) {
+                num_hamstrings_exercises += 1;
+            } else if (category.equals("Glutes")) {
+                num_glutes_exercises += 1;
+            } else if (category.equals("Calves")) {
+                num_calves_exercises += 1;
+            }
+        }
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
@@ -86,6 +128,49 @@ public class ExercisesItem implements Parcelable {
 
     public void setCategories(List<String> categories){this.categories = categories;}
 
+    public int getNum_chest_exercises() {
+        return num_chest_exercises;
+    }
+
+    public int getNum_shoulders_exercises() {
+        return num_shoulders_exercises;
+    }
+
+    public int getNum_biceps_exercises() {
+        return num_biceps_exercises;
+    }
+
+    public int getNum_triceps_exercises() {
+        return num_triceps_exercises;
+    }
+
+    public int getNum_forearms_exercises() {
+        return num_forearms_exercises;
+    }
+
+    public int getNum_back_exercises() {
+        return num_back_exercises;
+    }
+
+    public int getNum_abs_exercises() {
+        return num_abs_exercises;
+    }
+
+    public int getNum_quads_exercises() {
+        return num_quads_exercises;
+    }
+
+    public int getNum_hamstrings_exercises() {
+        return num_hamstrings_exercises;
+    }
+
+    public int getNum_glutes_exercises() {
+        return num_glutes_exercises;
+    }
+
+    public int getNum_calves_exercises() {
+        return num_calves_exercises;
+    }
 
     @NonNull
     @Override

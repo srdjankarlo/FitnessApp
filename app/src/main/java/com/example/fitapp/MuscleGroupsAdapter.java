@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -57,7 +56,6 @@ public class MuscleGroupsAdapter extends RecyclerView.Adapter<MuscleGroupsAdapte
         adding custom exercises for the particular musle group
 
         and dont use so broad method like notifyDataSetChanged(), i.e. use: notifyItemInserted(int)
-
          */
     }
 

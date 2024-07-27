@@ -9,8 +9,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,25 +57,6 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         recyclerView.setAdapter(muscleGroupAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // ToDo: make database for added exercises also, do that in Activity_0, storing exercises in Activity_0 and adding exercises here in this activity
-
-        //// Get the OnBackPressedDispatcher
-        //OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
-        //
-        //// Register the callback
-        //onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
-        //    @Override
-        //    public void handleOnBackPressed() {
-        //        // Your custom logic here
-        //        //Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
-        //
-        //        // If you want to handle the back press, do not call super.onBackPressed()
-        //        // If you want the default behavior, you can finish the activity or call super
-        //        // finish(); // Optionally finish the activity
-        //        Intent intent = new Intent(getApplicationContext(), MainMenuActivity_0.class);
-        //        startActivity(intent);
-        //    }
-        //});
     }
 
     @Override

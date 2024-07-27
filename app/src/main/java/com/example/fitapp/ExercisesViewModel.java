@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExercisesViewModel extends AndroidViewModel {
@@ -35,11 +34,4 @@ public class ExercisesViewModel extends AndroidViewModel {
         exercisesRepository.insertInitialData();
     }
 
-    //public LiveData<List<ExercisesItem>> getExercisesByCategory(String category) {
-    //    return exercisesRepository.getExercisesByCategory(category);
-    //}
-    //
-    //public LiveData<Integer> countInCategory(String value) {
-    //    return exercisesRepository.countInCategory(value);
-    //}
 }
