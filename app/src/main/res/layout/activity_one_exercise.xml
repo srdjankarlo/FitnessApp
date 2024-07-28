@@ -6,119 +6,113 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".OneExerciseActivity_0_0_0"
-    android:id="@+id/id_ac_on_ex_Layout0">
+    android:id="@+id/ac_on_ex_ConstraintLayout1">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/id_ac_on_ex_ScrollView"
+        android:id="@+id/ac_on_ex_ScrollView1"
         android:isScrollContainer="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/id_ac_on_ex_Layout1">
+            android:id="@+id/ac_on_ex_ConstraintLayout2">
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/id_ac_on_ex_ViewPager1"
+                android:id="@+id/ac_on_ex_ViewPager1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintHeight_percent="0.1"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-                android:id="@+id/id_ac_on_ex_DotsIndicator"
+                android:id="@+id/ac_on_ex_DotsIndicator1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 app:dotsColor="@color/gray_light"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_ViewPager1"
+                app:layout_constraintTop_toBottomOf="@+id/ac_on_ex_ViewPager1"
                 app:selectedDotColor="@color/gray_dark" />
 
-            <TextView
-                android:id="@+id/id_ac_on_ex_TextView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Here is the explanation of the exercise shown in the picture."
-                app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_DotsIndicator"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/id_ac_on_ex_Layout2_1"
+                android:id="@+id/ac_on_ex_LinearLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_TextView1">
+                app:layout_constraintTop_toBottomOf="@+id/ac_on_ex_DotsIndicator1">
 
                 <Button
-                    android:id="@+id/id_ac_on_ex_Button1_1"
+                    android:id="@+id/ac_on_ex_Button1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Workout timer"
+                    android:text="Start Workout timer"
+                    android:backgroundTint="@color/green"
                     android:onClick="WorkoutTimer"/>
 
-                <TextView
-                    android:id="@+id/id_ac_on_ex_TextView2_1"
+                <Button
+                    android:id="@+id/ac_on_ex_Button1_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Exercise Duration"
-                    android:gravity="center"/>
+                    android:text="Reset Workout timer"
+                    android:onClick="ResetWorkoutT"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/id_ac_on_ex_Layout2_2"
+                android:id="@+id/ac_on_ex_LinearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_Layout2_1">
+                app:layout_constraintTop_toBottomOf="@+id/ac_on_ex_LinearLayout1">
 
                 <Button
-                    android:id="@+id/id_ac_on_ex_Button1_2"
+                    android:id="@+id/ac_on_ex_Button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Resting timer"
+                    android:text="Start Rest timer"
+                    android:backgroundTint="@color/green"
                     android:onClick="RestingTimer"/>
 
-                <TextView
-                    android:id="@+id/id_ac_on_ex_TextView2_2"
+                <Button
+                    android:id="@+id/ac_on_ex_Button2_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Resting Duration"
-                    android:gravity="center"/>
+                    android:text="Reset Rest timer"
+                    android:onClick="ResetRestingT"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/id_ac_on_ex_Layout3"
+                android:id="@+id/ac_on_ex_LinearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_Layout2_2">
-
-                <Button
-                    android:id="@+id/id_ac_on_ex_Button2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ADD"
-                    android:onClick="ADD"/>
+                app:layout_constraintTop_toBottomOf="@+id/ac_on_ex_LinearLayout2">
 
                 <EditText
-                    android:id="@+id/id_ac_on_ex_TextView3"
+                    android:id="@+id/ac_on_ex_EditText1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Weight [kg]"
+                    android:hint="Set"
+                    android:gravity="center"
+                    android:inputType="numberSigned"/>
+
+                <EditText
+                    android:id="@+id/ac_on_ex_EditText2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="kg"
                     android:inputType="numberDecimal"
                     android:gravity="center"/>
 
                 <EditText
-                    android:id="@+id/id_ac_on_ex_TextView4"
+                    android:id="@+id/ac_on_ex_EditText3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,13 +120,45 @@
                     android:inputType="numberSigned"
                     android:gravity="center"/>
 
+                <TextView
+                    android:id="@+id/ac_on_ex_TextView1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="000"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/ac_on_ex_TextView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="000"
+                    android:gravity="center"/>
+
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <LinearLayout
+                android:id="@+id/ac_on_ex_LinearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/ac_on_ex_LinearLayout3">
+
+                <Button
+                    android:id="@+id/ac_on_ex_Button3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ADD EXERCISE"
+                    android:onClick="ADD_EXERCISE"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/id_ac_on_ex_RecViewHeadline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_Layout3">
+                app:layout_constraintTop_toBottomOf="@+id/ac_on_ex_LinearLayout4">
 
                 <TextView
                     android:layout_width="0dp"
@@ -143,7 +169,13 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Weight"
+                    android:text="Set"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="kg"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -155,13 +187,13 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Work [s]"
+                    android:text="Work[s]"
                     android:layout_weight="1"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Rest [s]"
+                    android:text="Rest[s]"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -172,8 +204,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gray_light"
                 app:layout_constraintTop_toBottomOf="@+id/id_ac_on_ex_RecViewHeadline"
-                app:layout_constraintStart_toStartOf="@+id/id_ac_on_ex_Layout1"
-                app:layout_constraintEnd_toEndOf="@+id/id_ac_on_ex_Layout1"/>
+                app:layout_constraintStart_toStartOf="@+id/ac_on_ex_ConstraintLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/ac_on_ex_ConstraintLayout2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

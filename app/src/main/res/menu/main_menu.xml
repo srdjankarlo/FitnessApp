@@ -6,24 +6,30 @@
         app:showAsAction="ifRoom"
         android:id="@+id/id_ma_me_item"
         android:title=""
-        android:icon="@drawable/baseline_more_vert_24">
+        android:icon="@drawable/baseline_menu_24">
         <menu>
-            <item android:id="@+id/id_ma_me_item_exercises"
-                android:title="@string/menu_item_exercises"
-                app:showAsAction="never"
-                android:icon="@drawable/weight"/>
 
-            <item android:id="@+id/id_ma_me_item_diet"
+            <item android:id="@+id/ma_me_item_diet"
                 android:title="@string/menu_item_diet"
                 app:showAsAction="never"
                 android:icon="@drawable/fork_and_knife"/>
 
-            <item android:id="@+id/id_ma_me_item_my_workouts"
+            <item android:id="@+id/ma_me_AddExercise"
+                android:title="@string/menu_item_add_exercise"
+                app:showAsAction="never"
+                android:icon="@drawable/add_exercise"/>
+
+            <item android:id="@+id/ma_me_DeleteExercise"
+                android:title="Delete Custom Exercise"
+                app:showAsAction="never"
+                android:icon="@drawable/delete_exercise"/>
+
+            <item android:id="@+id/ma_me_item_my_workouts"
                 android:title="@string/menu_item_my_workouts"
                 app:showAsAction="never"
                 android:icon="@drawable/checklist"/>
 
-            <item android:id="@+id/id_ma_me_item_progress"
+            <item android:id="@+id/ma_me_item_progress"
                 android:title="@string/menu_item_progress"
                 app:showAsAction="never"
                 android:icon="@drawable/log_past"/>

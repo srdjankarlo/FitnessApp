@@ -1,7 +1,6 @@
 package com.example.fitapp;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,34 +8,37 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class ExercisesActivity_0_0 extends AppCompatActivity implements MainMenuRecViewInterface {
+public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements ExercisesInterface {
 
-    ArrayList<MainMenuRecViewItem> item_list = new ArrayList<>();
-    MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
-    RecyclerView MainMenu_RecView;
+    ArrayList<ExercisesItem> muscleGroupItems = new ArrayList<>();
+    ExercisesAdapter muscleGroupAdapter = new ExercisesAdapter(this, this);
+    RecyclerView recyclerView;
+    List<String> muscleGroupCategory;
+    String categoryName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ToDo: make all exercises for each muscle group
-
         // get data from previous activity
         Intent intent = getIntent();
-        item_list = intent.getParcelableArrayListExtra("RecViewItemsList");
+        muscleGroupItems = intent.getParcelableArrayListExtra("RecViewItemsList");
 
         // get the type of the item
-        String item_type = item_list.get(0).getMainMenuRecViewType();
+        muscleGroupCategory = muscleGroupItems.get(0).getCategories();
+        categoryName = muscleGroupCategory.get(0);
 
         // set layout
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_exercises);
 
         // change app bar title
-        Objects.requireNonNull(getSupportActionBar()).setTitle(item_type + " exercises");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(categoryName + " exercises");
 
         // change app bar color
         ActionBar bar = getSupportActionBar();
@@ -44,42 +46,29 @@ public class ExercisesActivity_0_0 extends AppCompatActivity implements MainMenu
         bar.setBackgroundDrawable(color);
 
         // get the recycler view in order to manipulate it
-        MainMenu_RecView = findViewById(R.id.id_ac_ma_me_RecView);
+        recyclerView = findViewById(R.id.ac_ex_RecView);
 
         // set the adapter for recycler view and show items in it
         //MainMenuRecViewAdapter adapter = new MainMenuRecViewAdapter(this, this);
-        adapter.setMainMenuRecView_items(item_list);
+        muscleGroupAdapter.setExercisesItems(muscleGroupItems);
 
-        MainMenu_RecView.setAdapter(adapter);
-        MainMenu_RecView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(muscleGroupAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //// Get the OnBackPressedDispatcher
-        //OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
-        //
-        //// Register the callback
-        //onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
-        //    @Override
-        //    public void handleOnBackPressed() {
-        //        // Your custom logic here
-        //        //Toast.makeText(getApplicationContext(), "Back button pressed!", Toast.LENGTH_SHORT).show();
-        //
-        //        // If you want to handle the back press, do not call super.onBackPressed()
-        //        // If you want the default behavior, you can finish the activity or call super
-        //        // finish(); // Optionally finish the activity
-        //        Intent intent = new Intent(getApplicationContext(), MainMenuActivity_0.class);
-        //        startActivity(intent);
-        //    }
-        //});
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Returning false here hides the menu
+        return false;
     }
 
     @Override
     public void onItemClick(int position) {
 
-        //MainMenuRecViewItem exercise = item_list.get(position);
-        String exercise_name = item_list.get(position).getMainMenuRecViewTextView1();
-
-        Intent intent = new Intent(this, OneExerciseActivity_0_0_0.class);
-        intent.putExtra("ExerciseName", exercise_name);
+        ExercisesItem exercisesItem = muscleGroupItems.get(position);
+        Intent intent = new Intent(ExercisesActivity_0_0.this, OneExerciseActivity_0_0_0.class);
+        intent.putExtra("ExercisesItem", exercisesItem);
         startActivity(intent);
     }
 }

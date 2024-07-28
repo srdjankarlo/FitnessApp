@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mu_group_it_Layout"
+    android:background="@color/gray_light">
+
+    <View
+        android:id="@+id/mu_group_it_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/mu_group_it_ImageView1"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/ac_ma_me_it_ImageView_contentDescription"
+        android:src="@drawable/weight"
+        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_divider2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mu_group_it_divider1" />
+
+    <TextView
+        android:id="@+id/mu_group_it_TextView1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:breakStrategy="simple"
+        android:text="Exercise Name"
+        android:textAlignment="viewStart"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_TextViewCategories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/mu_group_it_divider1" />
+
+    <TextView
+        android:id="@+id/mu_group_it_TextViewCategories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:breakStrategy="simple"
+        android:text="Categories"
+        android:textAlignment="viewStart"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/mu_group_it_TextView1" />
+
+    <View
+        android:id="@+id/mu_group_it_divider2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

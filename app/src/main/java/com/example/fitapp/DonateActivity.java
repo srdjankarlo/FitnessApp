@@ -33,7 +33,7 @@ public class DonateActivity extends AppCompatActivity {
 
     // no button when pressed logic
     public void Button2(View view) {
-        Intent intent = new Intent(this, MainMenuActivity_0.class);
+        Intent intent = new Intent(this, MuscleGroupsActivity_0.class);
         startActivity(intent);
     }
 }

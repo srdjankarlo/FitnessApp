@@ -7,7 +7,7 @@
     android:background="@color/gray_light">
 
     <View
-        android:id="@+id/id_di_it_divider1"
+        android:id="@+id/di_it_divider1"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/white"
@@ -20,18 +20,28 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/id_di_it_TextView0"
+            android:id="@+id/di_it_TextViewDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Date"
-            android:layout_weight="1"/>
+            android:layout_weight="2"
+            android:gravity="center"/>
 
         <TextView
-            android:id="@+id/id_di_it_TextView1"
+            android:id="@+id/di_it_TextViewFoodName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Name of the food"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/di_it_TextViewOwnWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="OwnWeight"
+            android:layout_weight="1"
+            android:gravity="center"/>
 
     </LinearLayout>
 
@@ -44,6 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:padding="10dp"
             android:text="Protein"/>
 
@@ -52,6 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:padding="10dp"
             android:text="Fat"/>
 
@@ -60,6 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:padding="10dp"
             android:text="Carbs"/>
 
@@ -68,8 +81,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:padding="10dp"
-            android:text="Sugar"/>
+            android:text="Calories"/>
 
     </LinearLayout>
 

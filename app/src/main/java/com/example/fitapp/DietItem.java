@@ -4,38 +4,48 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
+// Parcelable is in order to be able to send DietItem objext to another activity
+@Entity(tableName = "diet_table")
 public class DietItem implements Parcelable {
 
-    private Date date;
+    // ToDo: see when you learn how to plot, will date be good wor x axis and how to get that data
+    @PrimaryKey
+    private long date;
     private String food_name;
+    private int own_weight;
     private int proteins;
     private int fats;
     private int carbohydrates;
-    private int sugars;
+    private int calories;
 
-    public DietItem(Date this_date, String name, int protein, int fat, int carbs, int sugar) {
-        date = this_date;
-        food_name = name;
-        proteins = protein;
-        fats = fat;
-        carbohydrates = carbs;
-        sugars = sugar;
+    public DietItem(long this_date, String name, int own_weight, int protein, int fat, int carbs, int calorie) {
+        this.date = this_date;
+        this.food_name = name;
+        this.own_weight = own_weight;
+        this.proteins = protein;
+        this.fats = fat;
+        this.carbohydrates = carbs;
+        this.calories = calorie;
     }
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected DietItem(Parcel in){
         //String date = in.readString();
         //this.food_name = new SimpleDateFormat(date, Locale.getDefault());
-        long tmpDate = in.readLong();
-        date = tmpDate == -1 ? null : new Date(tmpDate);
+
+        //long tmpDate = in.readLong();
+        //date = tmpDate == -1 ? null : new Date(tmpDate);
+
+        this.date = in.readLong();
         this.food_name = in.readString();
+        this.own_weight = in.readInt();
         this.proteins = in.readInt();
         this.fats = in.readInt();
         this.carbohydrates = in.readInt();
-        this.sugars = in.readInt();
+        this.calories = in.readInt();
     }
 
     public static final Creator<DietItem> CREATOR = new Creator<DietItem>() {
@@ -61,17 +71,19 @@ public class DietItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //dest.writeString(food_name.toPattern());
-        dest.writeLong(date.getTime());
+        //dest.writeLong(date.getTime());
+        dest.writeLong(date);
         dest.writeString(food_name);
+        dest.writeInt(own_weight);
         dest.writeInt(proteins);
         dest.writeInt(fats);
         dest.writeInt(carbohydrates);
-        dest.writeInt(sugars);
+        dest.writeInt(calories);
     }
 
-    public Date getDate(){return date;}
+    public long getDate(){return date;}
 
-    public void setDate(Date this_date){this.date = this_date;}
+    public void setDate(long this_date){this.date = this_date;}
 
     public String getFood_name() {
         return food_name;
@@ -81,19 +93,23 @@ public class DietItem implements Parcelable {
         this.food_name = food;
     }
 
-    public int getProtein() {
+    public int getOwn_weight(){return own_weight;}
+
+    public void setOwn_weight(int own_weight){this.own_weight = own_weight;}
+
+    public int getProteins() {
         return proteins;
     }
 
-    public void setProtein(int protein) {
+    public void setProteins(int protein) {
         this.proteins = protein;
     }
 
-    public int getFat() {
+    public int getFats() {
         return fats;
     }
 
-    public void setFat(int fat) {
+    public void setFats(int fat) {
         this.fats = fat;
     }
 
@@ -105,12 +121,12 @@ public class DietItem implements Parcelable {
         this.carbohydrates = carbs;
     }
 
-    public int getSugar() {
-        return sugars;
+    public int getCalories() {
+        return calories;
     }
 
-    public void setSugar(int sugar) {
-        this.sugars = sugar;
+    public void setCalories(int calorie) {
+        this.calories = calorie;
     }
 
 
@@ -120,10 +136,11 @@ public class DietItem implements Parcelable {
         return "DietItem{" +
                 "Date='" + date + '\'' +
                 ", Food='" + food_name + '\'' +
+                ", OwnWeight='" + own_weight + '\'' +
                 ", Protein=" + proteins + '\'' +
                 ", Fat=" + fats + '\'' +
                 ", Carbs=" + carbohydrates + '\'' +
-                ", Sugar=" + sugars + '\'' +
+                ", Sugar=" + calories + '\'' +
                 '}';
     }
 }

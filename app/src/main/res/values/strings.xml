@@ -5,6 +5,7 @@
     <string name="no">No</string>
     <string name="menu_item_exercises">Exercises</string>
     <string name="menu_item_my_workouts">My Workouts Plan</string>
+    <string name="menu_item_add_exercise">Add Custom Exercise</string>
     <string name="menu_item_progress">Progress</string>
     <string name="menu_item_diet">Diet</string>
     <string name="ac_ma_me_it_TextView_text">Enter text</string>
@@ -17,4 +18,8 @@
     <string name="back_exercise">Back</string>
     <string name="abs_exercise">Abs</string>
     <string name="legs_exercise">Legs</string>
+    <string name="calves_exercise">Calves</string>
+    <string name="quads_exercise">Quads</string>
+    <string name="glutes_exercise">Glutes</string>
+    <string name="hamstrings_exercise">Hamstrings</string>
 </resources>

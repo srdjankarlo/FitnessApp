@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PopUpDietEdit"
+    android:id="@+id/ac_po_up_di_ConstraintLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/ac_po_up_di_LinearLayout1">
+
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Food Name"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Own Weight[kg]"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:inputType="numberSigned"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ac_po_up_di_LinearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/ac_po_up_di_LinearLayout1">
+
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:hint="Protein"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:hint="Fat"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:hint="Carbs"/>
+
+        <EditText
+            android:id="@+id/ac_po_up_di_EditText5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:hint="Calories"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ac_po_up_di_LinearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/ac_po_up_di_LinearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/ac_po_up_di_Button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:onClick="Update"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/ac_po_up_di_Button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:onClick="Delete"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
