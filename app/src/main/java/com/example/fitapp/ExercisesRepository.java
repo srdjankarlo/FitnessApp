@@ -11,9 +11,10 @@ import java.util.List;
 public class ExercisesRepository {
     private final ExercisesDao exercisesDao;
     private final LiveData<List<ExercisesItem>> allExercisesData;
+    private final FitAppDatabase database;
 
     public ExercisesRepository(Application application){
-        FitAppDatabase database = FitAppDatabase.getInstance(application);
+        database = FitAppDatabase.getInstance(application);
         exercisesDao = database.exercisesDao();
         allExercisesData = exercisesDao.getAllExercisesData();
     }
@@ -23,7 +24,7 @@ public class ExercisesRepository {
     }
 
     public void deleteExercisesData(ExercisesItem exercisesItem){
-        new DeleteExercisesAsyncTask(exercisesDao).execute(exercisesItem);
+        new DeleteExercisesAsyncTask(exercisesDao, database).execute(exercisesItem);
     }
 
     public void updateExercisesData(ExercisesItem exercisesItem){
@@ -54,14 +55,17 @@ public class ExercisesRepository {
 
     private static class DeleteExercisesAsyncTask extends AsyncTask<ExercisesItem, Void, Void>{
         private final ExercisesDao exercisesDao;
+        private final FitAppDatabase db;
 
-        private DeleteExercisesAsyncTask(ExercisesDao exercisesDao){
+        private DeleteExercisesAsyncTask(ExercisesDao exercisesDao, FitAppDatabase database){
             this.exercisesDao = exercisesDao;
+            this.db = database;
         }
 
         @Override
         protected Void doInBackground(ExercisesItem... exercisesItems){
             exercisesDao.delete(exercisesItems[0]);
+            db.vacuum();
             return null;
         }
     }

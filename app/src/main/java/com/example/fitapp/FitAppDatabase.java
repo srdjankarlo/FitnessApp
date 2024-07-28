@@ -25,4 +25,13 @@ public abstract class FitAppDatabase extends RoomDatabase {
         }
         return instance;
     }
+
+    /*
+    SQLite databases (which Room uses) do not automatically shrink the database file size when
+    rows are deleted. The space is marked as available for reuse by new rows, but the file size
+    remains the same until you run a VACUUM command
+    */
+    public void vacuum() {
+        getOpenHelper().getWritableDatabase().execSQL("VACUUM");
+    }
 }
