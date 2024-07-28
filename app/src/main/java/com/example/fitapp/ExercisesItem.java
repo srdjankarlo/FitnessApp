@@ -128,6 +128,10 @@ public class ExercisesItem implements Parcelable {
 
     public void setCategories(List<String> categories){this.categories = categories;}
 
+    public boolean isCustomExercise() {
+        return customExercise;
+    }
+
     public int getNum_chest_exercises() {
         return num_chest_exercises;
     }

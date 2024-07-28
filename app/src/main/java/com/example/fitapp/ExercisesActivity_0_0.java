@@ -26,8 +26,6 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ToDo: make all exercises for each muscle group
-
         // get data from previous activity
         Intent intent = getIntent();
         muscleGroupItems = intent.getParcelableArrayListExtra("RecViewItemsList");

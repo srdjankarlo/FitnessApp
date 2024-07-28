@@ -152,6 +152,8 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
             startActivity(intent);
         } else if (id == R.id.ma_me_DeleteExercise) {
             // ToDo: make layout and activity for deleting custom exercises, use ExerciseViewModel delete method...look how its done for Diet in PopUpDiet
+            Intent intent = new Intent(getApplicationContext(), DeleteExerciseActivity_0_3.class);
+            startActivity(intent);
         } else if (id == R.id.ma_me_item_my_workouts){
             ;
         } else if (id == R.id.ma_me_item_progress) {
