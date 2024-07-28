@@ -11,9 +11,10 @@ import java.util.List;
 public class ExercisesRepository {
     private final ExercisesDao exercisesDao;
     private final LiveData<List<ExercisesItem>> allExercisesData;
+    private final FitAppDatabase database;
 
     public ExercisesRepository(Application application){
-        FitAppDatabase database = FitAppDatabase.getInstance(application);
+        database = FitAppDatabase.getInstance(application);
         exercisesDao = database.exercisesDao();
         allExercisesData = exercisesDao.getAllExercisesData();
     }

@@ -11,9 +11,10 @@ import java.util.List;
 public class DietRepository {
     private DietDao dietDao;
     private LiveData<List<DietItem>> allDietData;
+    private final FitAppDatabase database;
 
     public DietRepository(Application application){
-        FitAppDatabase database = FitAppDatabase.getInstance(application);
+        database = FitAppDatabase.getInstance(application);
         dietDao = database.dietDao();
         allDietData = dietDao.getAllDietData();
     }
