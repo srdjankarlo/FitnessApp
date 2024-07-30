@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".AddExerciseActivity_0_2">
 
+<!-- // ToDo: put Editable for explanation -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,8 +42,8 @@
         <!-- ToDo: access to phone images -->
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/ac_ad_ex_ImageButton1"
             android:src="@drawable/baseline_add_photo_alternate_24"
             android:contentDescription="TODO" />

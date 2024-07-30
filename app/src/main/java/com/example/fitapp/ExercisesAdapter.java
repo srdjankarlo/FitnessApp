@@ -40,7 +40,7 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
     // assign values to each item (row) of the recycler view
     @Override
     public void onBindViewHolder(@NonNull ExercisesAdapter.ViewHolder holder, int position) {
-        holder.exercises_ImageView1.setImageResource(exercisesItems.get(position).getImage());
+        holder.exercises_ImageView1.setImageResource(exercisesItems.get(position).getMuscle_image());
         holder.exercises_TextView1.setText(exercisesItems.get(position).getExerciseName());
         List<String> categories = exercisesItems.get(position).getCategories();
         String categoriesString = TextUtils.join(", ", categories);

@@ -1,5 +1,6 @@
 package com.example.fitapp;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -7,19 +8,22 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "exercises_table")
-@TypeConverters(Converters.class)
 public class ExercisesItem implements Parcelable {
     @DrawableRes
-    private int image;
+    private int muscle_image;
     @PrimaryKey
     @NonNull
     private String exerciseName;
+
+    @TypeConverters(StringListConverter.class)
     private List<String> categories;  // more muscle groups
 
     int num_chest_exercises;
@@ -34,19 +38,33 @@ public class ExercisesItem implements Parcelable {
     int num_glutes_exercises;
     int num_calves_exercises;
     boolean customExercise;  // true if this is custom added exercise, in order so we can delete just the custom exercises and leave the in app exercises
-    // String explanation;  // ToDo: this is for future
+    String explanation;  // ToDo: this is for future
+
+    //int image;  // ToDo: this is for exercise to have multiple images (ones you set in 0_0_0)
+
+    @TypeConverters(UriListConverter.class)
+    ArrayList<Uri> images;
+
+    //@TypeConverters(UriConverter.class)
+    //Uri image;
 
     // Default no-argument constructor
     public ExercisesItem() {
         exerciseName = "Generic Name";
     }
 
-    public ExercisesItem(@DrawableRes int image, @NonNull String exerciseName, List<String> categories, boolean customExercise) {
-        this.image = image;
+    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName, List<String> categories, boolean customExercise, String explanation, ArrayList<Uri> images) {
+        this.muscle_image = muscle_image;
         this.exerciseName = exerciseName;
         this.categories = categories;
         this.customExercise = customExercise;
-        //this.explanation = explanation;
+        this.explanation = explanation;
+
+        if (images == null){
+            this.images = new ArrayList<>();
+        } else {
+            this.images = images;
+        }
 
         for (String category : categories){
             if (category.equals("Chest")){
@@ -77,9 +95,14 @@ public class ExercisesItem implements Parcelable {
 
     // next 4 methods are implemented because of passing custom data as intent to other activities
     protected ExercisesItem(Parcel in){
-        image = in.readInt();
+        muscle_image = in.readInt();
         exerciseName = in.readString();
         categories = in.createStringArrayList();
+        customExercise = in.readBoolean();
+        explanation = in.readString();
+        images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
+        //image = in.readParcelable(Uri.class.getClassLoader());  // for Uri
+        //image = in.readInt();
     }
 
     public static final Creator<ExercisesItem> CREATOR = new Creator<ExercisesItem>() {
@@ -89,8 +112,8 @@ public class ExercisesItem implements Parcelable {
         }
 
         @Override
-        public ExercisesItem[] newArray(int i) {
-            return new ExercisesItem[i];
+        public ExercisesItem[] newArray(int size) {
+            return new ExercisesItem[size];
         }
     };
 
@@ -101,18 +124,23 @@ public class ExercisesItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
-        dest.writeInt(image);
+        dest.writeInt(muscle_image);
         dest.writeString(exerciseName);
         dest.writeStringList(categories);
+        dest.writeBoolean(customExercise);
+        dest.writeString(explanation);
+        dest.writeTypedList(images);  // for ArrayList<Uri>
+        //dest.writeParcelable(image, flags);  // for Uri
+        //dest.writeInt(image);
     }
 
     @DrawableRes
-    public int getImage() {
-        return image;
+    public int getMuscle_image() {
+        return muscle_image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setMuscle_image(int image) {
+        this.muscle_image = image;
     }
 
     @NonNull
@@ -128,8 +156,28 @@ public class ExercisesItem implements Parcelable {
 
     public void setCategories(List<String> categories){this.categories = categories;}
 
-    public boolean isCustomExercise() {
+    public boolean getCustomExercise() {
         return customExercise;
+    }
+
+    public void setCustomExercise(boolean customExercise) {
+        this.customExercise = customExercise;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public ArrayList<Uri> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<Uri> images) {
+        this.images = images;
     }
 
     public int getNum_chest_exercises() {
@@ -180,7 +228,7 @@ public class ExercisesItem implements Parcelable {
     @Override
     public String toString() {
         return "MainMenuRecViewItem{" +
-                ", RecViewImage=" + image + '\'' +
+                ", RecViewImage=" + muscle_image + '\'' +
                 ", RecViewName='" + exerciseName + '\'' +
                 ", RecViewCategories=" + categories + '\'' +
                 '}';

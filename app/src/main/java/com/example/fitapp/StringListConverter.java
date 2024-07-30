@@ -4,9 +4,10 @@ import androidx.room.TypeConverter;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Converters {
+public class StringListConverter {
+
+    // convert list of strings to just a string
     @TypeConverter
     public String fromList(List<String> categories) {
         if (categories == null) {
@@ -15,6 +16,7 @@ public class Converters {
         return String.join(",", categories);
     }
 
+    // convert a string to list of strings
     @TypeConverter
     public List<String> toList(String categories) {
         if (categories == null) {

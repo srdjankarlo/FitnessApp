@@ -23,6 +23,7 @@
                 android:id="@+id/ac_on_ex_ViewPager1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintHeight_percent="0.1"
                 app:layout_constraintTop_toTopOf="parent"/>
 

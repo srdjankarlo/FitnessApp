@@ -206,6 +206,7 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
             Toast.makeText(this, "Available " + exerciseCount + " " + selectedName.toLowerCase() + " exercises", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), ExercisesActivity_0_0.class);
             intent.putParcelableArrayListExtra("RecViewItemsList", new ArrayList<>(exercisesList));
+            intent.putExtra("Exercise name", selectedName);
             startActivity(intent);
         }
     }

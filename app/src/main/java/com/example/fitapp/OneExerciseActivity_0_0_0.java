@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -61,6 +62,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         Bundle intent = getIntent().getExtras();
         if(intent != null){
             exercisesItem = intent.getParcelable("ExercisesItem");
+            ArrayList<Uri> imageUris = exercisesItem.getImages();
+
             if(exercisesItem != null){
                 exercise_name = exercisesItem.getExerciseName();
 
@@ -80,6 +83,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
 
                 // Sample images for particular exercise
                 int[] images = {};
+                // ToDo: make for loop that check all categories that are in
                 String muscleGroup = exercisesItem.getCategories().get(0);
                 if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
                     images = new int[]{R.drawable.chest, R.drawable.weight};
@@ -98,7 +102,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                 } else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
                     images = new int[]{R.drawable.quads, R.drawable.weight};
                 } else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
-                    images = new int[]{R.drawable.hamstrings, R.drawable.weight};
+                    // ToDo: dont forget to change muscles image, it was just testing that scale argument in layout xml
+                    images = new int[]{R.drawable.hamstrings, R.drawable.muscles};
                 } else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
                     images = new int[]{R.drawable.glutes, R.drawable.weight};
                 } else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
@@ -106,8 +111,73 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                 }
 
                 // set images in image pager adapter, set adapter and view pager dots
-                ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
+                // ToDo: do this check for previous drawables and figure out why imageUris == null when add new exercise
+                Uri imageUri;
+                if (imageUris.size() == 0){
+                    if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.chest);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.shoulders);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.biceps);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.triceps);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.forearms);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.back);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.abs);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.quads);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.hamstrings);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.glutes);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    } else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.calves);
+                        imageUris.add(imageUri);
+                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
+                        imageUris.add(imageUri);
+                    }
+                } else {
+                    ;
+                }
+                ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, imageUris);
+                //ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
                 viewPager2.setAdapter(imagePagerAdapter);
+                // Launch the document picker
+
                 dotsIndicator.setViewPager2(viewPager2);
 
             } else {

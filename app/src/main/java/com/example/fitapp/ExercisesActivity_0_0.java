@@ -30,9 +30,10 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         Intent intent = getIntent();
         muscleGroupItems = intent.getParcelableArrayListExtra("RecViewItemsList");
 
+
         // get the type of the item
         muscleGroupCategory = muscleGroupItems.get(0).getCategories();
-        categoryName = muscleGroupCategory.get(0);
+        categoryName = intent.getStringExtra("Exercise name");
 
         // set layout
         setContentView(R.layout.activity_exercises);

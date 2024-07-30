@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class DeleteExerciseActivity_0_3 extends MuscleGroupsActivity_0 implement
                 exercisesList.clear();
                 exercisesList.addAll(exercisesItems);
 
-                customExercisesList = (ArrayList<ExercisesItem>) exercisesList.stream().filter(ExercisesItem::isCustomExercise).collect(Collectors.toList());
+                customExercisesList = (ArrayList<ExercisesItem>) exercisesList.stream().filter(ExercisesItem::getCustomExercise).collect(Collectors.toList());
 
                 setupExercises();
             }
@@ -57,6 +58,12 @@ public class DeleteExerciseActivity_0_3 extends MuscleGroupsActivity_0 implement
         // get the recycler view in order to manipulate it
         recyclerView = findViewById(R.id.ac_de_ex_RecView);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Returning false here hides the menu
+        return false;
     }
 
     private void setupExercises(){
@@ -90,8 +97,6 @@ public class DeleteExerciseActivity_0_3 extends MuscleGroupsActivity_0 implement
 
     @Override
     public void onItemClick(int position) {
-
-        // ToDo: pop up a window that asks if you want to delete this exercise
         delete_exercise = customExercisesList.get(position);
         showYesNoDialog();
     }

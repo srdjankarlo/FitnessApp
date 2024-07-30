@@ -9,7 +9,7 @@ import androidx.room.TypeConverters;
 
 //@Database(entities = {DietItem.class}, version = 1)
 @Database(entities = {DietItem.class, ExercisesItem.class, OneExerciseItem.class}, version = 1)
-@TypeConverters(Converters.class)
+@TypeConverters({StringListConverter.class, UriListConverter.class})
 public abstract class FitAppDatabase extends RoomDatabase {
     private static FitAppDatabase instance;
 
