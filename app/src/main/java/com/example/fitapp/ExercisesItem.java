@@ -1,5 +1,6 @@
 package com.example.fitapp;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -42,8 +43,11 @@ public class ExercisesItem implements Parcelable {
 
     //int image;  // ToDo: this is for exercise to have multiple images (ones you set in 0_0_0)
 
-    @TypeConverters(UriListConverter.class)
-    ArrayList<Uri> images;
+    //@TypeConverters(UriListConverter.class)
+    //ArrayList<Uri> images;
+
+    @TypeConverters(BitmapListConverter.class)
+    ArrayList<Bitmap> images;
 
     //@TypeConverters(UriConverter.class)
     //Uri image;
@@ -53,7 +57,7 @@ public class ExercisesItem implements Parcelable {
         exerciseName = "Generic Name";
     }
 
-    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName, List<String> categories, boolean customExercise, String explanation, ArrayList<Uri> images) {
+    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName, List<String> categories, boolean customExercise, String explanation, ArrayList<Bitmap> images) {
         this.muscle_image = muscle_image;
         this.exerciseName = exerciseName;
         this.categories = categories;
@@ -100,7 +104,8 @@ public class ExercisesItem implements Parcelable {
         categories = in.createStringArrayList();
         customExercise = in.readBoolean();
         explanation = in.readString();
-        images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
+        images = in.createTypedArrayList(Bitmap.CREATOR);
+        //images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
         //image = in.readParcelable(Uri.class.getClassLoader());  // for Uri
         //image = in.readInt();
     }
@@ -129,7 +134,7 @@ public class ExercisesItem implements Parcelable {
         dest.writeStringList(categories);
         dest.writeBoolean(customExercise);
         dest.writeString(explanation);
-        dest.writeTypedList(images);  // for ArrayList<Uri>
+        dest.writeTypedList(images);  // for ArrayList<Uri> and ArrayList<Bitmap>
         //dest.writeParcelable(image, flags);  // for Uri
         //dest.writeInt(image);
     }
@@ -172,11 +177,11 @@ public class ExercisesItem implements Parcelable {
         this.explanation = explanation;
     }
 
-    public ArrayList<Uri> getImages() {
+    public ArrayList<Bitmap> getImages() {
         return images;
     }
 
-    public void setImages(ArrayList<Uri> images) {
+    public void setImages(ArrayList<Bitmap> images) {
         this.images = images;
     }
 

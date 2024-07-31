@@ -1,17 +1,24 @@
 package com.example.fitapp;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -62,7 +69,8 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         Bundle intent = getIntent().getExtras();
         if(intent != null){
             exercisesItem = intent.getParcelable("ExercisesItem");
-            ArrayList<Uri> imageUris = exercisesItem.getImages();
+            //ArrayList<Uri> imageUris = exercisesItem.getImages();
+            ArrayList<Bitmap> imageBitmaps = exercisesItem.getImages();
 
             if(exercisesItem != null){
                 exercise_name = exercisesItem.getExerciseName();
@@ -81,99 +89,77 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                 // get view pager dots
                 dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
 
-                // Sample images for particular exercise
-                int[] images = {};
-                // ToDo: make for loop that check all categories that are in
+                //// Sample images for particular exercise
+                //int[] images = {};
+                //// ToDo: make for loop that check all categories that are in
                 String muscleGroup = exercisesItem.getCategories().get(0);
-                if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
-                    images = new int[]{R.drawable.chest, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
-                    images = new int[]{R.drawable.shoulders, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
-                    images = new int[]{R.drawable.biceps, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
-                    images = new int[]{R.drawable.triceps, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
-                    images = new int[]{R.drawable.forearms, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
-                    images = new int[]{R.drawable.back, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
-                    images = new int[]{R.drawable.abs, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
-                    images = new int[]{R.drawable.quads, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
-                    // ToDo: dont forget to change muscles image, it was just testing that scale argument in layout xml
-                    images = new int[]{R.drawable.hamstrings, R.drawable.muscles};
-                } else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
-                    images = new int[]{R.drawable.glutes, R.drawable.weight};
-                } else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
-                    images = new int[]{R.drawable.calves, R.drawable.weight};
-                }
+                //if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
+                //    images = new int[]{R.drawable.chest, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
+                //    images = new int[]{R.drawable.shoulders, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
+                //    images = new int[]{R.drawable.biceps, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
+                //    images = new int[]{R.drawable.triceps, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
+                //    images = new int[]{R.drawable.forearms, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
+                //    images = new int[]{R.drawable.back, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
+                //    images = new int[]{R.drawable.abs, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
+                //    images = new int[]{R.drawable.quads, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
+                //    // ToDo: dont forget to change muscles image, it was just testing that scale argument in layout xml
+                //    images = new int[]{R.drawable.hamstrings, R.drawable.muscles};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
+                //    images = new int[]{R.drawable.glutes, R.drawable.weight};
+                //} else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
+                //    images = new int[]{R.drawable.calves, R.drawable.weight};
+                //}
 
                 // set images in image pager adapter, set adapter and view pager dots
                 // ToDo: do this check for previous drawables and figure out why imageUris == null when add new exercise
-                Uri imageUri;
-                if (imageUris.size() == 0){
+                if (imageBitmaps == null){
+                    imageBitmaps = new ArrayList<>();
                     if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.chest);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.chest;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.shoulders);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.shoulders;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.biceps);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.biceps;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.triceps);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.triceps;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.forearms);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.forearms;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.back);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.back;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.abs);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.abs;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.quads);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.quads;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.hamstrings);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.hamstrings;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.glutes);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.glutes;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     } else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.calves);
-                        imageUris.add(imageUri);
-                        imageUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.weight);
-                        imageUris.add(imageUri);
+                        @DrawableRes int drawableResId = R.drawable.calves;
+                        imageBitmaps.add(drawableToBitmap(drawableResId));
                     }
                 } else {
                     ;
                 }
-                ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, imageUris);
+                ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, imageBitmaps);
                 //ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
                 viewPager2.setAdapter(imagePagerAdapter);
                 // Launch the document picker
@@ -220,6 +206,20 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
             }
         });
 
+    }
+
+    // Function to convert drawable resource to Bitmap
+    private Bitmap drawableToBitmap(@DrawableRes int drawableId) {
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), drawableId, null);
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        } else {
+            Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+            return bitmap;
+        }
     }
 
     public void ADD_EXERCISE(View view) {
