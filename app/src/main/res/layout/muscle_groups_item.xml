@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/mu_groups_it_ImageView1"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
+        android:layout_width="190dp"
+        android:layout_height="140dp"
         android:contentDescription="@string/ac_ma_me_it_ImageView_contentDescription"
         android:src="@drawable/muscles"
         app:layout_constraintBottom_toTopOf="@+id/mu_groups_it_divider2"

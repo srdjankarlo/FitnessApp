@@ -21,14 +21,11 @@ import java.util.List;
 
 public class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdapter.ViewHolder> {
     private Context context;
-    //private int[] imageUrls;
-    //private List<Uri> imageUris;
     private ArrayList<Bitmap> imageBitmaps;
 
-    //public ImagePagerAdapter(Context context, int[] imageUrls) {
-    //public ImagePagerAdapter(Context context, List<Uri> imageUris) {
     public ImagePagerAdapter(Context context, ArrayList<Bitmap> imageBitmaps) {
         this.context = context;
+
         this.imageBitmaps = imageBitmaps;
     }
 
@@ -38,33 +35,6 @@ public class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdapter.Vi
         View view = LayoutInflater.from(context).inflate(R.layout.image_page_item, parent, false);
         return new ViewHolder(view);
     }
-
-    // ArrayList<Uri>
-    //@Override
-    //public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    //    //holder.imageView.setImageResource(imageUrls[position]);
-    //    Uri imageUri = imageUris.get(position);
-    //    Glide.with(context).load(imageUri).into(holder.imageView);
-    //}
-
-    //@Override
-    //public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    //    Uri imageUri = imageUris.get(position);
-    //    try {
-    //        InputStream inputStream = context.getContentResolver().openInputStream(imageUri);
-    //        Glide.with(context)
-    //                .load(inputStream)
-    //                .into(holder.imageView);
-    //    } catch (FileNotFoundException e) {
-    //        // Handle the exception, maybe show a default image
-    //        holder.imageView.setImageResource(R.drawable.weight);
-    //        Toast.makeText(context, "File not found for loading image", Toast.LENGTH_SHORT).show();
-    //    } catch (SecurityException e) {
-    //        // Handle the security exception, maybe show a default image or request the user to grant permission again
-    //        holder.imageView.setImageResource(R.drawable.weight);
-    //        Toast.makeText(context, "Permission issue with loading image", Toast.LENGTH_SHORT).show();
-    //    }
-    //}
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -78,11 +48,6 @@ public class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdapter.Vi
             Toast.makeText(context, "Error loading image", Toast.LENGTH_SHORT).show();
         }
     }
-
-    //@Override
-    //public int getItemCount() {
-    //    return imageUrls.length;
-    //}
 
     @Override
     public int getItemCount() {

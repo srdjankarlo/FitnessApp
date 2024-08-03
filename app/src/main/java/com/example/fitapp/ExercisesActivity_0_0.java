@@ -70,6 +70,7 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         ExercisesItem exercisesItem = muscleGroupItems.get(position);
         Intent intent = new Intent(ExercisesActivity_0_0.this, OneExerciseActivity_0_0_0.class);
         intent.putExtra("ExercisesItem", exercisesItem);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
     }
 }

@@ -71,8 +71,6 @@ public class MuscleGroupsAdapter extends RecyclerView.Adapter<MuscleGroupsAdapte
         // to create constructor, press Alt+ins
         public ViewHolder(@NonNull View itemView, MuscleGroupsInterface mainMenuRecViewInterface) {
             super(itemView);
-            //context = itemView.getContext();
-            //MainMenuRecView_Layout = itemView.findViewById(R.id.mu_groups_it_Layout);
             MainMenuRecView_ImageView1 = itemView.findViewById(R.id.mu_groups_it_ImageView1);
             MainMenuRecView_TextView1 = itemView.findViewById(R.id.mu_groups_it_TextView1);
             MainMenuRecView_TextView2 = itemView.findViewById(R.id.mu_groups_it_TextView2);

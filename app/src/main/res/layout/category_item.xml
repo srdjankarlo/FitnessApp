@@ -8,14 +8,9 @@
     <CheckBox
         android:id="@+id/ca_it_CheckBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/ca_it_TextView"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="Muscle category"
-        android:textSize="16sp" />
+        android:gravity="center"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

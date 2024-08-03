@@ -103,6 +103,16 @@ public class ExercisesRepository {
                 categories.add("Abs");
                 exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Sit-Up", categories));*/
 
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Pull-Ups", Arrays.asList("Back", "Chest", "Shoulders", "Triceps", "Biceps", "Abs"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Chin-Ups", Arrays.asList("Back", "Chest", "Shoulders", "Triceps", "Biceps", "Abs"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Deadlifts", Arrays.asList("Back", "Shoulders", "Forearms", "Abs", "Glutes", "Quads", "Hamstrings", "Calves"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Barbell Bent Over Row", Arrays.asList("Back"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Dumbell Bent Over Row", Arrays.asList("Back"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "T-Bar Bent Over Row", Arrays.asList("Back"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Dumbbell Shrugs", Arrays.asList("Back"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Barbell Shrugs", Arrays.asList("Back"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Back Extensions", Arrays.asList("Back"), false, "", null));
+
                 exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Push-Ups", Arrays.asList("Chest"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Close Grip Push-Ups", Arrays.asList("Chest", "Triceps"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.chest, "Wide Grip Push-Ups", Arrays.asList("Chest"), false, "", null));
@@ -133,6 +143,12 @@ public class ExercisesRepository {
                 exercisesDao.insert(new ExercisesItem(R.drawable.shoulders, "Peck Deck Rear-Delt Flys", Arrays.asList("Shoulders", "Back"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.shoulders, "Front Weight Raise", Arrays.asList("Shoulders"), false, "", null));
 
+                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Push-Downs", Arrays.asList("Triceps"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Cable Push-Downs", Arrays.asList("Triceps"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Reverse Push-Downs", Arrays.asList("Triceps"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Triceps Dips", Arrays.asList("Triceps"), false, "", null));
+                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Dumbbell Kickbacks", Arrays.asList("Triceps"), false, "", null));
+
                 exercisesDao.insert(new ExercisesItem(R.drawable.biceps, "Synchronized Dumbbell Curls", Arrays.asList("Biceps"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.biceps, "Synchronized Hammer Curls", Arrays.asList("Biceps", "Forearms"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.biceps, "Synchronized Reverse Dumbbell Curls", Arrays.asList("Biceps", "Forearms"), false, "", null));
@@ -144,25 +160,9 @@ public class ExercisesRepository {
                 exercisesDao.insert(new ExercisesItem(R.drawable.biceps, "EZ-Bar Curls", Arrays.asList("Biceps"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.biceps, "Reverse EZ-Bar Curls", Arrays.asList("Biceps", "Forearms"), false, "", null));
 
-                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Push-Downs", Arrays.asList("Triceps"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Cable Push-Downs", Arrays.asList("Triceps"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Reverse Push-Downs", Arrays.asList("Triceps"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Triceps Dips", Arrays.asList("Triceps"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.triceps, "Dumbbell Kickbacks", Arrays.asList("Triceps"), false, "", null));
-
                 exercisesDao.insert(new ExercisesItem(R.drawable.forearms, "Barbel Wrist Curls", Arrays.asList("Forearms"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.forearms, "Dumbbell Wrist Curls", Arrays.asList("Forearms"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.forearms, "Dumbbell Wrist Twist", Arrays.asList("Forearms"), false, "", null));
-
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Chin-Ups", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Reverse Chin-Ups", Arrays.asList("Back", "Biceps"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Deadlifts", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Barbell Bent Over Row", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Dumbell Bent Over Row", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "T-Bar Bent Over Row", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Dumbbell Shrugs", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Barbell Shrugs", Arrays.asList("Back"), false, "", null));
-                exercisesDao.insert(new ExercisesItem(R.drawable.back, "Back Extensions", Arrays.asList("Back"), false, "", null));
 
                 exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Incline Bench Sit-Ups", Arrays.asList("Abs"), false, "", null));
                 exercisesDao.insert(new ExercisesItem(R.drawable.abs, "Sit-Ups", Arrays.asList("Abs"), false, "", null));

@@ -8,139 +8,151 @@
 
     <!--    // ToDo: add plot above recycler view-->
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ac_di_LinearLayout0"
-        app:layout_constraintTop_toTopOf="parent">
+        android:isScrollContainer="false">
 
-        <EditText
-            android:id="@+id/ac_di_EditTextFoodName"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Food name"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/ac_di_EditTextOwnWeight"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:inputType="numberSigned"
-            android:hint="Own Weight[kg]"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ac_di_LinearLayout0"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/ac_di_EditTextFoodName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Food name"/>
 
-    <LinearLayout
-        android:id="@+id/ac_di_LinearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ac_di_LinearLayout0">
+                <EditText
+                    android:id="@+id/ac_di_EditTextOwnWeight"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned"
+                    android:hint="Own Weight[kg]"/>
 
-        <EditText
-            android:id="@+id/ac_di_EditTextProteins"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Proteins[g]"
-            android:inputType="numberSigned"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/ac_di_EditTextFats"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Fats[g]"
-            android:inputType="numberSigned"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            <LinearLayout
+                android:id="@+id/ac_di_LinearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ac_di_LinearLayout0">
 
-        <EditText
-            android:id="@+id/ac_di_EditTextCarbs"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Carbs[g]"
-            android:inputType="numberSigned"
-            android:layout_weight="1"
-            android:gravity="center"/>
+                <EditText
+                    android:id="@+id/ac_di_EditTextProteins"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Proteins[g]"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
 
-        <EditText
-            android:id="@+id/ac_di_EditTextCals"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Cals[kcal]"
-            android:inputType="numberSigned"
-            android:layout_weight="1"
-            android:gravity="center"/>
+                <EditText
+                    android:id="@+id/ac_di_EditTextFats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Fats[g]"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/ac_di_EditTextCarbs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Carbs[g]"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
 
-    <Button
-        android:id="@+id/ac_di_ButtonAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ac_di_LinearLayout1"
-        android:text="Add"
-        android:onClick="AddMeal"/>
+                <EditText
+                    android:id="@+id/ac_di_EditTextCals"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Cals[kcal]"
+                    android:inputType="numberSigned"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/ac_di_TextViewDailyNutrients"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ac_di_ButtonAdd"
-        android:text="Daily Nutrients Intake"
-        android:gravity="center"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ac_di_LinearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ac_di_TextViewDailyNutrients"
-        android:orientation="horizontal">
+            <Button
+                android:id="@+id/ac_di_ButtonAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/ac_di_LinearLayout1"
+                android:text="Add"
+                android:onClick="AddMeal"/>
 
-        <TextView
-            android:id="@+id/ac_di_TextViewProteins"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Proteins"/>
+            <TextView
+                android:id="@+id/ac_di_TextViewDailyNutrients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/ac_di_ButtonAdd"
+                android:text="Daily Nutrients Intake"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/ac_di_TextViewFats"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Fats"/>
+            <LinearLayout
+                android:id="@+id/ac_di_LinearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/ac_di_TextViewDailyNutrients"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/ac_di_TextViewCarbs"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Carbs"/>
+                <TextView
+                    android:id="@+id/ac_di_TextViewProteins"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Proteins"/>
 
-        <TextView
-            android:id="@+id/ac_di_TextViewCalories"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Calories"/>
+                <TextView
+                    android:id="@+id/ac_di_TextViewFats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Fats"/>
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/ac_di_TextViewCarbs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Carbs"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/id_ac_di_RecView"
-        app:layout_constraintTop_toBottomOf="@+id/ac_di_LinearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="150dp"/>
+                <TextView
+                    android:id="@+id/ac_di_TextViewCalories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Calories"/>
 
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/id_ac_di_RecView"
+                app:layout_constraintTop_toBottomOf="@+id/ac_di_LinearLayout2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

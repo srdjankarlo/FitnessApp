@@ -25,36 +25,36 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ac_ad_ex_LinearLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/ac_ad_ex_LinearLayout2"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout1"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:gravity="center">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ac_ad_ex_TextView1"
-            android:text="Import Exercise Images"/>
-        <!-- ToDo: access to phone images -->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/ac_ad_ex_TextView1"-->
+<!--            android:text="Import Exercise Images"/>-->
+<!--        &lt;!&ndash; ToDo: access to phone images &ndash;&gt;-->
 
-        <ImageButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:id="@+id/ac_ad_ex_ImageButton1"
-            android:src="@drawable/baseline_add_photo_alternate_24"
-            android:contentDescription="TODO" />
+<!--        <ImageButton-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:id="@+id/ac_ad_ex_ImageButton1"-->
+<!--            android:src="@drawable/baseline_add_photo_alternate_24"-->
+<!--            android:contentDescription="TODO" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ac_ad_ex_LinearLayout3_1"
-        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center">
@@ -68,7 +68,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ac_ad_ex_LinearLayout3_2"
         app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout3_1"

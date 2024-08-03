@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -22,6 +21,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,13 +32,13 @@ import android.widget.Toast;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneExerciseInterface {
 
-    //OneExerciseRecViewAdapter recViewAdapter = new OneExerciseRecViewAdapter(this, this);
     RecyclerView recView;
     OneExerciseAdapter recViewAdapter;
     ViewPager2 viewPager2;
@@ -69,11 +69,12 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
         Bundle intent = getIntent().getExtras();
         if(intent != null){
             exercisesItem = intent.getParcelable("ExercisesItem");
-            //ArrayList<Uri> imageUris = exercisesItem.getImages();
-            ArrayList<Bitmap> imageBitmaps = exercisesItem.getImages();
 
             if(exercisesItem != null){
                 exercise_name = exercisesItem.getExerciseName();
+
+                ArrayList<Uri> imageUris = exercisesItem.getImages();
+                ArrayList<Bitmap> imageBitmaps = new ArrayList<>();
 
                 // change app bar title
                 Objects.requireNonNull(getSupportActionBar()).setTitle(exercise_name);
@@ -89,39 +90,10 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                 // get view pager dots
                 dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
 
-                //// Sample images for particular exercise
-                //int[] images = {};
-                //// ToDo: make for loop that check all categories that are in
                 String muscleGroup = exercisesItem.getCategories().get(0);
-                //if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
-                //    images = new int[]{R.drawable.chest, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.shoulders_exercise))) {
-                //    images = new int[]{R.drawable.shoulders, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.biceps_exercise))) {
-                //    images = new int[]{R.drawable.biceps, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.triceps_exercise))) {
-                //    images = new int[]{R.drawable.triceps, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.forearms_exercise))) {
-                //    images = new int[]{R.drawable.forearms, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.back_exercise))) {
-                //    images = new int[]{R.drawable.back, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.abs_exercise))) {
-                //    images = new int[]{R.drawable.abs, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.quads_exercise))) {
-                //    images = new int[]{R.drawable.quads, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.hamstrings_exercise))) {
-                //    // ToDo: dont forget to change muscles image, it was just testing that scale argument in layout xml
-                //    images = new int[]{R.drawable.hamstrings, R.drawable.muscles};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.glutes_exercise))) {
-                //    images = new int[]{R.drawable.glutes, R.drawable.weight};
-                //} else if (Objects.equals(muscleGroup, getString(R.string.calves_exercise))) {
-                //    images = new int[]{R.drawable.calves, R.drawable.weight};
-                //}
 
                 // set images in image pager adapter, set adapter and view pager dots
-                // ToDo: do this check for previous drawables and figure out why imageUris == null when add new exercise
-                if (imageBitmaps == null){
-                    imageBitmaps = new ArrayList<>();
+                if (imageUris.size() == 0){
                     if (Objects.equals(muscleGroup, getString(R.string.chest_exercise))){
                         @DrawableRes int drawableResId = R.drawable.chest;
                         imageBitmaps.add(drawableToBitmap(drawableResId));
@@ -157,13 +129,18 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                         imageBitmaps.add(drawableToBitmap(drawableResId));
                     }
                 } else {
-                    ;
+                    for (Uri uri : imageUris) {
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                            // Do something with the bitmap (e.g., display it in an ImageView)
+                            imageBitmaps.add(bitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
                 ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, imageBitmaps);
-                //ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(this, images);
                 viewPager2.setAdapter(imagePagerAdapter);
-                // Launch the document picker
-
                 dotsIndicator.setViewPager2(viewPager2);
 
             } else {

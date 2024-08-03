@@ -41,29 +41,23 @@ public class ExercisesItem implements Parcelable {
     boolean customExercise;  // true if this is custom added exercise, in order so we can delete just the custom exercises and leave the in app exercises
     String explanation;  // ToDo: this is for future
 
-    //int image;  // ToDo: this is for exercise to have multiple images (ones you set in 0_0_0)
-
-    //@TypeConverters(UriListConverter.class)
-    //ArrayList<Uri> images;
-
-    @TypeConverters(BitmapListConverter.class)
-    ArrayList<Bitmap> images;
-
-    //@TypeConverters(UriConverter.class)
-    //Uri image;
+    @TypeConverters(UriListConverter.class)
+    ArrayList<Uri> images;
 
     // Default no-argument constructor
     public ExercisesItem() {
         exerciseName = "Generic Name";
     }
 
-    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName, List<String> categories, boolean customExercise, String explanation, ArrayList<Bitmap> images) {
+    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName, List<String> categories, boolean customExercise, String explanation, ArrayList<Uri> images) {
         this.muscle_image = muscle_image;
         this.exerciseName = exerciseName;
         this.categories = categories;
         this.customExercise = customExercise;
         this.explanation = explanation;
 
+        // ToDo: Option 2: Pass the URI Instead of Bitmap: https://chatgpt.com/c/a9b4a717-1924-4472-8a3f-4aa8a38d105d
+        // ToDo: maybe store Uri as string in object
         if (images == null){
             this.images = new ArrayList<>();
         } else {
@@ -104,8 +98,8 @@ public class ExercisesItem implements Parcelable {
         categories = in.createStringArrayList();
         customExercise = in.readBoolean();
         explanation = in.readString();
-        images = in.createTypedArrayList(Bitmap.CREATOR);
-        //images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
+        //images = in.createTypedArrayList(Bitmap.CREATOR);
+        images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
         //image = in.readParcelable(Uri.class.getClassLoader());  // for Uri
         //image = in.readInt();
     }
@@ -177,11 +171,11 @@ public class ExercisesItem implements Parcelable {
         this.explanation = explanation;
     }
 
-    public ArrayList<Bitmap> getImages() {
+    public ArrayList<Uri> getImages() {
         return images;
     }
 
-    public void setImages(ArrayList<Bitmap> images) {
+    public void setImages(ArrayList<Uri> images) {
         this.images = images;
     }
 
