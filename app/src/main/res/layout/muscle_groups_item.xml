@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Number of Exercises"
         android:textAlignment="viewStart"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/mu_groups_it_divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

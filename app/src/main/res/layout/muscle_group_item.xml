@@ -16,44 +16,114 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/mu_group_it_ImageView1"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/ac_ma_me_it_ImageView_contentDescription"
-        android:src="@drawable/weight"
-        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_divider2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mu_group_it_divider1" />
-
     <TextView
         android:id="@+id/mu_group_it_TextView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:breakStrategy="simple"
         android:text="Exercise Name"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_TextViewCategories"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
-        app:layout_constraintTop_toBottomOf="@+id/mu_group_it_divider1" />
+        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintTop_toTopOf="@+id/mu_group_it_divider1" />
 
-    <TextView
-        android:id="@+id/mu_group_it_TextViewCategories"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:breakStrategy="simple"
-        android:text="Categories"
-        android:textAlignment="viewStart"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:background="@color/black"
+    <ImageView
+        android:id="@+id/mu_group_it_ImageView1"
+        android:layout_width="190dp"
+        android:layout_height="140dp"
+        android:contentDescription="@string/ac_ma_me_it_ImageView_contentDescription"
+        android:src="@drawable/weight"
         app:layout_constraintBottom_toTopOf="@+id/mu_group_it_divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mu_group_it_TextView1" />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/mu_gruop_it_LinearLayout1"
+        app:layout_constraintBottom_toTopOf="@+id/mu_gruop_it_LinearLayout2"
+        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/mu_group_it_TextView1">
+
+        <TextView
+            android:id="@+id/mu_group_it_TextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:breakStrategy="simple"
+            android:text="Primary: "
+            android:textAlignment="viewStart"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/mu_group_it_TextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories1"
+            android:textSize="16sp"
+            android:singleLine="false"
+            android:ellipsize="none"
+            android:scrollHorizontally="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/mu_gruop_it_LinearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/mu_gruop_it_LinearLayout3"
+        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/mu_gruop_it_LinearLayout1">
+
+        <TextView
+            android:id="@+id/mu_group_it_TextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:breakStrategy="simple"
+            android:text="Secondary: "
+            android:textAlignment="viewStart"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/mu_group_it_TextView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories2"
+            android:textSize="16sp"
+            android:singleLine="false"
+            android:ellipsize="none"
+            android:scrollHorizontally="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/mu_gruop_it_LinearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/mu_group_it_divider2"
+        app:layout_constraintStart_toEndOf="@+id/mu_group_it_ImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/mu_gruop_it_LinearLayout2">
+
+        <TextView
+            android:id="@+id/mu_group_it_TextView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:breakStrategy="simple"
+            android:text="Place: "
+            android:textAlignment="viewStart"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/mu_group_it_TextView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:breakStrategy="simple"
+            android:text="Gym/Home"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
 
     <View
         android:id="@+id/mu_group_it_divider2"

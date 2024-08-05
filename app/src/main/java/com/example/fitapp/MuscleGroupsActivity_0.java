@@ -77,29 +77,29 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
                 exercises.clear();
                 exercises.addAll(exercisesItems);
 
-                back_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Back")).collect(Collectors.toList());
-                chest_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Chest")).collect(Collectors.toList());
-                shoulder_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Shoulders")).collect(Collectors.toList());
-                triceps_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Triceps")).collect(Collectors.toList());
-                biceps_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Biceps")).collect(Collectors.toList());
-                forearms_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Forearms")).collect(Collectors.toList());
-                abs_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Abs")).collect(Collectors.toList());
-                quads_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Quads")).collect(Collectors.toList());
-                hamstrings_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Hamstrings")).collect(Collectors.toList());
-                glutes_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Glutes")).collect(Collectors.toList());
-                calves_exercises = exercises.stream().filter(exercise -> exercise.getCategories().contains("Calves")).collect(Collectors.toList());
+                back_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Back")).collect(Collectors.toList());
+                chest_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Chest")).collect(Collectors.toList());
+                shoulder_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Shoulders")).collect(Collectors.toList());
+                triceps_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Triceps")).collect(Collectors.toList());
+                biceps_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Biceps")).collect(Collectors.toList());
+                forearms_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Forearms")).collect(Collectors.toList());
+                abs_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Abs")).collect(Collectors.toList());
+                quads_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Quads")).collect(Collectors.toList());
+                hamstrings_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Hamstrings")).collect(Collectors.toList());
+                glutes_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Glutes")).collect(Collectors.toList());
+                calves_exercises = exercises.stream().filter(exercise -> exercise.getPrimary().contains("Calves")).collect(Collectors.toList());
 
-                num_back_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Back")).count();
-                num_chest_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Chest")).count();
-                num_shoulder_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Shoulders")).count();
-                num_triceps_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Triceps")).count();
-                num_biceps_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Biceps")).count();
-                num_forearms_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Forearms")).count();
-                num_abs_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Abs")).count();
-                num_quads_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Quads")).count();
-                num_hamstrings_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Hamstrings")).count();
-                num_glutes_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Glutes")).count();
-                num_calves_exercises = (int) exercises.stream().filter(exercise -> exercise.getCategories().contains("Calves")).count();
+                num_back_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Back")).count();
+                num_chest_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Chest")).count();
+                num_shoulder_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Shoulders")).count();
+                num_triceps_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Triceps")).count();
+                num_biceps_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Biceps")).count();
+                num_forearms_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Forearms")).count();
+                num_abs_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Abs")).count();
+                num_quads_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Quads")).count();
+                num_hamstrings_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Hamstrings")).count();
+                num_glutes_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Glutes")).count();
+                num_calves_exercises = (int) exercises.stream().filter(exercise -> exercise.getPrimary().contains("Calves")).count();
 
                 setupMuscleGroups();
             }

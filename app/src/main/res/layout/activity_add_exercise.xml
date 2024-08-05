@@ -50,11 +50,67 @@
 
 <!--    </LinearLayout>-->
 
+<!--    ToDo: have check boxes instead of recycler view-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ac_ad_ex_ConstraintLayout3_1"
+        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ac_ad_ex_ConstraintLayout3_2">
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ac_ad_ex_TextView2"
+            android:text="Primary muscles"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_TextView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ac_ad_ex_RecView1"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ac_ad_ex_ConstraintLayout3_2"
+        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout1"
+        app:layout_constraintStart_toEndOf="@+id/ac_ad_ex_ConstraintLayout3_1"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ac_ad_ex_TextView3"
+            android:text="Secondary muscles"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_TextView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ac_ad_ex_RecView2"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ac_ad_ex_LinearLayout3_1"
-        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout1"
+        android:id="@+id/ac_ad_ex_LinearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_ConstraintLayout3_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center">
@@ -62,33 +118,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ac_ad_ex_TextView2"
-            android:text="Choose muscle category/categories bellow"/>
+            android:text="Place: "
+            android:textAlignment="center"
+            android:layout_weight="1"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ac_ad_ex_LinearLayout3_2"
-        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout3_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="0dp"
+        <CheckBox
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ac_ad_ex_RecView"
-            android:layout_weight="2"/>
+            android:id="@+id/ac_ad_ex_CheckBox1"
+            android:text="Gym"
+            android:layout_weight="1"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ac_ad_ex_CheckBox2"
+            android:text="Home"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ac_ad_ex_LinearLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout3_2"
+        android:id="@+id/ac_ad_ex_LinearLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/ac_ad_ex_LinearLayout4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center">

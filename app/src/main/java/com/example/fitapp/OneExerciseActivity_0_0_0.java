@@ -73,7 +73,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
             if(exercisesItem != null){
                 exercise_name = exercisesItem.getExerciseName();
 
-                ArrayList<Uri> imageUris = exercisesItem.getImages();
+                ArrayList<Uri> imageUris = exercisesItem.getWorkout_images();
                 ArrayList<Bitmap> imageBitmaps = new ArrayList<>();
 
                 // change app bar title
@@ -90,7 +90,7 @@ public class OneExerciseActivity_0_0_0 extends AppCompatActivity implements OneE
                 // get view pager dots
                 dotsIndicator = findViewById(R.id.ac_on_ex_DotsIndicator1);
 
-                String muscleGroup = exercisesItem.getCategories().get(0);
+                String muscleGroup = exercisesItem.getPrimary().get(0);
 
                 // set images in image pager adapter, set adapter and view pager dots
                 if (imageUris.size() == 0){

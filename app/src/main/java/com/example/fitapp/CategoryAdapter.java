@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +32,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = categoryList.get(position);
-        //holder.textViewExerciseName.setText(category.getName());
         holder.checkBox.setText(category.getName());
         holder.checkBox.setChecked(category.isSelected());
 
@@ -49,12 +47,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
-        //TextView textViewExerciseName;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.ca_it_CheckBox);
-            //textViewExerciseName = itemView.findViewById(R.id.ca_it_TextView);
         }
     }
 

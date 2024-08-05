@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/se_me_item1"
+        android:title="All"/>
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/se_me_item2"
+        android:title="Gym"
+        android:icon="@drawable/baseline_fitness_center_24"/>
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/se_me_item3"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"/>
+
+</menu>

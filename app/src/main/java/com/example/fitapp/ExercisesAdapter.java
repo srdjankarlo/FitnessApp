@@ -42,9 +42,16 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
     public void onBindViewHolder(@NonNull ExercisesAdapter.ViewHolder holder, int position) {
         holder.exercises_ImageView1.setImageResource(exercisesItems.get(position).getMuscle_image());
         holder.exercises_TextView1.setText(exercisesItems.get(position).getExerciseName());
-        List<String> categories = exercisesItems.get(position).getCategories();
-        String categoriesString = TextUtils.join(", ", categories);
-        holder.exercises_TextView2.setText(categoriesString);
+
+        List<String> categories1 = exercisesItems.get(position).getPrimary();
+        String categoriesString1 = TextUtils.join(", ", categories1);
+        holder.exercises_TextView3.setText(categoriesString1);
+
+        List<String> categories2 = exercisesItems.get(position).getSecondary();
+        String categoriesString2 = TextUtils.join(", ", categories2);
+        holder.exercises_TextView5.setText(categoriesString2);
+
+        holder.exercises_TextView7.setText(exercisesItems.get(position).getPlace());
     }
 
     @Override
@@ -69,19 +76,21 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         // if we want to have access to elements inside view object, add them as fields of this inner class
-        private ConstraintLayout exercises_Layout;  // to be able to set on click listener
         private ImageView exercises_ImageView1;
         private TextView exercises_TextView1;
-        private TextView exercises_TextView2;
+        private TextView exercises_TextView3;
+        private TextView exercises_TextView5;
+        private TextView exercises_TextView7;
 
         // to create constructor, press Alt+ins
         public ViewHolder(@NonNull View itemView, ExercisesInterface muscleGroupInterface) {
             super(itemView);
-            context = itemView.getContext();
-            exercises_Layout = itemView.findViewById(R.id.mu_group_it_Layout);
+            context = itemView.getContext();  // to be able to set on click listener
             exercises_ImageView1 = itemView.findViewById(R.id.mu_group_it_ImageView1);
             exercises_TextView1 = itemView.findViewById(R.id.mu_group_it_TextView1);
-            exercises_TextView2 = itemView.findViewById(R.id.mu_group_it_TextViewCategories);
+            exercises_TextView3 = itemView.findViewById(R.id.mu_group_it_TextView3);  // primary
+            exercises_TextView5 = itemView.findViewById(R.id.mu_group_it_TextView5);  // secondary
+            exercises_TextView7 = itemView.findViewById(R.id.mu_group_it_TextView7);
 
             // set on click
             itemView.setOnClickListener(new View.OnClickListener() {

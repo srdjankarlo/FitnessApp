@@ -1,6 +1,5 @@
 package com.example.fitapp;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +8,6 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 
@@ -25,7 +23,10 @@ public class ExercisesItem implements Parcelable {
     private String exerciseName;
 
     @TypeConverters(StringListConverter.class)
-    private List<String> categories;  // more muscle groups
+    private List<String> primary;  // more muscle groups
+
+    @TypeConverters(StringListConverter.class)
+    private List<String> secondary;  // more muscle groups
 
     int num_chest_exercises;
     int num_shoulders_exercises;
@@ -42,29 +43,36 @@ public class ExercisesItem implements Parcelable {
     String explanation;  // ToDo: this is for future
 
     @TypeConverters(UriListConverter.class)
-    ArrayList<Uri> images;
+    ArrayList<Uri> workout_images;
+
+    String place;
 
     // Default no-argument constructor
     public ExercisesItem() {
         exerciseName = "Generic Name";
     }
 
-    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName, List<String> categories, boolean customExercise, String explanation, ArrayList<Uri> images) {
+    public ExercisesItem(@DrawableRes int muscle_image, @NonNull String exerciseName,
+                         List<String> categories1, List<String> categories2, boolean customExercise,
+                         String explanation, ArrayList<Uri> images, String place) {
         this.muscle_image = muscle_image;
         this.exerciseName = exerciseName;
-        this.categories = categories;
+        this.primary = categories1;
+        this.secondary = categories2;
         this.customExercise = customExercise;
         this.explanation = explanation;
 
         // ToDo: Option 2: Pass the URI Instead of Bitmap: https://chatgpt.com/c/a9b4a717-1924-4472-8a3f-4aa8a38d105d
         // ToDo: maybe store Uri as string in object
         if (images == null){
-            this.images = new ArrayList<>();
+            this.workout_images = new ArrayList<>();
         } else {
-            this.images = images;
+            this.workout_images = images;
         }
 
-        for (String category : categories){
+        this.place = place;
+
+        for (String category : primary){
             if (category.equals("Chest")){
                 num_chest_exercises += 1;
             } else if (category.equals("Shoulders")) {
@@ -95,13 +103,15 @@ public class ExercisesItem implements Parcelable {
     protected ExercisesItem(Parcel in){
         muscle_image = in.readInt();
         exerciseName = in.readString();
-        categories = in.createStringArrayList();
+        primary = in.createStringArrayList();
+        secondary = in.createStringArrayList();
         customExercise = in.readBoolean();
         explanation = in.readString();
         //images = in.createTypedArrayList(Bitmap.CREATOR);
-        images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
+        workout_images = in.createTypedArrayList(Uri.CREATOR);  // for ArrayList<Uri>
         //image = in.readParcelable(Uri.class.getClassLoader());  // for Uri
         //image = in.readInt();
+        place = in.readString();
     }
 
     public static final Creator<ExercisesItem> CREATOR = new Creator<ExercisesItem>() {
@@ -125,12 +135,14 @@ public class ExercisesItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags){
         dest.writeInt(muscle_image);
         dest.writeString(exerciseName);
-        dest.writeStringList(categories);
+        dest.writeStringList(primary);
+        dest.writeStringList(secondary);
         dest.writeBoolean(customExercise);
         dest.writeString(explanation);
-        dest.writeTypedList(images);  // for ArrayList<Uri> and ArrayList<Bitmap>
+        dest.writeTypedList(workout_images);  // for ArrayList<Uri> and ArrayList<Bitmap>
         //dest.writeParcelable(image, flags);  // for Uri
         //dest.writeInt(image);
+        dest.writeString(place);
     }
 
     @DrawableRes
@@ -151,9 +163,17 @@ public class ExercisesItem implements Parcelable {
         this.exerciseName = exerciseName;
     }
 
-    public List<String> getCategories(){return categories;}
+    public List<String> getPrimary(){return primary;}
 
-    public void setCategories(List<String> categories){this.categories = categories;}
+    public void setPrimary(List<String> primary){this.primary = primary;}
+
+    public List<String> getSecondary() {
+        return secondary;
+    }
+
+    public void setSecondary(List<String> secondary) {
+        this.secondary = secondary;
+    }
 
     public boolean getCustomExercise() {
         return customExercise;
@@ -171,12 +191,20 @@ public class ExercisesItem implements Parcelable {
         this.explanation = explanation;
     }
 
-    public ArrayList<Uri> getImages() {
-        return images;
+    public ArrayList<Uri> getWorkout_images() {
+        return workout_images;
     }
 
-    public void setImages(ArrayList<Uri> images) {
-        this.images = images;
+    public void setWorkout_images(ArrayList<Uri> workout_images) {
+        this.workout_images = workout_images;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public int getNum_chest_exercises() {
@@ -229,7 +257,7 @@ public class ExercisesItem implements Parcelable {
         return "MainMenuRecViewItem{" +
                 ", RecViewImage=" + muscle_image + '\'' +
                 ", RecViewName='" + exerciseName + '\'' +
-                ", RecViewCategories=" + categories + '\'' +
+                ", RecViewCategories=" + primary + '\'' +
                 '}';
     }
 }
