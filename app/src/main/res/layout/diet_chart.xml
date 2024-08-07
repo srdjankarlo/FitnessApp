@@ -18,4 +18,11 @@
         android:layout_weight="1"
         android:contentDescription="@null"/>
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/di_ch_plot3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@null"/>
+
 </LinearLayout>

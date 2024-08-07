@@ -194,7 +194,10 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
             plot1.getDescription().setText("Values in kg");
             LineChart plot2 = findViewById(R.id.di_ch_plot2);
             //plot2.getDescription().setEnabled(false);
-            plot2.getDescription().setText("Values in g, g, g, kcal");  // ToDo: make seperate chart for calories
+            plot2.getDescription().setText("Values in grams");
+            LineChart plot3 = findViewById(R.id.di_ch_plot3);
+            //plot1.getDescription().setEnabled(false);
+            plot3.getDescription().setText("Values in kcal");
 
             dietViewModel.getAllDietData().observe(this, new Observer<List<DietItem>>() {
                 @Override
@@ -226,20 +229,17 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
 
                     if (!dates.isEmpty() && !weights.isEmpty()) {
 
-                        //List<Long> dateList = Arrays.asList(1627843200000L, 1627929600000L, 1628016000000L); // Example dates in milliseconds
-                        //List<Integer> valueList = Arrays.asList(10, 20, 30); // Corresponding values
-
                         List<Entry> entries1 = new ArrayList<>();
                         List<Entry> entries2_1 = new ArrayList<>();
                         List<Entry> entries2_2 = new ArrayList<>();
                         List<Entry> entries2_3 = new ArrayList<>();
-                        List<Entry> entries2_4 = new ArrayList<>();
+                        List<Entry> entries3 = new ArrayList<>();
                         for (int i = 0; i < weights.size(); i++) {
                             entries1.add(new Entry(i, weights.get(i)));
                             entries2_1.add(new Entry(i, proteins.get(i)));
                             entries2_2.add(new Entry(i, fats.get(i)));
                             entries2_3.add(new Entry(i, carbs.get(i)));
-                            entries2_4.add(new Entry(i, cals.get(i)));
+                            entries3.add(new Entry(i, cals.get(i)));
                         }
 
                         LineDataSet dataSet1 = new LineDataSet(entries1, "Weight");
@@ -261,13 +261,16 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         dataSet2_3.setLineWidth(2f);
                         dataSet2_3.setValueTextColor(Color.GREEN);
 
-                        LineDataSet dataSet2_4 = new LineDataSet(entries2_4, "Calories");
-                        dataSet2_4.setColor(Color.YELLOW);
-                        dataSet2_4.setLineWidth(2f);
-                        dataSet2_4.setValueTextColor(Color.YELLOW);
+                        LineDataSet dataSet3 = new LineDataSet(entries3, "Calories");
+                        dataSet3.setColor(Color.YELLOW);
+                        dataSet3.setLineWidth(2f);
+                        dataSet3.setValueTextColor(Color.YELLOW);
 
-                        LineData lineData2 = new LineData(dataSet2_1, dataSet2_2, dataSet2_3, dataSet2_4);
+                        LineData lineData2 = new LineData(dataSet2_1, dataSet2_2, dataSet2_3);
                         plot2.setData(lineData2);
+
+                        LineData lineData3 = new LineData(dataSet3);
+                        plot3.setData(lineData3);
 
                         XAxis xAxis1 = plot1.getXAxis();
                         xAxis1.setValueFormatter(new DateValueFormatter(dates));
@@ -283,6 +286,12 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         xAxis2.setGranularity(1f);
                         xAxis2.setGranularityEnabled(true);
 
+                        XAxis xAxis3 = plot3.getXAxis();
+                        xAxis3.setValueFormatter(new DateValueFormatter(dates));
+                        xAxis3.setPosition(XAxis.XAxisPosition.BOTTOM);
+                        xAxis3.setGranularity(1f);
+                        xAxis3.setGranularityEnabled(true);
+
                         // set number of visible labels for y axis
                         YAxis yAxis1 = plot1.getAxisLeft();
                         yAxis1.setLabelCount(5, true); // number of visible labels
@@ -293,6 +302,10 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         yAxis2.setLabelCount(5, true);
                         plot2.getAxisRight().setEnabled(false);
 
+                        YAxis yAxis3 = plot3.getAxisLeft();
+                        yAxis3.setLabelCount(5, true);
+                        plot3.getAxisRight().setEnabled(false);
+
                         // Enable scaling and dragging
                         plot1.setDragEnabled(true);
                         plot1.setScaleEnabled(true);
@@ -302,6 +315,10 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         plot2.setScaleEnabled(true);
                         plot2.setPinchZoom(true);
 
+                        plot3.setDragEnabled(true);
+                        plot3.setScaleEnabled(true);
+                        plot3.setPinchZoom(true);
+
                         // Set the visible range
                         if (entries1.size() > 5) {
                             plot1.setVisibleXRangeMaximum(5);
@@ -309,13 +326,17 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
 
                             plot2.setVisibleXRangeMaximum(5);
                             plot2.moveViewToX(entries1.size() - 5);
+
+                            plot3.setVisibleXRangeMaximum(5);
+                            plot3.moveViewToX(entries1.size() - 5);
                         }
 
                         plot1.invalidate(); // Refresh the chart
                         plot2.invalidate();
+                        plot3.invalidate();
 
                         // Synchronize scrolling
-                        synchronizeCharts(plot1, plot2);
+                        synchronizeCharts(plot1, plot2, plot3);
                     }
                 }
             });
@@ -324,7 +345,120 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
         return true;
     }
 
-    private void synchronizeCharts(LineChart chart1, LineChart chart2) {
+    private void synchronizeCharts(LineChart chart1, LineChart chart2, LineChart chart3) {
+        chart1.setOnChartGestureListener(new OnChartGestureListener() {
+            @Override
+            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                chart2.setOnChartGestureListener(null); // temporarily remove listener
+                chart3.setOnChartGestureListener(null); // temporarily remove listener
+            }
+
+            @Override
+            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                synchronizeCharts(chart1, chart2, chart3); // re-add listener
+            }
+
+            @Override
+            public void onChartLongPressed(MotionEvent me) {}
+
+            @Override
+            public void onChartDoubleTapped(MotionEvent me) {}
+
+            @Override
+            public void onChartSingleTapped(MotionEvent me) {}
+
+            @Override
+            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
+
+            @Override
+            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+                chart2.getViewPortHandler().refresh(chart1.getViewPortHandler().getMatrixTouch(), chart2, true);
+                chart3.getViewPortHandler().refresh(chart1.getViewPortHandler().getMatrixTouch(), chart3, true);
+            }
+
+            @Override
+            public void onChartTranslate(MotionEvent me, float dX, float dY) {
+                chart2.getViewPortHandler().refresh(chart1.getViewPortHandler().getMatrixTouch(), chart2, true);
+                chart3.getViewPortHandler().refresh(chart1.getViewPortHandler().getMatrixTouch(), chart3, true);
+            }
+        });
+
+        chart2.setOnChartGestureListener(new OnChartGestureListener() {
+            @Override
+            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                chart1.setOnChartGestureListener(null); // temporarily remove listener
+                chart3.setOnChartGestureListener(null); // temporarily remove listener
+            }
+
+            @Override
+            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                synchronizeCharts(chart1, chart2, chart3); // re-add listener
+            }
+
+            @Override
+            public void onChartLongPressed(MotionEvent me) {}
+
+            @Override
+            public void onChartDoubleTapped(MotionEvent me) {}
+
+            @Override
+            public void onChartSingleTapped(MotionEvent me) {}
+
+            @Override
+            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
+
+            @Override
+            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+                chart1.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart1, true);
+                chart3.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart3, true);
+            }
+
+            @Override
+            public void onChartTranslate(MotionEvent me, float dX, float dY) {
+                chart1.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart1, true);
+                chart3.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart3, true);
+            }
+        });
+
+        chart3.setOnChartGestureListener(new OnChartGestureListener() {
+            @Override
+            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                chart1.setOnChartGestureListener(null); // temporarily remove listener
+                chart2.setOnChartGestureListener(null); // temporarily remove listener
+            }
+
+            @Override
+            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+                synchronizeCharts(chart1, chart2, chart3); // re-add listener
+            }
+
+            @Override
+            public void onChartLongPressed(MotionEvent me) {}
+
+            @Override
+            public void onChartDoubleTapped(MotionEvent me) {}
+
+            @Override
+            public void onChartSingleTapped(MotionEvent me) {}
+
+            @Override
+            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
+
+            @Override
+            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+                chart1.getViewPortHandler().refresh(chart3.getViewPortHandler().getMatrixTouch(), chart1, true);
+                chart2.getViewPortHandler().refresh(chart3.getViewPortHandler().getMatrixTouch(), chart2, true);
+            }
+
+            @Override
+            public void onChartTranslate(MotionEvent me, float dX, float dY) {
+                chart1.getViewPortHandler().refresh(chart3.getViewPortHandler().getMatrixTouch(), chart1, true);
+                chart2.getViewPortHandler().refresh(chart3.getViewPortHandler().getMatrixTouch(), chart2, true);
+            }
+        });
+    }
+
+    /*private void synchronizeCharts(LineChart chart1, LineChart chart2) {
         chart1.setOnChartGestureListener(new OnChartGestureListener() {
             @Override
             public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
@@ -392,6 +526,6 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                 chart1.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart1, true);
             }
         });
-    }
+    }*/
 
 }
