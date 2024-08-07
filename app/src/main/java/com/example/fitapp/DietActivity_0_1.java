@@ -21,6 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -94,15 +95,19 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
         int carbs_text = (TextUtils.isEmpty(editable_carbs.toString())) ? 0 : Integer.parseInt(editable_carbs.toString());
         int calories_text = (TextUtils.isEmpty(editable_calories.toString())) ? 0 : Integer.parseInt(editable_calories.toString());
 
-        DietItem new_item = new DietItem(current_date, name_text, ow_text, proteins_text, fats_text, carbs_text, calories_text);
-        dietViewModel.insert(new_item);
+        if (name_text.equals("None") || ow_text == 0 || proteins_text == 0 || fats_text == 0 || carbs_text == 0 || calories_text == 0){
+            Toast.makeText(this, "Fill all the fields!", Toast.LENGTH_SHORT).show();
+        } else {
+            DietItem new_item = new DietItem(current_date, name_text, ow_text, proteins_text, fats_text, carbs_text, calories_text);
+            dietViewModel.insert(new_item);
 
-        edit_name.getText().clear();
-        edit_own_weight.getText().clear();
-        edit_proteins.getText().clear();
-        edit_fats.getText().clear();
-        edit_carbs.getText().clear();
-        edit_calories.getText().clear();
+            edit_name.getText().clear();
+            edit_own_weight.getText().clear();
+            edit_proteins.getText().clear();
+            edit_fats.getText().clear();
+            edit_carbs.getText().clear();
+            edit_calories.getText().clear();
+        }
     }
 
     public void calculateDailyIntake(List<DietItem> dietItems){
@@ -470,75 +475,5 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
             }
         });
     }
-
-    /*private void synchronizeCharts(LineChart chart1, LineChart chart2) {
-        chart1.setOnChartGestureListener(new OnChartGestureListener() {
-            @Override
-            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-                chart2.setOnChartGestureListener(null); // temporarily remove listener
-            }
-
-            @Override
-            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-                synchronizeCharts(chart1, chart2); // re-add listener
-            }
-
-            @Override
-            public void onChartLongPressed(MotionEvent me) {}
-
-            @Override
-            public void onChartDoubleTapped(MotionEvent me) {}
-
-            @Override
-            public void onChartSingleTapped(MotionEvent me) {}
-
-            @Override
-            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
-
-            @Override
-            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
-                chart2.getViewPortHandler().refresh(chart1.getViewPortHandler().getMatrixTouch(), chart2, true);
-            }
-
-            @Override
-            public void onChartTranslate(MotionEvent me, float dX, float dY) {
-                chart2.getViewPortHandler().refresh(chart1.getViewPortHandler().getMatrixTouch(), chart2, true);
-            }
-        });
-
-        chart2.setOnChartGestureListener(new OnChartGestureListener() {
-            @Override
-            public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-                chart1.setOnChartGestureListener(null); // temporarily remove listener
-            }
-
-            @Override
-            public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-                synchronizeCharts(chart1, chart2); // re-add listener
-            }
-
-            @Override
-            public void onChartLongPressed(MotionEvent me) {}
-
-            @Override
-            public void onChartDoubleTapped(MotionEvent me) {}
-
-            @Override
-            public void onChartSingleTapped(MotionEvent me) {}
-
-            @Override
-            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
-
-            @Override
-            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
-                chart1.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart1, true);
-            }
-
-            @Override
-            public void onChartTranslate(MotionEvent me, float dX, float dY) {
-                chart1.getViewPortHandler().refresh(chart2.getViewPortHandler().getMatrixTouch(), chart1, true);
-            }
-        });
-    }*/
 
 }
