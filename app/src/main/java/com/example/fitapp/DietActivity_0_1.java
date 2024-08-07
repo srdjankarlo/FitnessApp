@@ -23,12 +23,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -202,33 +207,48 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
             dietViewModel.getAllDietData().observe(this, new Observer<List<DietItem>>() {
                 @Override
                 public void onChanged(List<DietItem> dietItems) {
-                    List<Long> dates = new ArrayList<>();
+                    Map<LocalDate, Integer> weightsMap = new HashMap<>();
+                    Map<LocalDate, Integer> proteinsMap = new HashMap<>();
+                    Map<LocalDate, Integer> fatsMap = new HashMap<>();
+                    Map<LocalDate, Integer> carbsMap = new HashMap<>();
+                    Map<LocalDate, Integer> calsMap = new HashMap<>();
+                    Map<LocalDate, Integer> weightsCountMap = new HashMap<>();
+
+                    // Accumulate the values for each date and count entries
+                    for (DietItem item : dietItems) {
+                        LocalDate date = Instant.ofEpochMilli(item.getDate()).atZone(ZoneId.systemDefault()).toLocalDate();
+
+                        weightsMap.put(date, weightsMap.getOrDefault(date, 0) + item.getOwn_weight());
+                        proteinsMap.put(date, proteinsMap.getOrDefault(date, 0) + item.getProteins());
+                        fatsMap.put(date, fatsMap.getOrDefault(date, 0) + item.getFats());
+                        carbsMap.put(date, carbsMap.getOrDefault(date, 0) + item.getCarbohydrates());
+                        calsMap.put(date, calsMap.getOrDefault(date, 0) + item.getCalories());
+
+                        weightsCountMap.put(date, weightsCountMap.getOrDefault(date, 0) + 1);
+                    }
+
+                    // Create lists for sorted dates and accumulated values
+                    List<LocalDate> dates = new ArrayList<>(weightsMap.keySet());
+                    Collections.sort(dates);
+
                     List<Integer> weights = new ArrayList<>();
                     List<Integer> proteins = new ArrayList<>();
                     List<Integer> fats = new ArrayList<>();
                     List<Integer> carbs = new ArrayList<>();
                     List<Integer> cals = new ArrayList<>();
 
-                    // Extract dates and weights from dietItems
-                    for (DietItem item : dietItems) {
-                        dates.add(item.getDate());
-                        weights.add(item.getOwn_weight());
-                        proteins.add(item.getProteins());
-                        fats.add(item.getFats());
-                        carbs.add(item.getCarbohydrates());
-                        cals.add(item.getCalories());
+                    for (LocalDate date : dates) {
+                        int weightSum = weightsMap.get(date);
+                        int weightCount = weightsCountMap.get(date);
+                        weights.add(weightSum / weightCount); // Calculate the average weight
+
+                        proteins.add(proteinsMap.get(date));
+                        fats.add(fatsMap.get(date));
+                        carbs.add(carbsMap.get(date));
+                        cals.add(calsMap.get(date));
                     }
 
-                    // Reverse the lists
-                    Collections.reverse(dates);
-                    Collections.reverse(weights);
-                    Collections.reverse(proteins);
-                    Collections.reverse(fats);
-                    Collections.reverse(carbs);
-                    Collections.reverse(cals);
-
                     if (!dates.isEmpty() && !weights.isEmpty()) {
-
                         List<Entry> entries1 = new ArrayList<>();
                         List<Entry> entries2_1 = new ArrayList<>();
                         List<Entry> entries2_2 = new ArrayList<>();
@@ -277,8 +297,6 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         xAxis1.setPosition(XAxis.XAxisPosition.BOTTOM);
                         xAxis1.setGranularity(1f);
                         xAxis1.setGranularityEnabled(true);
-                        // visible labels for "different" x axis labels, if in one day is 10 entries than all 10 will be showed because they are on the same day
-                        //xAxis.setLabelCount(5, true);
 
                         XAxis xAxis2 = plot2.getXAxis();
                         xAxis2.setValueFormatter(new DateValueFormatter(dates));
@@ -292,10 +310,8 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         xAxis3.setGranularity(1f);
                         xAxis3.setGranularityEnabled(true);
 
-                        // set number of visible labels for y axis
                         YAxis yAxis1 = plot1.getAxisLeft();
-                        yAxis1.setLabelCount(5, true); // number of visible labels
-                        // Disable right y-axis
+                        yAxis1.setLabelCount(5, true);
                         plot1.getAxisRight().setEnabled(false);
 
                         YAxis yAxis2 = plot2.getAxisLeft();
@@ -306,7 +322,6 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         yAxis3.setLabelCount(5, true);
                         plot3.getAxisRight().setEnabled(false);
 
-                        // Enable scaling and dragging
                         plot1.setDragEnabled(true);
                         plot1.setScaleEnabled(true);
                         plot1.setPinchZoom(true);
@@ -319,7 +334,6 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         plot3.setScaleEnabled(true);
                         plot3.setPinchZoom(true);
 
-                        // Set the visible range
                         if (entries1.size() > 5) {
                             plot1.setVisibleXRangeMaximum(5);
                             plot1.moveViewToX(entries1.size() - 5);
@@ -331,11 +345,10 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                             plot3.moveViewToX(entries1.size() - 5);
                         }
 
-                        plot1.invalidate(); // Refresh the chart
+                        plot1.invalidate();
                         plot2.invalidate();
                         plot3.invalidate();
 
-                        // Synchronize scrolling
                         synchronizeCharts(plot1, plot2, plot3);
                     }
                 }

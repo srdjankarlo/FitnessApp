@@ -3,14 +3,16 @@ package com.example.fitapp;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class DateValueFormatter extends ValueFormatter {
-    private final List<Long> mDates;
+    private final List<LocalDate> mDates;
 
-    public DateValueFormatter(List<Long> dates) {
+    public DateValueFormatter(List<LocalDate> dates) {
         this.mDates = dates;
     }
 
@@ -21,8 +23,8 @@ public class DateValueFormatter extends ValueFormatter {
             return "";
         }
 
-        long dateInMillis = mDates.get(index);
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-        return sdf.format(new Date(dateInMillis));
+        LocalDate date = mDates.get(index);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.ENGLISH);
+        return date.format(formatter);
     }
 }
