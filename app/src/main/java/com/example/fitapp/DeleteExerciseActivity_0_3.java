@@ -73,6 +73,7 @@ public class DeleteExerciseActivity_0_3 extends MuscleGroupsActivity_0 implement
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    // ToDo: figure out how to see yes and no buttons
     private void showYesNoDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Do you want to delete this exercise?")

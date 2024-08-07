@@ -1,0 +1,254 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "40105ef912557d489595983f83a6effd",
+    "entities": [
+      {
+        "tableName": "diet_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` INTEGER NOT NULL, `food_name` TEXT, `own_weight` INTEGER NOT NULL, `proteins` INTEGER NOT NULL, `fats` INTEGER NOT NULL, `carbohydrates` INTEGER NOT NULL, `calories` INTEGER NOT NULL, PRIMARY KEY(`date`))",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "food_name",
+            "columnName": "food_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "own_weight",
+            "columnName": "own_weight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "proteins",
+            "columnName": "proteins",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fats",
+            "columnName": "fats",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "carbohydrates",
+            "columnName": "carbohydrates",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "calories",
+            "columnName": "calories",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "date"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "exercises_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`muscle_image` INTEGER NOT NULL, `exerciseName` TEXT NOT NULL, `primary` TEXT, `secondary` TEXT, `num_chest_exercises` INTEGER NOT NULL, `num_shoulders_exercises` INTEGER NOT NULL, `num_biceps_exercises` INTEGER NOT NULL, `num_triceps_exercises` INTEGER NOT NULL, `num_forearms_exercises` INTEGER NOT NULL, `num_back_exercises` INTEGER NOT NULL, `num_abs_exercises` INTEGER NOT NULL, `num_quads_exercises` INTEGER NOT NULL, `num_hamstrings_exercises` INTEGER NOT NULL, `num_glutes_exercises` INTEGER NOT NULL, `num_calves_exercises` INTEGER NOT NULL, `customExercise` INTEGER NOT NULL, `explanation` TEXT, `workout_images` TEXT, `place` TEXT, PRIMARY KEY(`exerciseName`))",
+        "fields": [
+          {
+            "fieldPath": "muscle_image",
+            "columnName": "muscle_image",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exerciseName",
+            "columnName": "exerciseName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "primary",
+            "columnName": "primary",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "secondary",
+            "columnName": "secondary",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "num_chest_exercises",
+            "columnName": "num_chest_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_shoulders_exercises",
+            "columnName": "num_shoulders_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_biceps_exercises",
+            "columnName": "num_biceps_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_triceps_exercises",
+            "columnName": "num_triceps_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_forearms_exercises",
+            "columnName": "num_forearms_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_back_exercises",
+            "columnName": "num_back_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_abs_exercises",
+            "columnName": "num_abs_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_quads_exercises",
+            "columnName": "num_quads_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_hamstrings_exercises",
+            "columnName": "num_hamstrings_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_glutes_exercises",
+            "columnName": "num_glutes_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_calves_exercises",
+            "columnName": "num_calves_exercises",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "customExercise",
+            "columnName": "customExercise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "explanation",
+            "columnName": "explanation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workout_images",
+            "columnName": "workout_images",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "place",
+            "columnName": "place",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "exerciseName"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "one_exercise_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`exerciseName` TEXT, `itemDate` INTEGER NOT NULL, `setNumber` INTEGER NOT NULL, `itemWeight` REAL NOT NULL, `itemReps` INTEGER NOT NULL, `itemWorkTime` INTEGER NOT NULL, `itemRestTime` INTEGER NOT NULL, PRIMARY KEY(`itemDate`))",
+        "fields": [
+          {
+            "fieldPath": "exerciseName",
+            "columnName": "exerciseName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "itemDate",
+            "columnName": "itemDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "setNumber",
+            "columnName": "setNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemWeight",
+            "columnName": "itemWeight",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemReps",
+            "columnName": "itemReps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemWorkTime",
+            "columnName": "itemWorkTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemRestTime",
+            "columnName": "itemRestTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "itemDate"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '40105ef912557d489595983f83a6effd')"
+    ]
+  }
+}

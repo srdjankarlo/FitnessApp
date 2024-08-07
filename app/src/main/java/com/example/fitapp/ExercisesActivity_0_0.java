@@ -86,48 +86,38 @@ public class ExercisesActivity_0_0 extends MuscleGroupsActivity_0 implements Exe
         // get the id of clicked menu item
         menu_id = item.getItemId();
         if (menu_id == R.id.se_me_item1) {
+            long count = originalMuscleGroupItems.size();
+            muscleGroupAdapter.setExercisesItems(originalMuscleGroupItems);
             muscleGroupItems = originalMuscleGroupItems;
-
-            long count = muscleGroupItems.size();
-
             Toast.makeText(ExercisesActivity_0_0.this, "Available : " + count + " exercises", Toast.LENGTH_SHORT).show();
         } else if (menu_id == R.id.se_me_item2) {
-            muscleGroupItems = (ArrayList<ExercisesItem>) muscleGroupItems.stream()
+            muscleGroupItems = (ArrayList<ExercisesItem>) originalMuscleGroupItems.stream()
                     .filter(exercise -> "Gym".equals(exercise.getPlace()))
                     .collect(Collectors.toList());
-
             long count = muscleGroupItems.stream()
                     .filter(exercise -> "Gym".equals(exercise.getPlace()))
                     .count();
-
+            muscleGroupAdapter.setExercisesItems(muscleGroupItems);
             Toast.makeText(ExercisesActivity_0_0.this, "Available " + count + " Gym exercises", Toast.LENGTH_SHORT).show();
         } else if (menu_id == R.id.se_me_item3) {
-            muscleGroupItems = (ArrayList<ExercisesItem>) muscleGroupItems.stream()
+            muscleGroupItems = (ArrayList<ExercisesItem>) originalMuscleGroupItems.stream()
                     .filter(exercise -> "Home".equals(exercise.getPlace()))
                     .collect(Collectors.toList());
-
             long count = muscleGroupItems.stream()
                     .filter(exercise -> "Home".equals(exercise.getPlace()))
                     .count();
-
+            muscleGroupAdapter.setExercisesItems(muscleGroupItems);
             Toast.makeText(ExercisesActivity_0_0.this, "Available " + count + " Home exercises", Toast.LENGTH_SHORT).show();
         }
 
-        muscleGroupAdapter.setExercisesItems(muscleGroupItems);
-
-        muscleGroupItems = originalMuscleGroupItems;
-
-        //return super.onOptionsItemSelected(item);
         return true;
     }
 
     @Override
     public void onItemClick(int position) {
-
         ExercisesItem exercisesItem = muscleGroupItems.get(position);
         Intent intent = new Intent(ExercisesActivity_0_0.this, OneExerciseActivity_0_0_0.class);
         intent.putExtra("ExercisesItem", exercisesItem);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
     }
 }
