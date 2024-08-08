@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -268,28 +269,50 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         }
 
                         LineDataSet dataSet1 = new LineDataSet(entries1, "Weight");
+                        dataSet1.setCircleRadius(6f);
+                        dataSet1.setValueTextSize(15f);
+                        dataSet1.setValueTypeface(Typeface.DEFAULT_BOLD);
+                        dataSet1.setColor(Color.BLACK);
+                        dataSet1.setCircleColor(Color.BLACK);
+                        dataSet1.setValueTextColor(Color.BLACK);
                         LineData lineData1 = new LineData(dataSet1);
                         plot1.setData(lineData1);
 
                         LineDataSet dataSet2_1 = new LineDataSet(entries2_1, "Proteins");
                         dataSet2_1.setColor(Color.RED);
                         dataSet2_1.setLineWidth(2f);
+                        dataSet2_1.setValueTextSize(15f);
+                        dataSet2_1.setValueTypeface(Typeface.DEFAULT_BOLD);
                         dataSet2_1.setValueTextColor(Color.RED);
+                        dataSet2_1.setCircleRadius(6f);
+                        dataSet2_1.setCircleColor(Color.RED);
 
                         LineDataSet dataSet2_2 = new LineDataSet(entries2_2, "Fats");
                         dataSet2_2.setColor(Color.BLUE);
                         dataSet2_2.setLineWidth(2f);
+                        dataSet2_2.setValueTextSize(15f);
+                        dataSet2_2.setValueTypeface(Typeface.DEFAULT_BOLD);
                         dataSet2_2.setValueTextColor(Color.BLUE);
+                        dataSet2_2.setCircleRadius(6f);
+                        dataSet2_2.setCircleColor(Color.BLUE);
 
                         LineDataSet dataSet2_3 = new LineDataSet(entries2_3, "Carbs");
-                        dataSet2_3.setColor(Color.GREEN);
+                        dataSet2_3.setColor(Color.BLACK);
                         dataSet2_3.setLineWidth(2f);
-                        dataSet2_3.setValueTextColor(Color.GREEN);
+                        dataSet2_3.setValueTextSize(15f);
+                        dataSet2_3.setValueTypeface(Typeface.DEFAULT_BOLD);
+                        dataSet2_3.setValueTextColor(Color.BLACK);
+                        dataSet2_3.setCircleRadius(6f);
+                        dataSet2_3.setCircleColor(Color.BLACK);
 
                         LineDataSet dataSet3 = new LineDataSet(entries3, "Calories");
-                        dataSet3.setColor(Color.YELLOW);
+                        dataSet3.setColor(Color.BLACK);
                         dataSet3.setLineWidth(2f);
-                        dataSet3.setValueTextColor(Color.YELLOW);
+                        dataSet3.setValueTextSize(15f);
+                        dataSet3.setValueTypeface(Typeface.DEFAULT_BOLD);
+                        dataSet3.setValueTextColor(Color.BLACK);
+                        dataSet3.setCircleRadius(6f);
+                        dataSet3.setCircleColor(Color.BLACK);
 
                         LineData lineData2 = new LineData(dataSet2_1, dataSet2_2, dataSet2_3);
                         plot2.setData(lineData2);
@@ -316,15 +339,15 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         xAxis3.setGranularityEnabled(true);
 
                         YAxis yAxis1 = plot1.getAxisLeft();
-                        yAxis1.setLabelCount(5, true);
+                        yAxis1.setLabelCount(7, true);
                         plot1.getAxisRight().setEnabled(false);
 
                         YAxis yAxis2 = plot2.getAxisLeft();
-                        yAxis2.setLabelCount(5, true);
+                        yAxis2.setLabelCount(7, true);
                         plot2.getAxisRight().setEnabled(false);
 
                         YAxis yAxis3 = plot3.getAxisLeft();
-                        yAxis3.setLabelCount(5, true);
+                        yAxis3.setLabelCount(7, true);
                         plot3.getAxisRight().setEnabled(false);
 
                         plot1.setDragEnabled(true);
@@ -339,15 +362,15 @@ public class DietActivity_0_1 extends AppCompatActivity implements DietInterface
                         plot3.setScaleEnabled(true);
                         plot3.setPinchZoom(true);
 
-                        if (entries1.size() > 5) {
-                            plot1.setVisibleXRangeMaximum(5);
-                            plot1.moveViewToX(entries1.size() - 5);
+                        if (entries1.size() > 7) {
+                            plot1.setVisibleXRangeMaximum(7);
+                            plot1.moveViewToX(entries1.size() - 7);
 
-                            plot2.setVisibleXRangeMaximum(5);
-                            plot2.moveViewToX(entries1.size() - 5);
+                            plot2.setVisibleXRangeMaximum(7);
+                            plot2.moveViewToX(entries1.size() - 7);
 
-                            plot3.setVisibleXRangeMaximum(5);
-                            plot3.moveViewToX(entries1.size() - 5);
+                            plot3.setVisibleXRangeMaximum(7);
+                            plot3.moveViewToX(entries1.size() - 7);
                         }
 
                         plot1.invalidate();

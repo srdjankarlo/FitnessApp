@@ -72,6 +72,10 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
          */
     }
 
+    public ExercisesItem getExerciseAtPosition(int position){
+        return exercisesItems.get(position);
+    }
+
     // need to create this ViewHolder, this is the way by convention
     public class ViewHolder extends RecyclerView.ViewHolder{
 

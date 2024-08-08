@@ -1,12 +1,11 @@
 package com.example.fitapp;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -58,6 +57,13 @@ public class DeleteExerciseActivity_0_3 extends MuscleGroupsActivity_0 implement
         // get the recycler view in order to manipulate it
         recyclerView = findViewById(R.id.ac_de_ex_RecView);
 
+        // Handle back button press using OnBackPressedDispatcher
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish(); // or use super.onBackPressed() to go back
+            }
+        });
     }
 
     @Override
@@ -73,33 +79,13 @@ public class DeleteExerciseActivity_0_3 extends MuscleGroupsActivity_0 implement
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    // ToDo: figure out how to see yes and no buttons
-    private void showYesNoDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do you want to delete this exercise?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User clicked Yes button
-                        // Handle the Yes button action here
-                        viewModel.delete(delete_exercise);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User clicked No button
-                        // Handle the No button action here
-                    }
-                });
-
-        // Create the AlertDialog object and show it
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
     @Override
     public void onItemClick(int position) {
-        delete_exercise = customExercisesList.get(position);
-        showYesNoDialog();
+        delete_exercise = customExercisesList.get(position);  // get the item you want to delete
+        Intent intent = new Intent(getApplicationContext(), PopUpDeleteExercise.class);
+        intent.putExtra("exercise_to_delete", ex_adapter.getExerciseAtPosition(position));
+        startActivity(intent);
     }
+
 
 }

@@ -24,7 +24,7 @@ public class DateValueFormatter extends ValueFormatter {
         }
 
         LocalDate date = mDates.get(index);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
         return date.format(formatter);
     }
 }

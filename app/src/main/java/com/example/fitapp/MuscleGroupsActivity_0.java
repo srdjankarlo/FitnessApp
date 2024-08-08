@@ -162,15 +162,15 @@ public class MuscleGroupsActivity_0 extends AppCompatActivity implements MuscleG
                     exercisesList.addAll(exercisesItems);
 
                     customExercisesList = (ArrayList<ExercisesItem>) exercisesList.stream().filter(ExercisesItem::getCustomExercise).collect(Collectors.toList());
-
-                    if (customExercisesList.size() == 0){
-                        Toast.makeText(MuscleGroupsActivity_0.this, "No custom exercises to delete", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Intent intent = new Intent(getApplicationContext(), DeleteExerciseActivity_0_3.class);
-                        startActivity(intent);
-                    }
                 }
             });
+
+            if (customExercisesList.size() == 0){
+                Toast.makeText(MuscleGroupsActivity_0.this, "No custom exercises to delete", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getApplicationContext(), DeleteExerciseActivity_0_3.class);
+                startActivity(intent);
+            }
         }
 
         return super.onOptionsItemSelected(item);

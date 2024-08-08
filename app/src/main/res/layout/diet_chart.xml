@@ -9,20 +9,23 @@
         android:id="@+id/di_ch_plot1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="@color/white"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/di_ch_plot2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:contentDescription="@null"/>
+        android:contentDescription="@null"
+        android:background="@color/white"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/di_ch_plot3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:contentDescription="@null"/>
+        android:contentDescription="@null"
+        android:background="@color/white"/>
 
 </LinearLayout>
